@@ -1,0 +1,12 @@
+<?php
+/**
+ * @package Movies
+ */
+
+echo $this->messageHelper($this->flashMessenger());
+
+?>
+<div id="tableContainer"></div>
+<script>
+    $("#tableContainer").zfTable("<?php echo $this->url('movies', array('action'=>'ajax-index','lang'=>$this->language)); ?>");
+</script>

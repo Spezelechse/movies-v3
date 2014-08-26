@@ -1,0 +1,22 @@
+<div id="tableContainer">
+
+</div>
+
+<hr />
+<h4>Code/Information</h4>
+
+<p>
+   Link decorations - look at variable param id
+</p>
+<pre>
+$this->getHeader('name')->getCell()->addDecorator('link', array(
+        'url' => '/table/link/id/%s',
+        'vars' => array('idcustomer')
+ ));
+</pre>
+
+<script>
+    $("#tableContainer").zfTable('/table/ajax-link');
+</script>
+
+

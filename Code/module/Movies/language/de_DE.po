@@ -1,0 +1,397 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Movies V3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-26 23:22+0100\n"
+"PO-Revision-Date: 2014-08-26 23:23+0100\n"
+"Last-Translator: Evan Coury <me@evancoury.com>\n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.6.8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../src/Movies/Controller/AdminController.php:72
+#: ../src/Movies/Controller/AdminController.php:256
+#: ../src/Movies/Form/UserForm.php:106 ../src/Movies/Form/UserForm.php:124
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: ../src/Movies/Controller/AdminController.php:107
+msgid "Medium added"
+msgstr "Medium hinzugefügt"
+
+#: ../src/Movies/Controller/AdminController.php:131
+msgid "Medium deleted"
+msgstr "Medium gelöscht"
+
+#: ../src/Movies/Controller/AdminController.php:162
+#: ../src/Movies/Controller/AdminController.php:360
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: ../src/Movies/Controller/AdminController.php:198
+msgid "Medium updated"
+msgstr "Medium aktualisiert"
+
+#: ../src/Movies/Controller/AdminController.php:215
+msgid "Medium id not found"
+msgstr "Medium id nicht gefunden"
+
+#: ../src/Movies/Controller/AdminController.php:279
+msgid "User added"
+msgstr "Benutzer hinzugefügt"
+
+#: ../src/Movies/Controller/AdminController.php:301
+msgid "User deleted"
+msgstr "Benutzter gelöscht"
+
+#: ../src/Movies/Controller/AdminController.php:331
+msgid "User updated"
+msgstr "Benutzer aktualisiert"
+
+#: ../src/Movies/Controller/AdminController.php:370
+msgid "User id not found"
+msgstr "Benutzer id nicht gefunden"
+
+#: ../src/Movies/Controller/AuthController.php:63
+msgid "login_success"
+msgstr "Erfolgreich eingeloggt!!"
+
+#: ../src/Movies/Controller/AuthController.php:76
+msgid "login_data_wrong"
+msgstr "Login fehlgeschlagen!!"
+
+#: ../src/Movies/Controller/AuthController.php:84
+msgid "login_data_missing"
+msgstr "Benutzername und Passwort werden benötigt!!"
+
+#: ../src/Movies/Controller/AuthController.php:96
+msgid "logged_out"
+msgstr "Erfolgreich ausgeloggt!!"
+
+#: ../src/Movies/Form/LoginForm.php:24 ../src/Movies/Form/UserForm.php:52
+msgid "Username"
+msgstr "Benutzername"
+
+#: ../src/Movies/Form/LoginForm.php:39 ../src/Movies/Form/UserForm.php:78
+msgid "Password"
+msgstr "Passwort"
+
+#: ../src/Movies/Form/LoginForm.php:50
+msgid "Remember me?"
+msgstr "Angemeldet bleiben?"
+
+#: ../src/Movies/Form/MediumForm.php:26 ../src/Movies/Form/MediumForm.php:53
+msgid "German"
+msgstr "Deutsch"
+
+#: ../src/Movies/Form/MediumForm.php:39 ../src/Movies/Form/MediumForm.php:67
+msgid "English"
+msgstr "Englisch"
+
+#: ../src/Movies/Form/MediumForm.php:81 ../view/movies/movies/show.phtml:44
+msgid "Actor"
+msgstr "Schauspieler"
+
+#: ../src/Movies/Form/MediumForm.php:92 ../view/movies/movies/show.phtml:45
+msgid "Role"
+msgstr "Rolle"
+
+#: ../src/Movies/Form/MediumForm.php:103 ../view/movies/movies/show.phtml:79
+msgid "Genre"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:117 ../view/movies/movies/show.phtml:103
+msgid "Publisher"
+msgstr "Herausgeber"
+
+#: ../src/Movies/Form/MediumForm.php:131 ../view/movies/movies/show.phtml:91
+msgid "Director"
+msgstr "Regisseur"
+
+#: ../src/Movies/Form/MediumForm.php:144 ../view/movies/movies/show.phtml:115
+msgid "Type"
+msgstr "Art"
+
+#: ../src/Movies/Form/MediumForm.php:158 ../view/movies/movies/show.phtml:122
+msgid "Owner"
+msgstr "Besitzer"
+
+#: ../src/Movies/Form/MediumForm.php:172 ../view/movies/movies/show.phtml:136
+msgid "FSK"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:194 ../view/movies/movies/show.phtml:143
+msgid "Premiere"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:207
+msgid "Duration (min.)"
+msgstr "Laufzeit (min.)"
+
+#: ../src/Movies/Form/MediumForm.php:220
+msgid "Num. disks"
+msgstr "Anzahl Disks"
+
+#: ../src/Movies/Form/MediumForm.php:233
+msgid "Medium"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:251 ../view/movies/movies/show.phtml:74
+msgid "Source"
+msgstr "Quelle"
+
+#: ../src/Movies/Form/MediumForm.php:265
+msgid "File"
+msgstr "Datei"
+
+#: ../src/Movies/Form/UserForm.php:26
+msgid "Name"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:39
+msgid "Surname"
+msgstr "Nachname"
+
+#: ../src/Movies/Form/UserForm.php:65
+msgid "Email"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:91
+msgid "Password repeat"
+msgstr "Passwort wiederholen"
+
+#: ../src/Movies/Form/UserForm.php:101
+msgid "Medium Rights"
+msgstr "Medium Rechte"
+
+#: ../src/Movies/Form/UserForm.php:107 ../src/Movies/Form/UserForm.php:125
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: ../src/Movies/Form/UserForm.php:108 ../src/Movies/Form/UserForm.php:126
+msgid "Delete"
+msgstr "Löschen"
+
+#: ../src/Movies/Form/UserForm.php:109
+msgid "Import"
+msgstr "Importieren"
+
+#: ../src/Movies/Form/UserForm.php:110
+msgid "Export"
+msgstr "Exportieren"
+
+#: ../src/Movies/Form/UserForm.php:119
+msgid "User Rights"
+msgstr "Benutzer Rechte"
+
+#: ../src/Movies/Form/UserForm.php:134
+msgid "Page Rights"
+msgstr "Webseiten Rechte"
+
+#: ../src/Movies/Form/UserForm.php:139
+msgid "Set up"
+msgstr "Konfigurieren"
+
+#: ../view/movies/admin/add-movie.phtml:22
+#: ../view/movies/admin/edit-movie.phtml:24
+msgid "Title"
+msgstr "Titel"
+
+#: ../view/movies/admin/add-movie.phtml:37
+#: ../view/movies/admin/edit-movie.phtml:39
+msgid "Content"
+msgstr "Inhalt"
+
+#: ../view/movies/admin/delete-movie.phtml:12
+msgid "delete-movie-callback"
+msgstr "Soll der folgende Film wirklich gelöscht werden?"
+
+#: ../view/movies/admin/delete-movie.phtml:29
+#: ../view/movies/admin/delete-user.phtml:31
+msgid "no"
+msgstr "nein"
+
+#: ../view/movies/admin/delete-movie.phtml:32
+#: ../view/movies/admin/delete-user.phtml:34
+msgid "yes"
+msgstr "ja"
+
+#: ../view/movies/admin/delete-user.phtml:14
+msgid "delete-user-callback"
+msgstr "Soll der folgende Benutzer wirklich gelöscht werden?"
+
+#: ../view/movies/admin/list-user.phtml:10
+msgid "Manage users"
+msgstr "Benutzer verwalten"
+
+#: ../view/movies/admin/site-set-up.phtml:10
+msgid "Page set-up"
+msgstr "Webseiten konfiguration"
+
+#: ../view/movies/admin/site-set-up.phtml:13
+msgid "how-to-set-page-up"
+msgstr ""
+"Einfach auf den zu ändernden Wert klicken, die Änderungen vornehmen und "
+"speichern."
+
+#: ../view/movies/movies/show.phtml:129
+msgid "Duration"
+msgstr "Laufzeit"
+
+#~ msgid "login_incorrect"
+#~ msgstr "Keine übereinstimmenden Logininformationen gefunden!"
+
+#~ msgid "Add movie"
+#~ msgstr "Film hinzufügen"
+
+#~ msgid "Delete movie"
+#~ msgstr "Film löschen"
+
+#~ msgid "Update movie"
+#~ msgstr "Film Updaten"
+
+#~ msgid "Add user"
+#~ msgstr "Benutzer hinzufügen"
+
+#~ msgid "A 404 error occurred"
+#~ msgstr "Es trat ein 404 Fehler auf"
+
+#~ msgid "The requested controller was unable to dispatch the request."
+#~ msgstr ""
+#~ "Der angeforderte Controller war nicht in der Lage die Anfrage zu "
+#~ "verarbeiten."
+
+#~ msgid ""
+#~ "The requested controller could not be mapped to an existing controller "
+#~ "class."
+#~ msgstr ""
+#~ "Der angeforderte Controller konnte keiner Controller Klasse zugeordnet "
+#~ "werden."
+
+#~ msgid "The requested controller was not dispatchable."
+#~ msgstr "Der angeforderte Controller ist nicht aufrufbar."
+
+#~ msgid "The requested URL could not be matched by routing."
+#~ msgstr ""
+#~ "Für die angeforderte URL konnte keine Übereinstimmung gefunden werden."
+
+#~ msgid "We cannot determine at this time why a 404 was generated."
+#~ msgstr ""
+#~ "Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 "
+#~ "Fehler aufgetreten ist."
+
+#~ msgid "Controller"
+#~ msgstr "Controller"
+
+#~ msgid "resolves to %s"
+#~ msgstr "wird aufgelöst in %s"
+
+#~ msgid "Additional information"
+#~ msgstr "Zusätzliche Information"
+
+#~ msgid "Message"
+#~ msgstr "Meldung"
+
+#~ msgid "Stack trace"
+#~ msgstr "Stapelüberwachung"
+
+#~ msgid "Previous exceptions"
+#~ msgstr "Vorherige Ausnahme"
+
+#~ msgid "No Exception available"
+#~ msgstr "Es ist keine Ausnahme verfügbar"
+
+#~ msgid "An error occurred"
+#~ msgstr "Ein Fehler ist aufgetreten"
+
+#~ msgid "Home"
+#~ msgstr "Startseite"
+
+#~ msgid "Advanced search"
+#~ msgstr "Erweiterte suche"
+
+#~ msgid "All rights reserved."
+#~ msgstr "Alle Rechte vorbehalten."
+
+#~ msgid "Welcome to %sZend Framework 2%s"
+#~ msgstr "Willkommen zu dem %sZend Framework 2%s"
+
+#~ msgid ""
+#~ "Congratulations! You have successfully installed the %sZF2 Skeleton "
+#~ "Application%s. You are currently running Zend Framework version %s. This "
+#~ "skeleton can serve as a simple starting point for you to begin building "
+#~ "your application on ZF2."
+#~ msgstr ""
+#~ "Herzlichen Glückwunsch! Sie haben die %sZF2 Skeleton Application%s "
+#~ "erfolgreich installiert und benutzen gerade die Version %s des Zend "
+#~ "Frameworks. Dieses Gerüst kann Ihnen als Einstiegspunkt, für Ihre weitere "
+#~ "Entwicklung, basierend auf dem Zend Framework 2, dienen."
+
+#~ msgid "Fork Zend Framework 2 on GitHub"
+#~ msgstr "Fork Zend Framework 2 auf GitHub"
+
+#~ msgid "Follow Development"
+#~ msgstr "Folge der Entwicklung"
+
+#~ msgid ""
+#~ "Zend Framework 2 is under active development. If you are interested in "
+#~ "following the development of ZF2, there is a special ZF2 portal on the "
+#~ "official Zend Framework website which provides links to the ZF2 %swiki%s, "
+#~ "%sdev blog%s, %sissue tracker%s, and much more. This is a great resource "
+#~ "for staying up to date with the latest developments!"
+#~ msgstr ""
+#~ "Das Zend Framework 2 wird z.Z. aktiv weiterentwickelt.  Sollten Sie daran "
+#~ "interessiert sein, die Entwicklung von ZF2 zu verfolgen, so bietet Ihnen "
+#~ "die offizielle Webseite einen eigens für das Zend Framework 2 "
+#~ "eingerichteten Bereich, auf der Sie Verlinkungen zum ZF2 %sWiki%s, "
+#~ "%sEntwickler Blog%s, einem %sFehlerverfolgungssystem%s und noch vielem "
+#~ "mehr finden. Dieser Bereich ist eine hervorragende Quelle um stets "
+#~ "aktuell zu bleiben."
+
+#~ msgid "ZF2 Development Portal"
+#~ msgstr "ZF2 Entwickler Portal"
+
+#~ msgid "Discover Modules"
+#~ msgstr "Entdecken Sie Module"
+
+#~ msgid ""
+#~ "The community is working on developing a community site to serve as a "
+#~ "repository and gallery for ZF2 modules. The project is available %son "
+#~ "GitHub%s. The site is currently live and currently contains a list of "
+#~ "some of the modules already available for ZF2."
+#~ msgstr ""
+#~ "Die Community arbeitet momentan an einer Community Seite, welche als "
+#~ "Galerie für ZF2 Module dient. Dieses Projekt ist %sauf GitHub%s "
+#~ "verfügbar. Die Webseite ist bereits Online und enthält eine Liste mit "
+#~ "schon veröffentlichten Modulen für das Zend Framework 2."
+
+#~ msgid "Explore ZF2 Modules"
+#~ msgstr "Erkunden Sie ZF2 Module"
+
+#~ msgid "Help &amp; Support"
+#~ msgstr "Hilfe &amp; Support"
+
+#~ msgid ""
+#~ "If you need any help or support while developing with ZF2, you may reach "
+#~ "us via IRC: %s#zftalk on Freenode%s. We'd love to hear any questions or "
+#~ "feedback you may have regarding the beta releases. Alternatively, you may "
+#~ "subscribe and post questions to the %smailing lists%s."
+#~ msgstr ""
+#~ "Sollten Sie Hilfe jeglicher Art bei der Entwicklung mit dem Zend "
+#~ "Framework 2 benötigen, kontaktieren Sie uns doch einfach über das IRC: "
+#~ "%s#zftalk on Freenode%s. Wir freuen uns darauf, Ihnen bei Ihren Fragen zu "
+#~ "helfen oder aber auch Ihre Meinung bezüglich der Beta Versionen zu hören. "
+#~ "Alternativ können Sie auch die %smailing lists%s abonnieren und Ihre "
+#~ "Fragen dort stellen."
+
+#~ msgid "Ping us on IRC"
+#~ msgstr "Schreiben Sie uns im IRC an"
+
+#~ msgid "Exception"
+#~ msgstr "Ausnahme"

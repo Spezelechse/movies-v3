@@ -1,0 +1,15 @@
+<?php
+/**
+ * @package Movies
+ */
+
+echo $this->messageHelper($this->flashMessenger());
+
+?>
+<h3>
+	<?php echo $this->translate('Manage users'); ?>
+</h3>
+<div id="tableContainer"></div>
+<script>
+    $("#tableContainer").zfTable("<?php echo $this->url('admin', array('action'=>'list-user-ajax','lang'=>$this->language)); ?>");
+</script>

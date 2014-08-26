@@ -1,0 +1,39 @@
+<?php
+/**
+ * @package Movies
+ */
+
+$escaper = new Zend\Escaper\Escaper('utf-8');
+// Template
+?>
+
+<div class="text-center movies-callback">
+	<div class="row">
+		<h3>
+			<?php
+			echo $this->translate('delete-user-callback');
+			?>
+			<br>
+			<h3>
+				<small>
+					<?php
+					echo $escaper->escapeHtml($user->username." (".$user->surname.", ".$user->name.")");
+					?>
+				</small>
+			</h3>
+		</h3>
+	</div>
+	<div class="row">
+		<form action="<?php echo $this->url('admin', array('lang' => $language, 'action' => 'delete-user', 'id' => $user->id)); ?>" method="post" name="user-delete" role="form" class="form-horizontal center-block" id="user-delete">
+				<div class="row">
+					<div class="center-block movies-confirm">
+						<a class="btn" href="<?php echo $this->url('admin', array('lang' => $language, 'action' => 'list-user')); ?>">
+							<input name="cancel" id="cancelbutton" class="btn btn-default" value="<?php echo $this->translate('no'); ?>" type="button">
+						</a>
+						<span style="margin-right: 40px;"></span>
+						<input name="submit" id="submitbutton" class="btn btn-default" value="<?php echo $this->translate('yes'); ?>" type="submit">			
+					</div>
+				</div>
+		</form>
+	</div>
+</div>

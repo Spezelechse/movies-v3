@@ -1,0 +1,25 @@
+<div id="tableContainer"></div>
+<hr />
+<h4>Code/Information</h4>
+
+<p>
+    Mix decorators - Uses template and link decorator (table Full name)
+</p>
+<pre>
+$this->getHeader('surname')->getCell()->addDecorator('template', array(
+            'template' => '<strong>%s %s</strong>',
+            'vars' => array('name', 'surname')
+));
+        
+$this->getHeader('surname')->getCell()->addDecorator('link', array(
+            'url' => '/table/link/id/%s',
+            'vars' => array('idcustomer')
+));
+</pre>
+
+
+<script>
+    $("#tableContainer").zfTable('/table/ajax-mix');
+</script>
+
+

@@ -1,0 +1,214 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ZendSkeletonApplication\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-23 03:09+0100\n"
+"PO-Revision-Date: 2014-08-23 03:16+0100\n"
+"Last-Translator: Evan Coury <me@evancoury.com>\n"
+"Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.6.8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../src/Movies/Controller/AdminController.php:35
+#: ../src/Movies/Controller/AdminController.php:152
+#: ../src/Movies/Form/UserForm.php:106 ../src/Movies/Form/UserForm.php:124
+msgid "Add"
+msgstr ""
+
+#: ../src/Movies/Controller/AdminController.php:88
+#: ../src/Movies/Controller/AdminController.php:197
+msgid "Update"
+msgstr ""
+
+#: ../src/Movies/Controller/AdminController.php:209
+msgid "Form valid"
+msgstr ""
+
+#: ../src/Movies/Controller/AdminController.php:220
+msgid "Form not valid"
+msgstr ""
+
+#: ../src/Movies/Controller/AuthController.php:63
+msgid "login_success"
+msgstr "Successful logged in!!"
+
+#: ../src/Movies/Controller/AuthController.php:76
+msgid "login_data_wrong"
+msgstr "Login failed!!"
+
+#: ../src/Movies/Controller/AuthController.php:84
+msgid "login_data_missing"
+msgstr "Username and Password needed!!"
+
+#: ../src/Movies/Controller/AuthController.php:96
+msgid "logged_out"
+msgstr "Successful logged out!!"
+
+#: ../src/Movies/Form/LoginForm.php:24 ../src/Movies/Form/UserForm.php:52
+msgid "Username"
+msgstr ""
+
+#: ../src/Movies/Form/LoginForm.php:39 ../src/Movies/Form/UserForm.php:78
+msgid "Password"
+msgstr ""
+
+#: ../src/Movies/Form/LoginForm.php:50
+msgid "Remember me?"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:26 ../src/Movies/Form/MediumForm.php:53
+msgid "German"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:39 ../src/Movies/Form/MediumForm.php:67
+msgid "English"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:81 ../view/movies/movies/show.phtml:43
+msgid "Actor"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:92 ../view/movies/movies/show.phtml:44
+msgid "Role"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:103 ../view/movies/movies/show.phtml:86
+msgid "Genre"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:117 ../view/movies/movies/show.phtml:110
+msgid "Publisher"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:131 ../view/movies/movies/show.phtml:98
+msgid "Director"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:144 ../view/movies/movies/show.phtml:122
+msgid "Type"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:157 ../view/movies/movies/show.phtml:129
+msgid "Owner"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:170 ../view/movies/movies/show.phtml:143
+msgid "FSK"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:191 ../view/movies/movies/show.phtml:150
+msgid "Premiere"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:205 ../view/movies/movies/show.phtml:136
+msgid "Duration"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:218
+msgid "Num. disks"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:231
+msgid "Medium"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:248 ../view/movies/movies/show.phtml:81
+msgid "Source"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:262
+msgid "File"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:26
+msgid "Name"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:39
+msgid "Surname"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:65
+msgid "Email"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:91
+msgid "Password repeat"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:101
+msgid "Medium Rights"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:107 ../src/Movies/Form/UserForm.php:125
+msgid "Edit"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:108 ../src/Movies/Form/UserForm.php:126
+msgid "Delete"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:109
+msgid "Import"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:110
+msgid "Export"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:119
+msgid "User Rights"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:134
+msgid "Page Rights"
+msgstr ""
+
+#: ../src/Movies/Form/UserForm.php:139
+msgid "Set up"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:21
+#: ../view/movies/admin/edit-movie.phtml:21
+msgid "Title"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:36
+#: ../view/movies/admin/edit-movie.phtml:36
+msgid "Content"
+msgstr ""
+
+#: ../view/movies/admin/delete-movie.phtml:12
+msgid "delete-movie-callback"
+msgstr "Are you sure you want to delete the movie below?"
+
+#: ../view/movies/admin/delete-movie.phtml:27
+#: ../view/movies/admin/delete-user.phtml:28
+msgid "no"
+msgstr ""
+
+#: ../view/movies/admin/delete-movie.phtml:30
+#: ../view/movies/admin/delete-user.phtml:31
+msgid "yes"
+msgstr ""
+
+#: ../view/movies/admin/delete-user.phtml:13
+msgid "delete-user-callback"
+msgstr "Are you sure you want to delete the user below?"
+
+#: ../view/movies/admin/site-set-up.phtml:10
+msgid "Page set-up"
+msgstr ""
+
+#: ../view/movies/admin/site-set-up.phtml:13
+msgid "how-to-set-page-up"
+msgstr "Just click on the value to be changed, make the changes and save it."
+
+#~ msgid "login_incorrect"
+#~ msgstr "No matching login information found!"

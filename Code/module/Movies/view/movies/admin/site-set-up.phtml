@@ -1,0 +1,19 @@
+<?php
+/**
+ * @package Movies
+ */
+
+echo $this->messageHelper($this->flashMessenger());
+
+?>
+<h3>
+	<?php echo $this->translate('Page set-up'); ?>
+	<br>
+	<small>
+		<?php echo $this->translate('how-to-set-page-up'); ?>
+	</small>
+</h3>
+<div id="tableContainer"></div>
+<script>
+    $("#tableContainer").zfTable("<?php echo $this->url('admin', array('action'=>'site-set-up-ajax','lang'=>$this->language)); ?>");
+</script>

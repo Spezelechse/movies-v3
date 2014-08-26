@@ -1,0 +1,21 @@
+<div id="tableContainer"></div>
+<hr />
+<h4>Code/Information</h4>
+
+<p>
+    Mapper decorations (change org value to destination)
+</p>
+<pre>
+$this->getHeader('active')->getCell()->addDecorator('mapper', array(
+            '0' => 'TAK',
+            '1' => 'NIE'
+));
+</pre>
+
+
+
+<script>
+    $("#tableContainer").zfTable('/table/ajax-mapper');
+</script>
+
+

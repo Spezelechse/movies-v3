@@ -1,0 +1,24 @@
+<div id="tableContainer"></div>
+<hr />
+<h4>Code/Information</h4>
+
+<p>
+    Conditional decoration (look at column name and city)
+</p>
+<pre>
+$this->getHeader('name')->getCell()->addDecorator('link', array(
+    'url' => '/table/link/id/%s',
+    'vars' => array('idcustomer')
+))->addCondition('equal', array('column' => 'name', 'values' => 'Jan'));
+
+ $this->getHeader('city')->getCell()->addDecorator('link', array(
+    'url' => '/table/link/id/%s',
+    'vars' => array('idcustomer')
+))->addCondition('equal', array('column' => 'city', 'values' => 'Warszawa'));
+</pre>
+
+<script>
+    $("#tableContainer").zfTable('/table/ajax-condition');
+</script>
+
+

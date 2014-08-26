@@ -1,0 +1,19 @@
+<div id="tableContainer"></div>
+<hr />
+<h4>Code/Information</h4>
+
+<p>
+    Template decorations - look at column full name which replace column surname
+</p>
+<pre>
+$this->getHeader('surname')->getCell()->addDecorator('template', array(
+            'template' => '<strong>%s %s</strong>',
+            'vars' => array('name', 'surname')
+));
+</pre>
+
+<script>
+    $("#tableContainer").zfTable('/table/ajax-template');
+</script>
+
+

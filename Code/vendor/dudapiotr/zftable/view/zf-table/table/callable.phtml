@@ -1,0 +1,48 @@
+
+<div id="tableContainer">
+
+</div>
+
+<hr />
+<h4>Code/Information</h4>
+
+<p>
+    Callable decorator
+</p>
+<pre>
+class Callable extends AbstractTable
+{
+    protected $config = array(
+        'name' => 'Callable',
+        'showPagination' => true,
+        'showQuickSearch' => false,
+        'showItemPerPage' => true,
+    );
+    
+    //Definition of headers
+    protected $headers = array(
+        'idcustomer' => array('title' => 'Id', 'width' => '50') ,
+        'closureColumn' => array('title' => 'Closure'),
+        'name' => array('title' => 'Name' , 'separatable' => true),
+        'surname' => array('title' => 'Surname' ),
+        'street' => array('title' => 'Street'),
+        'city' => array('title' => 'City' , 'separatable' => true),
+        'active' => array('title' => 'Active' , 'width' => 100 ),
+    );
+
+    public function init()
+    {
+        <strong>
+        $this->getHeader('closureColumn')->getCell()->addDecorator('closure', array(
+            'closure' => function($context, $record){
+                return ' Imię : ' . $record['name'] . ', Nazwisko: '. $record['surname'];
+            }
+        ));
+        </strong>
+    }
+}
+</pre>
+
+<script>
+    $("#tableContainer").zfTable('/table/ajax-callable');
+</script>
