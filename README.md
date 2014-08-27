@@ -11,3 +11,37 @@ Some of the new features will be:
 - improved database design
 
 I've never worked with Zend so the inital build will take some time.
+
+------------------------------------------------------------------------------------------------
+
+Update 27.08.14
+The first build is now ready. Not everything is working but the main functionality does.
+
+Whats working at the moment:
+- Medium
+  - add, edit, update
+  - list, filter, pagenation
+  - show details
+- User
+  - add, edit, update, list
+  - login, logout, remember
+- Config
+  - list and edit (but the data is not used at the moment)
+- General
+  - Bootstrap 3 Layout (mobile version tested with a Sony Xperia T)
+  - multilingual (everything is available in german and english)
+  - all inputs are validated and filtered and outputs are escaped
+
+All lists/tables (except the one within the show view) are build with help of dudapiotres [ZfTable](https://github.com/dudapiotr/ZfTable/) module. Which is awesome, easyish to handle and grants a lot of nice features beside just listing data.
+
+Creating the thumbnails of the Medium Cover made simple with help of the [SimpleImage](http://www.white-hat-web-design.co.uk/blog/resizing-images-with-php/) class from Simon Jarvis.
+
+Whats planned next?
+- extend the medium form with functions which allow adding new values for genre, publisher, director and type from within the form
+- implementing the advanced search for searching with all informations
+- adding search links to the show view which allows searching with single detail informations
+- adding an alternative list view with detail informations and one with just pictures
+- adding functions which let the user edit his own data
+- include the config data
+- include the userrights
+- searching a way to translate the table headers
