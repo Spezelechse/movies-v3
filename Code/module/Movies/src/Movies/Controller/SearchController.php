@@ -21,10 +21,17 @@ class SearchController extends BasisController
 	public function init(){
 		parent::init();
 
-        $this->search_value=(int)$this->params()->fromRoute('value',0);
+        if(!$this->MoviesConfig()->get('public')){
+        	if(!$this->getAuthService()->hasIdentity()){
+            	$this->redirect()->toRoute('auth', array('lang'=>$this->language, 'action'=>'login'));
+          	}
+        }
 
-        if($this->search_value==0){
-            $this->redirect()->toRoute('movies'); 
+        $this->search_value=(int)$this->params()->fromRoute('value',0);
+        $action = $this->params()->fromRoute('action','');
+
+        if($this->search_value==0&&$action!='advanced'){
+            $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
         }
 
         $this->view->search_value = $this->search_value;
@@ -49,7 +56,7 @@ class SearchController extends BasisController
 	}
 
 	public function indexAction(){
-      return $this->view;
+        return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
 	}
 	
 	public function actorAction(){

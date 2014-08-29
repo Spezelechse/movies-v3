@@ -15,11 +15,17 @@ use ZfTable\AbstractTable;
 
 class MoviesController extends BasisController
 {
-    /**
-     * Index - Movies
-     * 
-     * @return Zend\View\Model\ViewModel Zend View Model
-     */
+    public function init()
+    {
+        parent::init();
+
+        if(!$this->MoviesConfig()->get('public')){
+          if(!$this->getAuthService()->hasIdentity()){
+            $this->redirect()->toRoute('auth', array('lang'=>$this->language, 'action'=>'login'));
+          }
+        }
+    }
+
     public function indexAction()
     {
       return $this->view;

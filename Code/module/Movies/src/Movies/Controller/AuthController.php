@@ -31,7 +31,7 @@ class AuthController extends BasisController
      */
     public function indexAction()
     {
-
+        return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
     }
 
     public function loginAction()
@@ -42,7 +42,7 @@ class AuthController extends BasisController
             
             return $this->view;
         }
-        return $this->redirect()->toRoute('movies');
+        return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
     }
 
     public function authAction()

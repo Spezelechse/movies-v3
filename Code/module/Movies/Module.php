@@ -28,7 +28,8 @@ use Movies\Model\MediumTable;
 use Movies\Model\PublisherTable;
 use Movies\Model\TypeTable;
 use Movies\Model\UserTable;
-use \Movies\Model\MoviesAuthStorage;
+use Movies\Model\MoviesAuthStorage;
+use Movies\View\Helper\ConfigHelper;
 use Movies\Controller\MoviesController;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
@@ -60,6 +61,20 @@ class Module
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function getViewHelperConfig()
+    {
+        return array(
+            'factories' => array(
+                'movies_config' => function($sm) {
+                    $vh = new ConfigHelper();
+                    $vh->setServiceLocator($sm->getServiceLocator());
+
+                    return $vh;
+                },
+            )
+        );
     }
 
     public function getServiceConfig()

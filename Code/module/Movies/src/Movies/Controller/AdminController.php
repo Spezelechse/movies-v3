@@ -29,12 +29,19 @@ class AdminController extends BasisController
     {
         parent::init();
 
+        if(!$this->MoviesConfig()->get('public')){
+            if(!$this->getAuthService()->hasIdentity()){
+                $this->redirect()->toRoute('auth', array('lang'=>$this->language, 'action'=>'login'));
+            } 
+        }
+
         if(!$this->getAuthService()->hasIdentity()){
-            $this->redirect()->toRoute('movies'); 
+            $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
         }
     }
-    public function indexAction()
-    {
+
+    public function indexAction(){
+        return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
     }
 
     private function checkImage($post, $file, $old_name=''){
