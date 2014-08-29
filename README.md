@@ -37,9 +37,9 @@ All lists/tables (except the one within the show view) are build with help of du
 Creating the thumbnails of the Medium Cover made simple with help of the [SimpleImage](http://www.white-hat-web-design.co.uk/blog/resizing-images-with-php/) class from Simon Jarvis.
 
 Whats planned next?
-- extend the medium form with functions which allow adding new values for genre, publisher, director and type from within the form
+- extend the medium form with functions which allow adding new values for genre, publisher, director and type from within the form - done (29.08.14)
 - implementing the advanced search for searching with all informations
-- adding search links to the show view which allows searching with single detail informations
+- adding search links to the show view which allows searching with single detail informations - done (29.08.14)
 - adding an alternative list view with detail informations and one with just pictures
 - adding functions which let the user edit his own data
 - include the config data
