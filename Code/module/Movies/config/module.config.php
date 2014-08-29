@@ -10,6 +10,7 @@ return array(
             'AdminController' => 'Movies\Controller\AdminController',
             'MediumController' => 'Movies\Controller\MediumController',
             'AuthController' => 'Movies\Controller\AuthController',
+            'SearchController' => 'Movies\Controller\SearchController',
         ),
     ),
     'controller_plugins' => array(
@@ -65,6 +66,23 @@ return array(
                     'defaults' => array(
                         'controller' => 'AdminController',
                         'action'     => 'index',
+                        'lang'       => 'en',
+                    ),
+                )
+            ),
+            'search' => array(
+                'type'  => 'segment',
+                'options' => array(
+                    'route'    => '/:lang/search[/:action][/:value]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'value'     => '[0-9]*',
+                        'lang'   => '[a-z][a-z]',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'SearchController',
+                        'action'     => 'index',
+                        'value'      => '0',
                         'lang'       => 'en',
                     ),
                 )

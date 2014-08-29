@@ -22,14 +22,13 @@
 
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath() . '/js/bootstrap-confirmation.js')
             ->prependFile($this->basePath() . '/js/bootstrap.js')
             ->prependFile($this->basePath() . '/js/jquery.dataTables.min.js')
             ->prependFile($this->basePath() . '/js/zf-table.js')
             ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
             ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
             ->prependFile($this->basePath() . '/js/jquery-ui-1.11.1/jquery-ui.min.js')
-            ->prependFile($this->basePath() . '/js/jquery.min.js'); ?>
+            ->prependFile($this->basePath() . '/js/jquery-1.11.1.js'); ?>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -47,7 +46,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="<?php echo $this->url('movies', array('lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('Home') ?></a></li>
-                        <li><a href="<?php echo $this->url('movies', array('action'=>'advanced-search', 'lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('Advanced search'); ?></a></li>
+                        <li><a href="<?php echo $this->url('search', array('action'=>'advanced', 'lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('Advanced search'); ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -105,10 +104,10 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?php echo $this->translate('Language'); ?> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="<?= $this->url($this->route, array('lang' => 'de', 'action' => $this->moviesAction, 'id' => $this->moviesId));?>">
+                                <li><a href="<?= $this->url($this->route, array('lang' => 'de', 'action' => $this->moviesAction, 'id' => $this->moviesId, 'value' => $this->moviesSearchValue));?>">
                                     <?php echo $this->translate('German'); ?>
                                 </a></li>
-                                <li><a href="<?=$this->url($this->route, array('lang' => 'en', 'action' => $this->moviesAction, 'id' => $this->moviesId));?>">
+                                <li><a href="<?=$this->url($this->route, array('lang' => 'en', 'action' => $this->moviesAction, 'id' => $this->moviesId, 'value' => $this->moviesSearchValue));?>">
                                     <?php echo $this->translate('English'); ?>
                                 </a></li>
                             </ul>

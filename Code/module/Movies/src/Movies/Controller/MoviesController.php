@@ -7,7 +7,6 @@
 namespace Movies\Controller;
 
 use Movies\Model\Medium;
-use Movies\Controller\MediumController;
 use Zend\View\Model\ViewModel;
 use Movies\Table\MediaTable;
 use ZfTable\Params\AdapterDataTables;
@@ -16,8 +15,6 @@ use ZfTable\AbstractTable;
 
 class MoviesController extends BasisController
 {
-  private $medium_controller = null;
-
     /**
      * Index - Movies
      * 
@@ -45,11 +42,6 @@ class MoviesController extends BasisController
 
 
       return $table;  
-    }
-
-    public function advancedSearchAction()
-    {
-      
     }
 
   	public function showAction()

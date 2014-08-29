@@ -2,6 +2,7 @@
 namespace Movies\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Sql;
 
 abstract class BaseTable
 {
@@ -57,6 +58,11 @@ abstract class BaseTable
     public function delete($id)
     {
         $this->tableGateway->delete(array('id' => $id));
+    }
+
+    public function getSql()
+    {
+        return new Sql($this->tableGateway->getAdapter());
     }
 
     abstract protected function checkObjectType($object);

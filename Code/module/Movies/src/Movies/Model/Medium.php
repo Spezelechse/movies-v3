@@ -380,7 +380,7 @@ class Medium extends BaseObject
                     array(
                         'name'    => 'InArray',
                         'options' => array(
-                        	'haystack' => array(0,1),
+                        	'haystack' => array(1,2),
                         ),
                     ),
                 ),

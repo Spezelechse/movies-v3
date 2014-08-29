@@ -1,0 +1,16 @@
+<?php
+/**
+ * @package Movies
+ */
+
+// Template
+?>
+<h3>
+	<?php echo $this->translate('Search results for advanced search:'); ?>
+	<br>
+</h3>
+
+<div id="tableContainer"></div>
+<script>
+    $("#tableContainer").zfTable("<?php echo $this->url('movies', array('action'=>'ajax-index','lang'=>$this->language)); ?>");
+</script>

@@ -98,11 +98,12 @@ class MediumForm extends Form
             'attributes' => array(
                 'class' => 'form-control',
                 'multiple' => 'multiple',
+                'id' => 'genre-select',
             ),
             'options' => array(
                 'label' => $this->translate('Genre'),
                 'label_attributes' => array(
-                    'class' => 'col-sm-4 control-label',
+                    'class' => 'col-sm-12 control-label',
                 ),
             ),
         ));
@@ -112,11 +113,12 @@ class MediumForm extends Form
             'attributes' => array(
                 'class' => 'form-control',
                 'multiple' => 'multiple',
+                'id' => 'publisher-select',
             ),
             'options' => array(
                 'label' => $this->translate('Publisher'),
                 'label_attributes' => array(
-                    'class' => 'col-sm-4 control-label',
+                    'class' => 'col-sm-12 control-label',
                 ),
             ),
         ));
@@ -126,11 +128,12 @@ class MediumForm extends Form
             'attributes' => array(
                 'class' => 'form-control',
                 'multiple' => 'multiple',
+                'id' => 'director-select',
             ),
             'options' => array(
                 'label' => $this->translate('Director'),
                 'label_attributes' => array(
-                    'class' => 'col-sm-4 control-label',
+                    'class' => 'col-sm-12 control-label',
                 ),
             ),
         ));
@@ -139,11 +142,12 @@ class MediumForm extends Form
             'type' => 'Zend\Form\Element\Select',
             'attributes' => array(
                 'class' => 'form-control',
+                'id' => 'type-select',
             ),
             'options' => array(
                 'label' => $this->translate('Type'),
                 'label_attributes' => array(
-                    'class' => 'col-sm-4 control-label',
+                    'class' => 'col-sm-12 control-label',
                 ),
                 'empty_option' => '-',
             ),
@@ -235,8 +239,8 @@ class MediumForm extends Form
                     'class' => 'col-sm-4 control-label',
                 ),
                 'value_options' => array(
-                                    0 => 'DVD',
-                                    1 => 'Blu-ray'
+                                    1 => 'DVD',
+                                    2 => 'Blu-ray'
                 ),
                 'empty_option' => '-',
             ),

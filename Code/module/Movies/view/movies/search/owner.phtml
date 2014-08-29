@@ -1,0 +1,19 @@
+<?php
+/**
+ * @package Movies
+ */
+
+// Template
+?>
+<h3>
+	<?php echo $this->translate('Search results for:'); ?>
+	<br>
+	<small>
+		<?php echo $this->translate('Owner').' = '.$search_value_text; ?>
+	</small>
+</h3>
+
+<div id="tableContainer"></div>
+<script>
+    $("#tableContainer").zfTable("<?php echo $this->url('search', array('action'=>'ajax-owner', 'value'=> $search_value,'lang'=>$this->language)); ?>");
+</script>

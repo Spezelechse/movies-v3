@@ -9,6 +9,10 @@ namespace Movies\Controller;
 use Zend\View\Model\ViewModel;
 use Movies\Model\User;
 use Movies\Model\Medium;
+use Movies\Model\Genre;
+use Movies\Model\Type;
+use Movies\Model\Publisher;
+use Movies\Model\Director;
 use Movies\Model\Config;
 use Movies\Form\UserForm;
 use Movies\Form\MediumForm;
@@ -33,8 +37,8 @@ class AdminController extends BasisController
     {
     }
 
-    private function checkImage($post, $file){
-        $filename = '';
+    private function checkImage($post, $file, $old_name=''){
+        $filename = $old_name;
         $mime = new MimeType(array('image/png', 'image/jpeg'));
         $mime_check = true;
 
@@ -67,6 +71,15 @@ class AdminController extends BasisController
         return array('name'=>$filename,'result'=>$mime_check);
     }
 
+    private function createThumbnail($filename){
+        if($filename!=''){                                
+            $thumbnail = new SimpleImage();
+            $thumbnail->load('./public/img/cover/'.$filename);
+            $thumbnail->resizeToHeight(300);
+            $thumbnail->save('./public/img/thumb/'.$filename);
+        }
+    }
+
     public function addMovieAction()
     {
         $form = new MediumForm();
@@ -94,11 +107,8 @@ class AdminController extends BasisController
                     $formData = $form->getData();
 
                     $formData['cover_file']=$file_check['name'];
-                
-                    $thumbnail = new SimpleImage();
-                    $thumbnail->load('./public/img/cover/'.$file_check['name']);
-                    $thumbnail->resizeToHeight(300);
-                    $thumbnail->save('./public/img/thumb/'.$file_check['name']);
+                    
+                    $this->createThumbnail($file_check['name']);
 
                     $medium->exchangeArray($formData);
 
@@ -178,8 +188,8 @@ class AdminController extends BasisController
                 $medium = new Medium();
                 $post = $request->getPost()->toArray();
                 $files = $request->getFiles()->toArray();
-             
-                $file_check = $this->checkImage($post, $files['cover_file']);   
+
+                $file_check = $this->checkImage($post, $files['cover_file'], $medium_data['cover_file']);   
 
                 $form->setInputFilter($medium->getInputFilter('update',$file_check['name']));
 
@@ -191,10 +201,7 @@ class AdminController extends BasisController
 
                         $formData['cover_file']=$file_check['name'];
 
-                        $thumbnail = new SimpleImage();
-                        $thumbnail->load('./public/img/cover/'.$file_check['name']);
-                        $thumbnail->resizeToHeight(300);
-                        $thumbnail->save('./public/img/thumb/'.$file_check['name']);
+                        $this->createThumbnail($file_check['name']);
 
                         $medium->exchangeArray($formData);
 
@@ -413,5 +420,65 @@ class AdminController extends BasisController
         $table = $this->htmlResponse($table->render());
 
         return $table; 
+    }
+
+    public function addGenreAjaxAction()
+    {
+        $post = $this->getRequest()->getPost()->toArray();
+        $alnum = new Alnum();
+        $name_de = $alnum->filter($post['name_de']);
+        $name_en = $alnum->filter($post['name_en']);
+
+        $genre = new Genre();
+        $genre->name_de = $name_de;
+        $genre->name_en = $name_en;
+
+        $id = $this->Tables()->genre()->save($genre);
+
+        return $this->jsonResponse(array('id'=>$id, 'name'=>$genre->getName($this->language)));
+    }
+
+    public function addPublisherAjaxAction()
+    {
+        $post = $this->getRequest()->getPost()->toArray();
+        $alnum = new Alnum();
+        $name = $alnum->filter($post['name']);
+
+        $publisher = new Publisher();
+        $publisher->name = $name;
+
+        $id = $this->Tables()->publisher()->save($publisher);
+
+        return $this->jsonResponse(array('id'=>$id, 'name'=>$publisher->name));
+    }
+
+    public function addDirectorAjaxAction()
+    {
+        $post = $this->getRequest()->getPost()->toArray();
+        $alnum = new Alnum();
+        $name = $alnum->filter($post['name']);
+
+        $director = new Director();
+        $director->name = $name;
+
+        $id = $this->Tables()->director()->save($director);
+
+        return $this->jsonResponse(array('id'=>$id, 'name'=>$director->name));
+    }
+
+    public function addTypeAjaxAction()
+    {
+        $post = $this->getRequest()->getPost()->toArray();
+        $alnum = new Alnum();
+        $name_de = $alnum->filter($post['name_de']);
+        $name_en = $alnum->filter($post['name_en']);
+
+        $type = new Type();
+        $type->name_de = $name_de;
+        $type->name_en = $name_en;
+
+        $id = $this->Tables()->type()->save($type);
+
+        return $this->jsonResponse(array('id'=>$id, 'name'=>$type->getName($this->language)));
     }
 }

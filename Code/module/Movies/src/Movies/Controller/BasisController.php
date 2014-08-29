@@ -20,13 +20,14 @@ abstract class BasisController extends AbstractActionController
     public function init()
     {
       $lang=$this->params()->fromRoute('lang','en');
-      $this->language=$lang;
       
       if($lang=='de'){
         $lang='de_DE';
+        $this->language='de';
       }
       else{
         $lang='en_US';
+        $this->language='en';
       }
       
       $translator = $this->getServiceLocator()->get('translator');
@@ -34,6 +35,7 @@ abstract class BasisController extends AbstractActionController
 
       $this->layout()->moviesAction=$this->params()->fromRoute('action','index');
       $this->layout()->moviesId=$this->params()->fromRoute('id','0');
+      $this->layout()->moviesSearchValue=$this->params()->fromRoute('value','0');
       $this->layout()->moviesLanguage=$this->params()->fromRoute('lang', 'en');
 
       $this->view = new ViewModel();

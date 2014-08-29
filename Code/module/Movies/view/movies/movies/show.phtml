@@ -22,11 +22,11 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 								echo $escaper->escapeHtml($medium->num_disks);
 								echo ' ';
 							}
-							if($medium->dvd_or_bluray==0){
-								echo 'DVD';
+							if($medium->dvd_or_bluray==1){
+								echo '<a href="'.$this->url('search', array('action'=>'medium','lang'=>$this->language, 'value'=>1)).'">DVD</a>';
 							}
 							else{
-								echo 'Blu-ray';
+								echo '<a href="'.$this->url('search', array('action'=>'medium','lang'=>$this->language, 'value'=>2)).'">Blu-ray</a>';
 							}
 							echo ')';
 						?>
@@ -48,7 +48,7 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 				if($medium->actors->count()>0){
 					foreach ($medium->actors as $actor) {
 						echo '<tr>';
-						echo '<td>'.$escaper->escapeHtml($actor->name).'</td>';
+						echo '<td><a href="'.$this->url('search', array('action'=>'actor','lang'=>$this->language, 'value'=>$actor->id)).'">'.$escaper->escapeHtml($actor->name).'</a></td>';
 						echo '<td>'.$escaper->escapeHtml($actor->role).'</td>';
 						echo '</tr>';
 					}
@@ -82,9 +82,9 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 					$genres='';
 					foreach($medium->genre as $genre)
 					{
-						$genres.=$genre->getName($this->language).', ';
+						$genres.='<a href="'.$this->url('search', array('action'=>'genre','lang'=>$this->language, 'value'=>$genre->id)).'">'.$escaper->escapeHtml($genre->getName($this->language)).'</a>, ';
 					}
-					echo ($genres!='') ? $escaper->escapeHtml(substr($genres, 0, strlen($genres)-2)) : '-';
+					echo ($genres!='') ? substr($genres, 0, strlen($genres)-2) : '-';
 				?>
 				</small>
 			</h5>
@@ -94,9 +94,9 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 					$directors='';
 					foreach($medium->director as $director)
 					{
-						$directors.=$director->name.', ';
+						$directors.='<a href="'.$this->url('search', array('action'=>'director','lang'=>$this->language, 'value'=>$director->id)).'">'.$escaper->escapeHtml($director->name).'</a>, ';
 					}
-					echo ($directors!='') ? $escaper->escapeHtml(substr($directors, 0, strlen($directors)-2)) : '-';
+					echo ($directors!='') ? substr($directors, 0, strlen($directors)-2) : '-';
 				?>
 				</small>
 			</h5>
@@ -106,23 +106,23 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 					$publishers='';
 					foreach($medium->publisher as $publisher)
 					{
-						$publishers.=$publisher->name.', ';
+						$publishers.='<a href="'.$this->url('search', array('action'=>'publisher','lang'=>$this->language, 'value'=>$publisher->id)).'">'.$escaper->escapeHtml($publisher->name).'</a>, ';
 					}
-					echo ($publishers!='') ? $escaper->escapeHtml(substr($publishers, 0, strlen($publishers)-2)) : '-';
+					echo ($publishers!='') ? substr($publishers, 0, strlen($publishers)-2) : '-';
 				?>
 				</small>
 			</h5>
 			<h5><?php echo $this->translate('Type'); ?>: 
 				<small>
 				<?php
-					echo (!empty($medium->type)) ? $escaper->escapeHtml($medium->type->getName($this->language)) : '-';
+					echo (!empty($medium->type)) ? '<a href="'.$this->url('search', array('action'=>'type','lang'=>$this->language, 'value'=>$medium->type->id)).'">'.$escaper->escapeHtml($medium->type->getName($this->language)).'</a>' : '-';
 				?>
 				</small>
 			</h5>
 			<h5><?php echo $this->translate('Owner'); ?>: 
 				<small>
 				<?php
-					echo (!empty($medium->owner)) ? $escaper->escapeHtml($medium->owner->username) : '-';
+					echo (!empty($medium->owner)) ? '<a href="'.$this->url('search', array('action'=>'owner','lang'=>$this->language, 'value'=>$medium->owner->id)).'">'.$escaper->escapeHtml($medium->owner->username).'</a>' : '-';
 				?>
 				</small>
 			</h5>
@@ -136,7 +136,7 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 			<h5><?php echo $this->translate('FSK'); ?>: 
 				<small>
 				<?php
-					echo (!empty($medium->fsk)) ? $escaper->escapeHtml($medium->fsk) : '-';
+					echo (!empty($medium->fsk)) ? '<a href="'.$this->url('search', array('action'=>'fsk','lang'=>$this->language, 'value'=>$medium->fsk)).'">'.$escaper->escapeHtml($medium->fsk).'</a>' : '-';
 				?>
 				</small>
 			</h5>
