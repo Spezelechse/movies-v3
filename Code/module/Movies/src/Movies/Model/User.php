@@ -40,8 +40,10 @@ class User extends BaseObject
     }
 
     public function hashPassword(){
-        $bcrypt = new Bcrypt();
-        $this->password = $bcrypt->create($this->password);
+        if($this->password!=''){
+            $bcrypt = new Bcrypt();
+            $this->password = $bcrypt->create($this->password);
+        }
     }
 
     public function getRightsForSelect()

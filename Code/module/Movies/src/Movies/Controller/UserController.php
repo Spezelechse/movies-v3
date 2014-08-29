@@ -7,19 +7,79 @@
 namespace Movies\Controller;
 
 use Movies\Model\User;
-use Zend\Mvc\Controller\AbstractActionController;
+use Movies\Form\UserForm;
 use Zend\View\Model\ViewModel;
 
-class UserController extends AbstractActionController
+class UserController extends BasisController
 {
-  protected $table;
-
-    public function getTable()
+    public function init()
     {
-        if (!isset($this->table)) {
-            $sm = $this->getServiceLocator();
-            $this->table = $sm->get('Movies\Model\UserTable');
+        parent::init();
+
+        if(!$this->getAuthService()->hasIdentity()){
+            $this->redirect()->toRoute('movies'); 
         }
-        return $this->table;
     }
+
+	public function changeDataAction(){
+        $id=0;
+        $username = $this->getAuthService()->getIdentity();
+
+        $oldData = $this->Tables()->user()->getByUsername($username);
+        $id=$oldData->id;
+
+        if($id>0){
+            $request = $this->getRequest();
+            if ($request->isPost()) {
+                $user = new User();
+                $form = new UserForm();
+                
+                $form->setInputFilter($user->getInputFilter('update'));
+
+                $post=$request->getPost();
+                $form->setData($post);
+
+                if ($form->isValid()) {
+                    $this->flashMessenger()->addSuccessMessage($this->translate('User updated'));
+                    $user->exchangeArray($form->getData());
+
+                    if($post->toArray()['password']!=''){
+                    	$user->hashPassword();
+                	}
+                	else{
+                		$user->password=$oldData->password;
+                	}
+                	$user->rights=$oldData->rights;
+
+                    $this->Tables()->user()->save($user);
+                    
+                    //return $this->redirect()->toRoute('movies', array('lang'=>$this->language, 'action'=>'index'));
+                }
+                else{
+                    $this->showFormMessages($form);
+                }
+            }
+            else{
+                $user=$this->Tables()->user()->get($id);
+                $user=$user->toArray();
+
+                unset($user['password']);
+                unset($user['rights']);
+
+                $form = new UserForm();
+                $form->get('submit')->setValue($this->translate('Update'));
+                $form->setData($user);
+            }
+
+            $this->view->form=$form;
+            $this->view->id=$id;
+
+            return $this->view;
+        }
+        else{
+            $this->flashMessenger()->addErrorMessage($this->translate('User id not found'));
+            
+            return $this->redirect()->toRoute('admin', array('lang'=>$this->language, 'action'=>'list-user'));
+        }
+	}
 }

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movies V3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-28 10:18+0100\n"
-"PO-Revision-Date: 2014-08-28 10:18+0100\n"
+"POT-Creation-Date: 2014-08-29 23:40+0100\n"
+"PO-Revision-Date: 2014-08-29 23:40+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -15,46 +15,49 @@ msgstr ""
 "X-Generator: Poedit 1.6.8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../src/Movies/Controller/AdminController.php:82
-#: ../src/Movies/Controller/AdminController.php:270
+#: ../src/Movies/Controller/AdminController.php:86
+#: ../src/Movies/Controller/AdminController.php:274
 #: ../src/Movies/Form/UserForm.php:106 ../src/Movies/Form/UserForm.php:124
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: ../src/Movies/Controller/AdminController.php:119
+#: ../src/Movies/Controller/AdminController.php:123
 msgid "Medium added"
 msgstr "Medium hinzugefügt"
 
-#: ../src/Movies/Controller/AdminController.php:143
+#: ../src/Movies/Controller/AdminController.php:147
 msgid "Medium deleted"
 msgstr "Medium gelöscht"
 
-#: ../src/Movies/Controller/AdminController.php:174
-#: ../src/Movies/Controller/AdminController.php:374
+#: ../src/Movies/Controller/AdminController.php:178
+#: ../src/Movies/Controller/AdminController.php:378
+#: ../src/Movies/Controller/UserController.php:70
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: ../src/Movies/Controller/AdminController.php:212
+#: ../src/Movies/Controller/AdminController.php:216
 msgid "Medium updated"
 msgstr "Medium aktualisiert"
 
-#: ../src/Movies/Controller/AdminController.php:229
+#: ../src/Movies/Controller/AdminController.php:233
 msgid "Medium id not found"
 msgstr "Medium id nicht gefunden"
 
-#: ../src/Movies/Controller/AdminController.php:293
+#: ../src/Movies/Controller/AdminController.php:297
 msgid "User added"
 msgstr "Benutzer hinzugefügt"
 
-#: ../src/Movies/Controller/AdminController.php:315
+#: ../src/Movies/Controller/AdminController.php:319
 msgid "User deleted"
 msgstr "Benutzter gelöscht"
 
-#: ../src/Movies/Controller/AdminController.php:345
+#: ../src/Movies/Controller/AdminController.php:349
+#: ../src/Movies/Controller/UserController.php:43
 msgid "User updated"
 msgstr "Benutzer aktualisiert"
 
-#: ../src/Movies/Controller/AdminController.php:384
+#: ../src/Movies/Controller/AdminController.php:388
+#: ../src/Movies/Controller/UserController.php:80
 msgid "User id not found"
 msgstr "Benutzer id nicht gefunden"
 
@@ -103,57 +106,57 @@ msgstr "Schauspieler"
 msgid "Role"
 msgstr "Rolle"
 
-#: ../src/Movies/Form/MediumForm.php:103 ../view/movies/movies/show.phtml:79
+#: ../src/Movies/Form/MediumForm.php:104 ../view/movies/movies/show.phtml:79
 #: ../view/movies/search/genre.phtml:12
 msgid "Genre"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:117 ../view/movies/movies/show.phtml:103
+#: ../src/Movies/Form/MediumForm.php:119 ../view/movies/movies/show.phtml:103
 #: ../view/movies/search/publisher.phtml:12
 msgid "Publisher"
 msgstr "Herausgeber"
 
-#: ../src/Movies/Form/MediumForm.php:131 ../view/movies/movies/show.phtml:91
+#: ../src/Movies/Form/MediumForm.php:134 ../view/movies/movies/show.phtml:91
 #: ../view/movies/search/director.phtml:12
 msgid "Director"
 msgstr "Regisseur"
 
-#: ../src/Movies/Form/MediumForm.php:144 ../view/movies/movies/show.phtml:115
+#: ../src/Movies/Form/MediumForm.php:148 ../view/movies/movies/show.phtml:115
 #: ../view/movies/search/type.phtml:12
 msgid "Type"
 msgstr "Art"
 
-#: ../src/Movies/Form/MediumForm.php:158 ../view/movies/movies/show.phtml:122
+#: ../src/Movies/Form/MediumForm.php:162 ../view/movies/movies/show.phtml:122
 #: ../view/movies/search/owner.phtml:12
 msgid "Owner"
 msgstr "Besitzer"
 
-#: ../src/Movies/Form/MediumForm.php:172 ../view/movies/movies/show.phtml:136
+#: ../src/Movies/Form/MediumForm.php:176 ../view/movies/movies/show.phtml:136
 #: ../view/movies/search/fsk.phtml:12
 msgid "FSK"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:194 ../view/movies/movies/show.phtml:143
+#: ../src/Movies/Form/MediumForm.php:198 ../view/movies/movies/show.phtml:143
 msgid "Premiere"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:207
+#: ../src/Movies/Form/MediumForm.php:211
 msgid "Duration (min.)"
 msgstr "Laufzeit (min.)"
 
-#: ../src/Movies/Form/MediumForm.php:220
+#: ../src/Movies/Form/MediumForm.php:224
 msgid "Num. disks"
 msgstr "Anzahl Disks"
 
-#: ../src/Movies/Form/MediumForm.php:233 ../view/movies/search/medium.phtml:12
+#: ../src/Movies/Form/MediumForm.php:237 ../view/movies/search/medium.phtml:12
 msgid "Medium"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:251 ../view/movies/movies/show.phtml:74
+#: ../src/Movies/Form/MediumForm.php:255 ../view/movies/movies/show.phtml:74
 msgid "Source"
 msgstr "Quelle"
 
-#: ../src/Movies/Form/MediumForm.php:265
+#: ../src/Movies/Form/MediumForm.php:269
 msgid "File"
 msgstr "Datei"
 

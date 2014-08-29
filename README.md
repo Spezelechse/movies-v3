@@ -41,7 +41,7 @@ Whats planned next?
 - implementing the advanced search for searching with all informations
 - adding search links to the show view which allows searching with single detail informations - done (29.08.14)
 - adding an alternative list view with detail informations and one with just pictures
-- adding functions which let the user edit his own data
+- adding functions which let the user edit his own data - done (29.08.14)
 - include the config data
 - include the userrights
 - searching a way to translate the table headers

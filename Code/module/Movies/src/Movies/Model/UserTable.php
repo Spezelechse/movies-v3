@@ -11,10 +11,10 @@ class UserTable extends BaseTable
         return (get_class($object)=='Movies\Model\User') ? TRUE : FALSE;
     }
 
-    public function get($id){
+    public function getByUsername($username){
         $sqlSelect = $this->tableGateway->getSql()->select();
         $sqlSelect->columns(array('*'));
-        $sqlSelect->where('id = '.$id);
+        $sqlSelect->where(array('username'=>$username));
 
         $resultSet = $this->tableGateway->selectWith($sqlSelect);
 

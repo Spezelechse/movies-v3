@@ -1,0 +1,69 @@
+<?php
+/**
+ * @package Movies
+ */
+
+echo $this->messageHelper($this->flashMessenger());
+
+// Template
+$form = $this->form;
+$form->setAttribute('action', $this->url('user', array('lang' => $language,'action' => 'change-data', 'id'=>$id)));
+$form->setAttribute('role', 'form');
+$form->setAttribute('class', 'form-horizontal');
+$form->prepare();
+
+?>
+
+<div class="row">
+	<div class="col-xs-0 col-sm-4"></div>
+	<div class="col-xs-12 col-sm-4">
+		<?php
+		echo $this->form()->openTag($form);
+		echo $this->formHidden($form->get('id'));
+		echo $this->formHidden($form->get('csrf'));
+		?>
+		<div class="form-group">
+			<?php echo $this->formLabel($form->get('name')); ?>
+			<div class="col-sm-8">
+				<?php echo $this->formElement($form->get('name')); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<?php echo $this->formLabel($form->get('surname')); ?>
+			<div class="col-sm-8">
+				<?php echo $this->formElement($form->get('surname')); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<?php echo $this->formLabel($form->get('username')); ?>
+			<div class="col-sm-8">
+				<?php echo $this->formElement($form->get('username')); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<?php echo $this->formLabel($form->get('email')); ?>
+			<div class="col-sm-8">
+				<?php echo $this->formElement($form->get('email')); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<?php echo $this->formLabel($form->get('password')); ?>
+			<div class="col-sm-8">
+				<?php echo $this->formElement($form->get('password')); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<?php echo $this->formLabel($form->get('password-repeat')); ?>
+			<div class="col-sm-8">
+				<?php echo $this->formElement($form->get('password-repeat')); ?>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-8">
+				<?php echo $this->formSubmit($form->get('submit')); ?>
+			</div>
+		</div>
+	<?php echo $this->form()->closeTag(); ?>
+	</div>
+	<div class="col-xs-0 col-sm-4"></div>
+</div>

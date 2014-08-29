@@ -11,6 +11,7 @@ return array(
             'MediumController' => 'Movies\Controller\MediumController',
             'AuthController' => 'Movies\Controller\AuthController',
             'SearchController' => 'Movies\Controller\SearchController',
+            'UserController' => 'Movies\Controller\UserController',
         ),
     ),
     'controller_plugins' => array(
@@ -49,6 +50,21 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'AuthController',
+                        'action'     => 'index',
+                        'lang'       => 'en',
+                    ),
+                ),
+            ),
+            'user' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/:lang/user[/:action]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'lang'   => '[a-z][a-z]',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'UserController',
                         'action'     => 'index',
                         'lang'       => 'en',
                     ),
