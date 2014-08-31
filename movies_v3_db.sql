@@ -230,3 +230,20 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+--
+-- Daten für Tabelle `User`
+--
+
+INSERT INTO `User` (`id`, `name`, `surname`, `username`, `email`, `password`, `rights`) VALUES
+(1, '', '', 'admin', '', '$2y$10$jqVBnP0zea.skFYBC6uHTON6D3V7NWZX95Bk..VOY4yLuekrst2z.', 511);
+
+--
+-- Daten für Tabelle `Config`
+--
+
+INSERT INTO `Config` (`id`, `name`, `data`, `type`) VALUES
+(1, 'public', 'true', 'boolean'),
+(2, 'title', 'Movies v3', 'string'),
+(3, 'superadmin_id', '1', 'int');

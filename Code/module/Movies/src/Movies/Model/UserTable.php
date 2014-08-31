@@ -32,12 +32,13 @@ class UserTable extends BaseTable
         return $values;
     }
 
-    public function fetchAllForList_Select(){
+    public function fetchAllForList_Select($admin_id){
         $sql = new Sql($this->tableGateway->getAdapter());
 
         $select = $sql->select();
         $select ->from('User')
-                ->columns(array('*'));
+                ->columns(array('*'))
+                ->where('id!='.$admin_id);
 
         return $select;
     }

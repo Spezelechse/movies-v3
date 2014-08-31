@@ -18,6 +18,7 @@ class User extends BaseObject
 	public $password;
 	public $rights;
 
+    private $rights_array;
 	private $inputFilter;
 
 	public function exchangeArray($data)
@@ -35,8 +36,63 @@ class User extends BaseObject
         $array = parent::toArray();
 
         array_pop($array);
+        array_pop($array);
         
         return $array;
+    }
+
+    public function getRightsAssoc(){
+        if(!isset($this->rights_array)){
+            $values =  array('medium'=>array(), 'user'=>array(), 'page'=>array());
+            $keys = array('add','edit','delete','import','export','add','edit','delete','config');
+            $offset = 0;
+
+            $user_rights = str_split(decbin($this->rights), 1);
+            $offset+=9-count($user_rights);
+
+            for($i=0; $i<count($user_rights)+$offset; $i++){
+                $value=false;
+
+                if($i>=$offset&&isset($user_rights[$i-$offset])&&$user_rights[$i-$offset]=='1'){
+                    $value=true;
+                }
+                
+                if($i<5){
+                    $values['medium'][$keys[$i]]=$value;
+                }
+                else if($i>=5&&$i<8){
+                    $values['user'][$keys[$i]]=$value;
+                }
+                else{
+                    $values['page'][$keys[$i]]=$value;
+                }            
+            }
+
+            $this->rights_array = $values;
+        }
+
+        return $this->rights_array;
+    }
+
+    public function hasRight($category, $name=''){
+        $rights = $this->getRightsAssoc();
+
+        if($name==''){
+            foreach ($rights[$category] as $right) {
+                if($right){
+                    return true;
+                }
+            }
+            return false;
+        }
+        else{        
+            if(isset($rights[$category][$name])){
+                return $rights[$category][$name];
+            }
+            else{
+                return false;
+            }
+        }
     }
 
     public function hashPassword(){

@@ -33,7 +33,7 @@ class UserController extends BasisController
 
 	public function changeDataAction(){
         $id=0;
-        $username = $this->getAuthService()->getIdentity();
+        $username = $this->getAuthService()->getIdentity()->username;
 
         $oldData = $this->Tables()->user()->getByUsername($username);
         $id=$oldData->id;

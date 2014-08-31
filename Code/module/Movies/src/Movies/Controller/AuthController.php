@@ -68,7 +68,9 @@ class AuthController extends BasisController
 
                         $this->getAuthService()->setStorage($this->getSessionStorage());
                     }
-                    $this->getAuthService()->getStorage()->write($result->getIdentity());
+
+                    $user = $this->Tables()->user()->getByUsername($result->getIdentity());
+                    $this->getAuthService()->getStorage()->write($user);
                     
                     return $this->redirect()->toRoute('movies', array('action' => 'index', 'lang' => $this->language));
                 }

@@ -9,10 +9,22 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 <div class="row">
 	<div class="col-xs-12 col-sm-9 movies-data-left">
 		<div class="movies-data-content-wrapper">
+			<?php if($this->identity()){ ?>
 			<div class="text-right movies-data-edit">
-				<a href="<?php echo $this->url('admin', array('action'=>'edit-movie','lang'=>$this->language, 'id'=>$medium->id)); ?>"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a>
+				<?php 
+					if($this->identity()->hasRight('medium','edit')){ 
+				?>
+ 				<a href="<?php echo $this->url('admin', array('action'=>'edit-movie','lang'=>$this->language, 'id'=>$medium->id)); ?>"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a>
+				<?php 
+					}
+					if($this->identity()->hasRight('medium', 'delete')){
+				?>
 				<a href="<?php echo $this->url('admin', array('action'=>'delete-movie','lang'=>$this->language, 'id'=>$medium->id)); ?>"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button></a>
+				<?php
+					}
+				?>
 			</div>
+			<?php } ?>
 			<div class="movies-data-title">
 				<h2><?php echo $escaper->escapeHtml($medium->getTitle($this->language)); ?>
 					<small>

@@ -48,6 +48,9 @@ class LoginForm extends Form
             'type'  => 'Zend\Form\Element\Checkbox',
             'options' => array(
                 'label' => $this->translate('Remember me?'),
+                'label_attributes' => array(
+                    'class' => 'col-sm-4 control-label',
+                ),
             ),
         ));
 
