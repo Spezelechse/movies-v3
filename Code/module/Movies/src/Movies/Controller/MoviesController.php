@@ -39,6 +39,7 @@ class MoviesController extends BasisController
       $table = new MediaTable();
       $table->setShowUrl($this->url()->fromRoute('movies', array('lang'=>$this->language, 'action'=>'show')));
       $table->setLanguage($this->language);
+      $table->setTranslator($this->Translator()->getTranslator());
 
       $table->setAdapter($this->getDbAdapter())
               ->setSource($media_select)

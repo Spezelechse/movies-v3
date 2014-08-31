@@ -296,6 +296,7 @@ class AdminController extends BasisController
             $table = new UserTable();
             $table->setEditUrl($this->url()->fromRoute('admin', array('lang'=>$this->language, 'action'=>'edit-user')));
             $table->setDeleteUrl($this->url()->fromRoute('admin', array('lang'=>$this->language, 'action'=>'delete-user')));
+            $table->setTranslator($this->Translator()->getTranslator());
             $table->setIdentity($this->getAuthService()->getIdentity());
             $table->setAdapter($this->getDbAdapter())
                   ->setSource($user_select)
@@ -490,6 +491,7 @@ class AdminController extends BasisController
 
             $table = new ConfigTable();
             $table->setUpdateUrl($this->url()->fromRoute('admin', array('lang'=>$this->language, 'action'=>'update-config-ajax')));
+            $table->setTranslator($this->Translator()->getTranslator());
             $table->setAdapter($this->getDbAdapter())
                   ->setSource($config_select)
                   ->setParamAdapter($this->getRequest()->getPost());

@@ -18,6 +18,7 @@ return array(
         'invokables' => array(
            'Tables' => 'Movies\Controller\Plugin\TablesPlugin',
            'MoviesConfig' => 'Movies\Controller\Plugin\ConfigPlugin',
+           'Translator' => 'Movies\Controller\Plugin\TranslatorPlugin',
         )
     ),
 

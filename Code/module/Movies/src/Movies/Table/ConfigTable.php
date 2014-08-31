@@ -7,6 +7,7 @@ use ZfTable\AbstractTable;
 class ConfigTable extends AbstractTable
 {
     private $updateUrl;
+    private $translator;
     
     protected $config = array(
         'name' => '',
@@ -31,8 +32,16 @@ class ConfigTable extends AbstractTable
         $this->config['rowAction']=$url;
     }
 
+    public function setTranslator($trans){
+        $this->translator=$trans;
+    }
+
     public function init()
     {
+        if(isset($this->translator)){
+            $this->getHeader('data')->setTitle($this->translator->translate('Value'));
+        }
+
         $this->getRow()->addDecorator('varattr', array('name' => 'data-row' , 'value' => '%s' , 'vars' => array('id')));
     }
     

@@ -9,6 +9,7 @@ class UserTable extends AbstractTable
     private $editUrl;
     private $deleteUrl;
     private $identity;
+    private $translator;
     
     protected $config = array(
         'name' => '',
@@ -40,12 +41,22 @@ class UserTable extends AbstractTable
         $this->deleteUrl=$url;
     }
 
+    public function setTranslator($trans){
+        $this->translator=$trans;
+    }
+
     public function setIdentity($ident){
         $this->identity=$ident;
     }
 
     public function init()
     {
+        if(isset($this->translator)){
+            $this->getHeader('username')->setTitle($this->translator->translate('Username'));
+            $this->getHeader('surname')->setTitle($this->translator->translate('Surname'));
+            $this->getHeader('actions')->setTitle($this->translator->translate('Actions'));
+        }
+        
         $edit='';
         $delete='';
 

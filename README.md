@@ -44,4 +44,4 @@ Whats planned next?
 - adding functions which let the user edit his own data - done (29.08.14)
 - include and use the config data - done (30.08.14)
 - include the userrights - done (31.08.14)
-- searching a way to translate the table headers
+- searching a way to translate the table headers - done (31.08.14)

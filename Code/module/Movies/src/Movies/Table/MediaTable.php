@@ -8,6 +8,7 @@ class MediaTable extends AbstractTable
 {
     private $showUrl;
     private $language;
+    private $translator;
     
     protected $config = array(
         'name' => '',
@@ -36,8 +37,16 @@ class MediaTable extends AbstractTable
         $this->language=$lang;
     }
 
+    public function setTranslator($trans){
+        $this->translator=$trans;
+    }
+
     public function init()
     {
+        if(isset($this->translator)){
+            $this->getHeader('title')->setTitle($this->translator->translate('Title'));
+        }
+        
         if($this->showUrl)
         {
             $this->getHeader('title')->getCell()->addDecorator('link', array(
