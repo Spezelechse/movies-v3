@@ -2,7 +2,7 @@
     <div class="table-header">
     </div>
     <div class="row ">
-        <div class="col-sm-1 pull-left">
+        <div class="col-sm-2 pull-left">
             <label>
                 <?php echo $this->name['translator']->translate('Show as').': '; ?>
                 <select id="additionalParams" class="form-control">
@@ -13,14 +13,60 @@
             </label>
         </div>
         <?php if ($this->showQuickSearch): ?>
-            <div class="dataTables_filter pull-right col-sm-3" id="dataTable_filter">
+            <div class="dataTables_filter pull-right col-sm-4" id="dataTable_filter">
                 <label class="pull-right">
                     <?php echo $this->name['translator']->translate('Search'); ?>: <input type="text" aria-controls="dataTable" class="quick-search form-control" value="<?php echo $this->quickSearch ?>">
                 </label>
             </div>
         <?php endif; ?>
     </div>
-    <?php echo $this->table; ?>
+    
+    <div class="content">
+        <div class="row">
+        <?php foreach($this->rows as $row):?>
+            <div class="hidden-xs col-sm-3 col-md-2" style="padding:0; margin:0; margin-bottom: 5px;">
+                <div style="padding: 4px;">
+                    <?php 
+                        if($row['cover_file']!=''){
+                    ?>  
+                    <a href="<?php echo explode('"',$row['title'])[1]; ?>">
+                        <div class="col-sm-12 movies-list-cover" style="background-image:url('<?php echo $this->name['basicPath']; ?>img/thumb/<?php echo $row['cover_file']; ?>');"></div>
+                    </a>
+                    <?php 
+                    }
+                    else{
+                    ?>
+                    <a href="<?php echo explode('"',$row['title'])[1]; ?>">
+                        <div class="col-sm-12 movies-list-cover" style="background-image:url('<?php echo $this->name['basicPath']; ?>img/thumb/placeholder.png');"></div>
+                    </a>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="visible-xs col-xs-12" style="padding:0; margin:0; margin-bottom: 5px;">
+                <div>
+                    <?php 
+                        if($row['cover_file']!=''){ 
+                    ?>  
+                    <a href="<?php echo explode('"',$row['title'])[1]; ?>">
+                        <img class="img-responsive" src="img/cover/<?php echo $row['cover_file']; ?>">
+                    </a>
+                    <?php 
+                    }
+                    else{
+                    ?>
+                    <a href="<?php echo explode('"',$row['title'])[1]; ?>">
+                        <img class="img-responsive" src="img/cover/placeholder.png">
+                    </a>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        <?php endforeach;?>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-6 text-left">
             <?php if ($this->showItemPerPage): ?>
@@ -47,7 +93,7 @@
         <div class="processing">
         </div>
     </div>
-    <?php echo $this->paramsWrap; ?>
+    <?php echo $this->paramsWrap;?>
 </div>
 <script>
 jQuery(document).ready(function($) {

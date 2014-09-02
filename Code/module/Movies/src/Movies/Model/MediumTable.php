@@ -28,8 +28,9 @@ class MediumTable extends BaseTable
 
 		$select = $sql->select();
 		$select ->from('Medium')
-			    ->columns(array('id','title'=>'title_'.$language))
-                ->join(array('Genres'=>$select_genre), 'Genres.medium_id = Medium.id', array('genres'), 'left');
+			    ->columns(array('*','title'=>'title_'.$language,'content'=>'content_'.$language))
+                ->join(array('Genres'=>$select_genre), 'Genres.medium_id = Medium.id', array('genres'), 'left')
+                ->join('Type', 'Type.id = Medium.type_id', array('type'=>'name_'.$language), 'left');
 
 		return $select;
 	}

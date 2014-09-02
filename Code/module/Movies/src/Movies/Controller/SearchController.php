@@ -42,13 +42,22 @@ class SearchController extends BasisController
 	}
 
 	private function createTable($select){
-      $table = new MediaTable();
+      $post = $this->getRequest()->getPost();
+
+      $params=array(
+        'translator' =>$this->Translator()->getTranslator(),
+        'basicPath' =>$this->url()->fromRoute('movies'),
+        'listStyle' =>$post['listStyle'],
+        'path' =>$this->getRequest()->getUri()->getPath(),
+        );
+
+      $table = new MediaTable($params);
       $table->setShowUrl($this->url()->fromRoute('movies', array('lang'=>$this->language, 'action'=>'show')));
       $table->setLanguage($this->language);
 
       $table->setAdapter($this->getDbAdapter())
               ->setSource($select)
-              ->setParamAdapter($this->getRequest()->getPost());
+              ->setParamAdapter($post);
 
       $table = $this->htmlResponse($table->render());
 

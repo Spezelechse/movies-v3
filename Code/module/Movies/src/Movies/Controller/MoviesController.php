@@ -33,27 +33,33 @@ class MoviesController extends BasisController
 
     public function ajaxIndexAction()
     {
+      $post = $this->getRequest()->getPost();
       
       $media_select=$this->Tables()->medium()->fetchAllForList_Select($this->language);
 
-      $table = new MediaTable();
+      $params=array(
+        'translator' =>$this->Translator()->getTranslator(),
+        'basicPath' =>$this->url()->fromRoute('movies'),
+        'listStyle' =>$post['listStyle'],
+        'path' =>$this->getRequest()->getUri()->getPath(),
+        );
+
+      $table = new MediaTable($params);
       $table->setShowUrl($this->url()->fromRoute('movies', array('lang'=>$this->language, 'action'=>'show')));
       $table->setLanguage($this->language);
-      $table->setTranslator($this->Translator()->getTranslator());
 
       $table->setAdapter($this->getDbAdapter())
               ->setSource($media_select)
-              ->setParamAdapter($this->getRequest()->getPost());
+              ->setParamAdapter($post);
 
       $table = $this->htmlResponse($table->render());
-
 
       return $table;  
     }
 
   	public function showAction()
   	{
-      $id = $this->params()->fromRoute('id',0);
+      $id = (int)$this->params()->fromRoute('id',0);
       
       $medium = $this->Tables()->medium()->get($id);
       $medium->setGenre($this->Tables()->genre()->fetchForMedium($id));

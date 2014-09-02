@@ -2,7 +2,7 @@
     <div class="table-header">
     </div>
     <div class="row ">
-        <div class="col-sm-1 pull-left">
+        <div class="col-sm-2 pull-left">
             <label>
                 <?php echo $this->name['translator']->translate('Show as').': '; ?>
                 <select id="additionalParams" class="form-control">
@@ -20,7 +20,65 @@
             </div>
         <?php endif; ?>
     </div>
-    <?php echo $this->table; ?>
+    
+    <div class="content">
+        <?php foreach($this->rows as $row):?>
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-xs-12 col-sm-2">
+                    <?php 
+                        if($row['cover_file']!=''){ 
+                    ?>  
+                    <a href="<?php echo explode('"',$row['title'])[1]; ?>">
+                        <img class="img-responsive" src="<?php echo $this->name['basicPath']; ?>img/cover/<?php echo $row['cover_file']; ?>">
+                    </a>
+                    <?php 
+                    }
+                    else{
+                    ?>
+                    <a href="<?php echo explode('"',$row['title'])[1]; ?>">
+                        <img class="img-responsive" src="<?php echo $this->name['basicPath']; ?>img/cover/placeholder.png">
+                    </a>
+                    <?php
+                    }
+                    ?>
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <h4>
+                    <?php echo $row['title']?>
+                    <small>
+                        <?php 
+                            if($row['dvd_or_bluray']==1){
+                                echo "DVD";
+                            }
+                            else{
+                                echo "Blu-ray";
+                            }
+                        ?>
+                    </small>
+                </h4>
+                <div class="movie-list-detail-info">
+                    <?php echo '<h5>'.$this->name['translator']->translate('Type').': <small>'.$row['type'].'</small></h5>'; ?>
+                    <?php echo '<h5>'.$this->name['translator']->translate('Genre').': <small>'.$row['genres'].'</small></h5>'; ?>
+                    <?php echo '<h5>'.$this->name['translator']->translate('Laufzeit').': <small>'.$row['duration'].'</small></h5>'; ?>
+                </div>
+                <div class="hyphenless" style="margin-top: 10px;">
+                    <h5>
+                <?php
+                    if(strlen($row['content'])>500){
+                        echo substr($row['content'], 0, strpos($row['content'], ' ',500));
+                        echo ' ...';
+                    }
+                    else{
+                        echo $row['content'];
+                    }
+                ?>
+                    </h5>
+                </div>
+                <br />
+            </div>
+        </div>
+        <?php endforeach;?>
+    </div>
     <div class="row">
         <div class="col-sm-6 text-left">
             <?php if ($this->showItemPerPage): ?>
@@ -47,7 +105,7 @@
         <div class="processing">
         </div>
     </div>
-    <?php echo $this->paramsWrap; ?>
+    <?php echo $this->paramsWrap;?>
 </div>
 <script>
 jQuery(document).ready(function($) {

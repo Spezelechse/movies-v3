@@ -60,6 +60,19 @@ textarea{
   margin-bottom: 30px;
 }
 
+.movies-list-cover{
+  height:300px; 
+  padding: 4px; 
+  border: 1px solid #dddddd; 
+  border-radius: 4px; 
+  margin:0; 
+  background-repeat:no-repeat; 
+  background-position:center;
+}
+
+.movies-list-cover:hover{
+  border-color: #428bca;
+}
 .hyphenless {
   -webkit-hyphens: auto;
   -moz-hyphens: auto;

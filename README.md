@@ -40,7 +40,7 @@ Whats planned next?
 - extend the medium form with functions which allow adding new values for genre, publisher, director and type from within the form - done (29.08.14)
 - implementing the advanced search for searching with all informations
 - adding search links to the show view which allows searching with single detail informations - done (29.08.14)
-- adding an alternative list view with detail informations and one with just pictures
+- adding an alternative list view with detail informations and one with just pictures - done (02.09.14)
 - adding functions which let the user edit his own data - done (29.08.14)
 - include and use the config data - done (30.08.14)
 - include the userrights - done (31.08.14)

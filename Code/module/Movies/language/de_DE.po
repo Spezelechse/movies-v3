@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movies V3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-31 19:11+0100\n"
-"PO-Revision-Date: 2014-08-31 19:12+0100\n"
+"POT-Creation-Date: 2014-09-02 01:00+0100\n"
+"PO-Revision-Date: 2014-09-02 01:00+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -12,11 +12,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: translate\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.6.8\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../src/Movies/Controller/AdminController.php:94
-#: ../src/Movies/Controller/AdminController.php:318
+#: ../src/Movies/Controller/AdminController.php:319
 #: ../src/Movies/Form/UserForm.php:106 ../src/Movies/Form/UserForm.php:124
 msgid "Add"
 msgstr "Hinzufügen"
@@ -30,7 +30,7 @@ msgid "Medium deleted"
 msgstr "Medium gelöscht"
 
 #: ../src/Movies/Controller/AdminController.php:196
-#: ../src/Movies/Controller/AdminController.php:440
+#: ../src/Movies/Controller/AdminController.php:441
 #: ../src/Movies/Controller/UserController.php:80
 msgid "Update"
 msgstr "Aktualisieren"
@@ -43,20 +43,20 @@ msgstr "Medium aktualisiert"
 msgid "Medium id not found"
 msgstr "Medium id nicht gefunden"
 
-#: ../src/Movies/Controller/AdminController.php:341
+#: ../src/Movies/Controller/AdminController.php:342
 msgid "User added"
 msgstr "Benutzer hinzugefügt"
 
-#: ../src/Movies/Controller/AdminController.php:368
+#: ../src/Movies/Controller/AdminController.php:369
 msgid "User deleted"
 msgstr "Benutzter gelöscht"
 
-#: ../src/Movies/Controller/AdminController.php:406
+#: ../src/Movies/Controller/AdminController.php:407
 #: ../src/Movies/Controller/UserController.php:53
 msgid "User updated"
 msgstr "Benutzer aktualisiert"
 
-#: ../src/Movies/Controller/AdminController.php:450
+#: ../src/Movies/Controller/AdminController.php:451
 #: ../src/Movies/Controller/UserController.php:90
 msgid "User id not found"
 msgstr "Benutzer id nicht gefunden"
@@ -78,7 +78,7 @@ msgid "logged_out"
 msgstr "Erfolgreich ausgeloggt!!"
 
 #: ../src/Movies/Form/LoginForm.php:24 ../src/Movies/Form/UserForm.php:52
-#: ../src/Movies/Table/UserTable.php:54
+#: ../src/Movies/Table/UserTable.php:55
 msgid "Username"
 msgstr "Benutzername"
 
@@ -165,7 +165,7 @@ msgstr "Datei"
 msgid "Name"
 msgstr ""
 
-#: ../src/Movies/Form/UserForm.php:39 ../src/Movies/Table/UserTable.php:55
+#: ../src/Movies/Form/UserForm.php:39 ../src/Movies/Table/UserTable.php:56
 msgid "Surname"
 msgstr "Nachname"
 
@@ -209,17 +209,17 @@ msgstr "Webseiten Rechte"
 msgid "Set up"
 msgstr "Konfigurieren"
 
-#: ../src/Movies/Table/ConfigTable.php:41
+#: ../src/Movies/Table/ConfigTable.php:42
 msgid "Value"
 msgstr "Wert"
 
-#: ../src/Movies/Table/MediaTable.php:46
+#: ../src/Movies/Table/MediaTable.php:80
 #: ../view/movies/admin/add-movie.phtml:22
 #: ../view/movies/admin/edit-movie.phtml:24
 msgid "Title"
 msgstr "Titel"
 
-#: ../src/Movies/Table/UserTable.php:56
+#: ../src/Movies/Table/UserTable.php:57
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -274,6 +274,39 @@ msgstr "Suchergebnisse für:"
 #: ../view/movies/search/advanced.phtml:9
 msgid "Search results for advanced search:"
 msgstr "Suchergebnisse für die erweiterte Suche:"
+
+#: ../view/zf-table/templates/container-b3.phtml:7
+#: ../view/zf-table/templates/custom-list-detail.phtml:7
+#: ../view/zf-table/templates/custom-pic-only.phtml:7
+msgid "Show as"
+msgstr "Anzeigen als"
+
+#: ../view/zf-table/templates/container-b3.phtml:9
+#: ../view/zf-table/templates/custom-list-detail.phtml:9
+#: ../view/zf-table/templates/custom-pic-only.phtml:9
+msgid "List"
+msgstr "Liste"
+
+#: ../view/zf-table/templates/container-b3.phtml:10
+#: ../view/zf-table/templates/custom-list-detail.phtml:10
+#: ../view/zf-table/templates/custom-pic-only.phtml:10
+msgid "Details"
+msgstr ""
+
+#: ../view/zf-table/templates/container-b3.phtml:11
+#: ../view/zf-table/templates/custom-list-detail.phtml:11
+#: ../view/zf-table/templates/custom-pic-only.phtml:11
+msgid "Cover"
+msgstr ""
+
+#: ../view/zf-table/templates/container-b3.phtml:18
+#: ../view/zf-table/templates/custom-list-detail.phtml:18
+#: ../view/zf-table/templates/custom-pic-only.phtml:18
+msgid "Search"
+msgstr "Suche"
+
+#~ msgid "Export to CSV"
+#~ msgstr "Als CSV exportieren"
 
 #~ msgid "asd"
 #~ msgstr "123"
