@@ -44,9 +44,14 @@ abstract class BasisController extends AbstractActionController
 
     public function onDispatch(MvcEvent $e) {
 
-      $this->init();
+      $res = $this->init();
 
-      return parent::onDispatch($e);
+      if(isset($res)){
+        return $res;
+      }
+      else{
+        return parent::onDispatch($e);
+      }
     }
 
     public function getAuthService()

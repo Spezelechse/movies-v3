@@ -35,9 +35,12 @@ $form->prepare();
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<div class="checkbox">
-					<?php echo $this->formRow($form->get('remember')); ?>
+				<div class="col-sm-1">
+					<div class="checkbox">
+					<?php echo $this->formElement($form->get('remember')); ?>
+					</div>
 				</div>
+				<?php echo $this->formLabel($form->get('remember')); ?>
 			</div>
 		</div>
 		<div class="form-group">

@@ -42,6 +42,29 @@ class ActorTable extends BaseTable
         return array('names'=>$names,'roles'=>$roles);
     }
 
+    public function getActorIdsFromText($text=''){
+        $actors = explode(PHP_EOL, $text);
+        $ids = array();
+        $trim = new StringTrim();
+
+        foreach ($actors as $key => $actor) {
+                $actor = $trim($actor);
+                $actor_id = 0;
+
+                $select = $this->tableGateway->getSql()->select();
+
+                $select ->columns(array('id'))
+                        ->where('Actor.name = \''.$actor.'\'');
+
+                $result = $this->tableGateway->selectWith($select)->current();
+                if($result){
+                    array_push($ids, $result->id);
+                }
+        }
+
+        return $ids;
+    }
+
     public function connectToMedium($medium_id, $actors_text, $roles_text){
         if(isset($medium_id)&&isset($actors_text)&&isset($roles_text)){
             $adapter = $this->tableGateway->getAdapter();
@@ -77,7 +100,7 @@ class ActorTable extends BaseTable
                     $actor_id=$this->save($new_actor);
                 }
 
-                $insertConnect->values(array('medium_id'=>$medium_id, 'actor_id'=>$actor_id, 'role'=>$roles[$key]));
+                $insertConnect->values(array('medium_id'=>$medium_id, 'actor_id'=>$actor_id, 'role'=>$trim($roles[$key])));
 
                 $statement = $sql->prepareStatementForSqlObject($insertConnect);
                 $statement->execute();

@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movies V3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-02 01:00+0100\n"
-"PO-Revision-Date: 2014-09-02 01:00+0100\n"
-"Last-Translator: Evan Coury <me@evancoury.com>\n"
+"POT-Creation-Date: 2014-09-02 20:51+0100\n"
+"PO-Revision-Date: 2014-09-02 20:51+0100\n"
+"Last-Translator: Patrick Geißler\n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -77,6 +77,13 @@ msgstr "Benutzername und Passwort werden benötigt!!"
 msgid "logged_out"
 msgstr "Erfolgreich ausgeloggt!!"
 
+#: ../src/Movies/Controller/SearchController.php:240
+#: ../view/zf-table/templates/container-b3.phtml:18
+#: ../view/zf-table/templates/custom-list-detail.phtml:18
+#: ../view/zf-table/templates/custom-pic-only.phtml:18
+msgid "Search"
+msgstr "Suche"
+
 #: ../src/Movies/Form/LoginForm.php:24 ../src/Movies/Form/UserForm.php:52
 #: ../src/Movies/Table/UserTable.php:55
 msgid "Username"
@@ -109,6 +116,7 @@ msgstr "Rolle"
 
 #: ../src/Movies/Form/MediumForm.php:104 ../view/movies/movies/show.phtml:91
 #: ../view/movies/search/genre.phtml:12
+#: ../view/zf-table/templates/custom-list-detail.phtml:61
 msgid "Genre"
 msgstr ""
 
@@ -124,6 +132,7 @@ msgstr "Regisseur"
 
 #: ../src/Movies/Form/MediumForm.php:148 ../view/movies/movies/show.phtml:127
 #: ../view/movies/search/type.phtml:12
+#: ../view/zf-table/templates/custom-list-detail.phtml:60
 msgid "Type"
 msgstr "Art"
 
@@ -213,9 +222,10 @@ msgstr "Konfigurieren"
 msgid "Value"
 msgstr "Wert"
 
-#: ../src/Movies/Table/MediaTable.php:80
+#: ../src/Movies/Table/MediaTable.php:86
 #: ../view/movies/admin/add-movie.phtml:22
 #: ../view/movies/admin/edit-movie.phtml:24
+#: ../view/movies/search/advanced.phtml:42
 msgid "Title"
 msgstr "Titel"
 
@@ -225,6 +235,7 @@ msgstr "Aktionen"
 
 #: ../view/movies/admin/add-movie.phtml:37
 #: ../view/movies/admin/edit-movie.phtml:39
+#: ../view/movies/search/advanced.phtml:50
 msgid "Content"
 msgstr "Inhalt"
 
@@ -261,6 +272,7 @@ msgstr ""
 "speichern."
 
 #: ../view/movies/movies/show.phtml:141
+#: ../view/zf-table/templates/custom-list-detail.phtml:62
 msgid "Duration"
 msgstr "Laufzeit"
 
@@ -271,9 +283,13 @@ msgstr "Laufzeit"
 msgid "Search results for:"
 msgstr "Suchergebnisse für:"
 
-#: ../view/movies/search/advanced.phtml:9
+#: ../view/movies/search/advanced.phtml:13
 msgid "Search results for advanced search:"
 msgstr "Suchergebnisse für die erweiterte Suche:"
+
+#: ../view/movies/search/advanced.phtml:38
+msgid "Advanced search:"
+msgstr "Erweiterte Suche:"
 
 #: ../view/zf-table/templates/container-b3.phtml:7
 #: ../view/zf-table/templates/custom-list-detail.phtml:7
@@ -299,12 +315,6 @@ msgstr ""
 msgid "Cover"
 msgstr ""
 
-#: ../view/zf-table/templates/container-b3.phtml:18
-#: ../view/zf-table/templates/custom-list-detail.phtml:18
-#: ../view/zf-table/templates/custom-pic-only.phtml:18
-msgid "Search"
-msgstr "Suche"
-
 #~ msgid "Export to CSV"
 #~ msgstr "Als CSV exportieren"
 
@@ -314,9 +324,6 @@ msgstr "Suche"
 #, fuzzy
 #~ msgid "title"
 #~ msgstr "Titel"
-
-#~ msgid "Advanced Search Results"
-#~ msgstr "Suchergebnisse für die erweiterte Suche:"
 
 #~ msgid "login_incorrect"
 #~ msgstr "Keine übereinstimmenden Logininformationen gefunden!"

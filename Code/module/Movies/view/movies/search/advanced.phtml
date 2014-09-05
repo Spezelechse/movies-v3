@@ -3,7 +3,11 @@
  * @package Movies
  */
 
+echo $this->messageHelper($this->flashMessenger());
+
+
 // Template
+if($this->showResult){
 ?>
 <h3>
 	<?php echo $this->translate('Search results for advanced search:'); ?>
@@ -12,5 +16,163 @@
 
 <div id="tableContainer"></div>
 <script>
-    $("#tableContainer").zfTable("<?php echo $this->url('movies', array('action'=>'ajax-index','lang'=>$this->language)); ?>");
+    $("#tableContainer").zfTable("<?php echo $this->url('search', array('action'=>'ajax-advanced','lang'=>$this->language)); ?>");
 </script>
+<?php
+}
+else{
+// Template
+$form = $this->form;
+$form->setAttribute('action', $this->url('search', array('lang' => $language,'action' => 'advanced')));
+$form->setAttribute('role', 'form');
+$form->setAttribute('class', 'form-horizontal');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('csrf'));
+?>
+<div class="row">
+	<div class="col-xs-12 col-sm-9 movies-data-left">
+		<div class="movies-data-search-content-wrapper">
+			<h3>
+				<?php echo $this->translate('Advanced search:'); ?>
+				<br>
+			</h3>
+			<div class="movies-data-title">
+				<div><h4><?php echo $this->translate('Title'); ?></h4></div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<?php echo $this->formElement($form->get('title_en')); ?>
+					</div>
+				</div>
+			</div>
+			<div class="movies-data-content">
+				<div><h4><?php echo $this->translate('Content'); ?></h4></div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<?php echo $this->formElement($form->get('content_en')->setAttribute('rows',5)); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-0 col-sm-2"></div>
+		<div class="col-xs-12 col-sm-8 movies-data-actor">
+			<table class="table table-striped table-hover">
+				<tr style="">
+					<th class="col-xs-6 col-sm-6" style="background-color: #FFF;"><?php echo $this->formLabel($form->get('actors_text')); ?></th>
+					<th class="col-xs-6 col-sm-6"><?php echo $this->formLabel($form->get('roles_text')); ?></th>
+				</tr>
+				<tr>
+					<td><?php echo $this->formElement($form->get('actors_text')); ?></td>
+					<td><?php echo $this->formElement($form->get('roles_text')); ?></td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-xs-0 col-sm-2"></div>
+	</div>
+	<div class="col-xs-12 col-sm-3 movies-data-right">
+		<div class="movies-data-info">
+			<div id="genre-container" class="form-group">
+				<div class="col-sm-4" style="padding:0;">
+					<?php echo $this->formLabel($form->get('genre')); ?>
+				</div>
+				<div class="col-sm-8">
+					<?php echo $this->formElement($form->get('genre')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4" style="padding:0;">
+					<?php echo $this->formLabel($form->get('director')); ?>
+				</div>
+				<div class="col-sm-8">
+					<?php echo $this->formElement($form->get('director')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4" style="padding:0;">
+					<?php echo $this->formLabel($form->get('publisher')); ?>
+				</div>
+				<div class="col-sm-8">
+					<?php echo $this->formElement($form->get('publisher')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4" style="padding:0;">
+					<?php echo $this->formLabel($form->get('type_id')); ?>
+				</div>
+				<div class="col-sm-8">
+					<?php echo $this->formElement($form->get('type_id')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo $this->formLabel($form->get('owner_id')); ?>
+				<div class="col-sm-8">
+					<?php echo $this->formElement($form->get('owner_id')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo $this->formLabel($form->get('duration')); ?>
+				<div class="col-xs-12 col-sm-8">
+					<div class="col-xs-4 col-sm-4 movies-search-radio">
+						<label><input type="radio" name="duration_comparator" value="<"><</label>
+					</div>
+					<div class="col-xs-4 col-sm-4 movies-search-radio">
+						<label><input type="radio" name="duration_comparator" value="=" checked>=</label>
+					</div>
+					<div class="col-xs-4 col-sm-4 movies-search-radio">
+						<label><input type="radio" name="duration_comparator" value=">">></label>
+					</div>
+					<?php echo $this->formElement($form->get('duration')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo $this->formLabel($form->get('fsk')); ?>
+				<div class="col-sm-8">
+					<?php echo $this->formSelect($form->get('fsk')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo $this->formLabel($form->get('premiere')); ?>
+				<div class="col-xs-12 col-sm-8">
+					<div class="col-xs-4 col-sm-4 movies-search-radio">
+						<label><input type="radio" name="premiere_comparator" value="<"><</label>
+					</div>
+					<div class="col-xs-4 col-sm-4 movies-search-radio">
+						<label><input type="radio" name="premiere_comparator" value="=" checked>=</label>
+					</div>
+					<div class="col-xs-4 col-sm-4 movies-search-radio">
+						<label><input type="radio" name="premiere_comparator" value=">">></label>
+					</div>
+					<?php echo $this->formElement($form->get('premiere')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo $this->formLabel($form->get('num_disks')); ?>
+				<div class="col-sm-8">
+					<?php echo $this->formElement($form->get('num_disks')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo $this->formLabel($form->get('dvd_or_bluray')); ?>
+				<div class="col-sm-8">
+					<?php echo $this->formElement($form->get('dvd_or_bluray')); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row text-center">
+	<div class="form-group">
+			<?php echo $this->formSubmit($form->get('submit')); ?>
+	</div>
+</div>
+<?php echo $this->form()->closeTag(); ?>
+
+<script type="text/javascript">
+$(function() {
+	$( "#premiere" ).datepicker({ dateFormat: "yy-mm-dd" });
+});
+</script>
+<?php
+}
+?>

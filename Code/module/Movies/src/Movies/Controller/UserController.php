@@ -18,12 +18,12 @@ class UserController extends BasisController
 
         if(!$this->MoviesConfig()->get('public')){
             if(!$this->getAuthService()->hasIdentity()){
-                $this->redirect()->toRoute('auth', array('lang'=>$this->language, 'action'=>'login'));
+                return $this->redirect()->toRoute('auth', array('lang'=>$this->language, 'action'=>'login'));
             }
         }
 
         if(!$this->getAuthService()->hasIdentity()){
-            $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
+            return $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
         }
     }
 
@@ -89,7 +89,7 @@ class UserController extends BasisController
         else{
             $this->flashMessenger()->addErrorMessage($this->translate('User id not found'));
             
-            return $this->redirect()->toRoute('admin', array('lang'=>$this->language, 'action'=>'list-user'));
+            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
         }
 	}
 }

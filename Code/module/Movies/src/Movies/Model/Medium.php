@@ -146,11 +146,19 @@ class Medium extends BaseObject
         if($type=='add'){
             $data=array(
                 'id_required'=>false,
+                'required'=>true,
+            );
+        }
+        else if($type=='none'){
+            $data=array(
+                'id_required'=>false,
+                'required'=>false,
             );
         }
         else{
             $data=array(
                 'id_required'=>true,
+                'required'=>true,
             );
         }
 
@@ -173,7 +181,7 @@ class Medium extends BaseObject
 
             $inputFilter->add($factory->createInput(array(
                 'name'     => 'title_de',
-                'required' => true,
+                'required' => $data['required'],
                 'filters'  => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
@@ -192,7 +200,7 @@ class Medium extends BaseObject
 
             $inputFilter->add($factory->createInput(array(
                 'name'     => 'title_en',
-                'required' => true,
+                'required' => $data['required'],
                 'filters'  => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
@@ -211,7 +219,7 @@ class Medium extends BaseObject
 
             $inputFilter->add($factory->createInput(array(
                 'name'     => 'type_id',
-                'required' => true,
+                'required' => $data['required'],
                 'filters'  => array(
                     array('name' => 'Digits'),
                 ),
@@ -224,7 +232,7 @@ class Medium extends BaseObject
 
             $inputFilter->add($factory->createInput(array(
                 'name'     => 'owner_id',
-                'required' => true,
+                'required' => $data['required'],
                 'filters'  => array(
                     array('name' => 'Digits'),
                 ),
@@ -309,7 +317,7 @@ class Medium extends BaseObject
 
             $inputFilter->add($factory->createInput(array(
                 'name'     => 'premiere',
-                'required' => true,
+                'required' => $data['required'],
                 'filters'  => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
