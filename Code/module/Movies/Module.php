@@ -48,6 +48,9 @@ class Module
                 __DIR__ . '/autoload_classmap.php',
                 array( 
                     'SimpleImage'  => __DIR__ . '/lib/SimpleImage.php',
+                    'imdb'  => __DIR__ . '/lib/imdbphp2/imdb.class.php',
+                    'imdbsearch'  => __DIR__ . '/lib/imdbphp2/imdbsearch.class.php',
+                    'imdb_person'  => __DIR__ . '/lib/imdbphp2/imdb_person.class.php',
                 ),
             ),
             'Zend\Loader\StandardAutoloader' => array(

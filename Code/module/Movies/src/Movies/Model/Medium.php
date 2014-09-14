@@ -21,6 +21,7 @@ class Medium extends BaseObject
 	public $content_de;
 	public $content_en;
 	public $dvd_or_bluray;
+    public $imdb_url;
 
 	public $genre;
 	public $actors;
@@ -48,6 +49,7 @@ class Medium extends BaseObject
 		$this->content_de = (isset($data['content_de'])) ? $data['content_de'] : null;
 		$this->content_en = (isset($data['content_en'])) ? $data['content_en'] : null;
 		$this->dvd_or_bluray = (isset($data['dvd_or_bluray'])) ? $data['dvd_or_bluray'] : null;
+        $this->imdb_url = (isset($data['imdb_url'])) ? $data['imdb_url'] : null;
 	}
 
 	public function toArray(){
@@ -123,6 +125,17 @@ class Medium extends BaseObject
             }
         }
         return $this->cover_source;
+    }
+
+    public function getImdbUrl(){
+        if($this->imdb_url!=''){
+            $beginning = substr($this->imdb_url, 0, 7);
+
+            if($beginning!='http://'&&$beginning!='https:/'){
+                return 'http://'.$this->imdb_url;
+            }
+        }
+        return $this->imdb_url;
     }
 
 	public function getCoverSourceDomain(){
@@ -389,6 +402,25 @@ class Medium extends BaseObject
                         'name'    => 'InArray',
                         'options' => array(
                         	'haystack' => array(1,2),
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'imdb_url',
+                'required' => false,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
                         ),
                     ),
                 ),

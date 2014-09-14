@@ -29,14 +29,8 @@ class AdminController extends BasisController
     {
         parent::init();
 
-        if(!$this->MoviesConfig()->get('public')){
-            if(!$this->getAuthService()->hasIdentity()){
-                return $this->redirect()->toRoute('auth', array('lang'=>$this->language, 'action'=>'login'));
-            } 
-        }
-
         if(!$this->getAuthService()->hasIdentity()){
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
+            return $this->redirect()->toRoute('movies', array('lang'=>$this->language, 'action'=>'login')); 
         }
     }
 

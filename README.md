@@ -54,7 +54,16 @@ Update 02.09.14
 Update 05.09.14
 - implemented the advanced search for searching with all informations
 
+Update 14.09.14
+- implemented IMDb import
+- added new config entries (country and imdb_auto_add)
+- changed add popovers, they are now more reuseable
+
 ------------------------------------------------------------------------------------------------
 
 Whats planned next?
-- implementing the imdb integration
+- limit login attempts
+- implement import/export functions
+- implement transfer skript v2 -> v3
+- add additional config informations
+- test on live system

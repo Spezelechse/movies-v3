@@ -88,7 +88,7 @@ echo $this->formHidden($form->get('csrf'));
 				<div class="col-sm-4" style="padding:0;">
 					<?php echo $this->formLabel($form->get('genre')); ?>
 					<div class="col-sm-12 control-label add-container">
-						<button type="button" class="btn btn-xs" id="add-genre" data-ajaxurl="<?php echo $this->url('admin', array('lang' => $language,'action' => 'add-genre-ajax'));?>">
+						<button type="button" class="btn btn-xs add-popover-multilingual" id="add-genre" data-selectid="genre-select" data-title="<?php echo $this->translate('Add new genre'); ?>" data-ajaxurl="<?php echo $this->url('admin', array('lang' => $language,'action' => 'add-genre-ajax'));?>">
 						+
 						</button>
 					</div>
@@ -101,7 +101,7 @@ echo $this->formHidden($form->get('csrf'));
 				<div class="col-sm-4" style="padding:0;">
 					<?php echo $this->formLabel($form->get('director')); ?>
 					<div class="col-sm-12 control-label add-container">
-						<button type="button" class="btn btn-xs" id="add-director" data-ajaxurl="<?php echo $this->url('admin', array('lang' => $language,'action' => 'add-director-ajax'));?>">
+						<button type="button" class="btn btn-xs add-popover" id="add-director" data-selectid="director-select" data-title="<?php echo $this->translate('Add new director'); ?>" data-ajaxurl="<?php echo $this->url('admin', array('lang' => $language,'action' => 'add-director-ajax'));?>">
 						+
 						</button>
 					</div>
@@ -114,7 +114,7 @@ echo $this->formHidden($form->get('csrf'));
 				<div class="col-sm-4" style="padding:0;">
 					<?php echo $this->formLabel($form->get('publisher')); ?>
 					<div class="col-sm-12 control-label add-container">
-						<button type="button" class="btn btn-xs" id="add-publisher" data-ajaxurl="<?php echo $this->url('admin', array('lang' => $language,'action' => 'add-publisher-ajax'));?>">
+						<button type="button" class="btn btn-xs add-popover" id="add-publisher" data-selectid="publisher-select" data-title="<?php echo $this->translate('Add new publisher'); ?>" data-ajaxurl="<?php echo $this->url('admin', array('lang' => $language,'action' => 'add-publisher-ajax'));?>">
 						+
 						</button>
 					</div>
@@ -127,7 +127,7 @@ echo $this->formHidden($form->get('csrf'));
 				<div class="col-sm-4" style="padding:0;">
 					<?php echo $this->formLabel($form->get('type_id')); ?>
 					<div class="col-sm-12 control-label add-container">
-						<button type="button" class="btn btn-xs" id="add-type" data-ajaxurl="<?php echo $this->url('admin', array('lang' => $language,'action' => 'add-type-ajax'));?>">
+						<button type="button" class="btn btn-xs add-popover-multilingual" id="add-type" data-selectid="type-select" data-title="<?php echo $this->translate('Add new type'); ?>" data-ajaxurl="<?php echo $this->url('admin', array('lang' => $language,'action' => 'add-type-ajax'));?>">
 						+
 						</button>
 					</div>
@@ -170,6 +170,12 @@ echo $this->formHidden($form->get('csrf'));
 				<?php echo $this->formLabel($form->get('dvd_or_bluray')); ?>
 				<div class="col-sm-8">
 					<?php echo $this->formElement($form->get('dvd_or_bluray')); ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<?php echo $this->formLabel($form->get('imdb_url')); ?>
+				<div class="col-sm-8">
+					<?php echo $this->formElement($form->get('imdb_url')); ?>
 				</div>
 			</div>
 		</div>

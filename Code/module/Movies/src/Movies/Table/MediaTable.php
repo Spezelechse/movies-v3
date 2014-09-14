@@ -26,7 +26,7 @@ class MediaTable extends AbstractTable
     
      //Definition of headers
     protected $headers = array(
-        'id' => array('title' => '#' ) ,
+        //'id' => array('title' => '#' ) ,
         'title' => array('title' => 'Title', 'filters' => 'text'),
         'genres' => array('title' => 'Genre' ),
         'cover_file' => array(),
@@ -110,6 +110,11 @@ class MediaTable extends AbstractTable
     public function render()
     {
         $style=$this->getParamAdapter()->getPureValueOfFilter('listStyle');
+        
+        $config = $this->config->getName();
+        $config['listStyle']=$style;
+        $this->config->setName($config);
+
         $table='';
 
         if($style=='pic'){

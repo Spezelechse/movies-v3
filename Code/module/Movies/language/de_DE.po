@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movies V3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-02 20:51+0100\n"
-"PO-Revision-Date: 2014-09-02 20:51+0100\n"
+"POT-Creation-Date: 2014-09-11 00:02+0100\n"
+"PO-Revision-Date: 2014-09-11 00:03+0100\n"
 "Last-Translator: Patrick Geißler\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -77,12 +77,13 @@ msgstr "Benutzername und Passwort werden benötigt!!"
 msgid "logged_out"
 msgstr "Erfolgreich ausgeloggt!!"
 
-#: ../src/Movies/Controller/SearchController.php:240
+#: ../src/Movies/Controller/SearchController.php:256
+#: ../view/movies/admin/add-movie.phtml:240
 #: ../view/zf-table/templates/container-b3.phtml:18
 #: ../view/zf-table/templates/custom-list-detail.phtml:18
 #: ../view/zf-table/templates/custom-pic-only.phtml:18
 msgid "Search"
-msgstr "Suche"
+msgstr "Suchen"
 
 #: ../src/Movies/Form/LoginForm.php:24 ../src/Movies/Form/UserForm.php:52
 #: ../src/Movies/Table/UserTable.php:55
@@ -114,24 +115,30 @@ msgstr "Schauspieler"
 msgid "Role"
 msgstr "Rolle"
 
-#: ../src/Movies/Form/MediumForm.php:104 ../view/movies/movies/show.phtml:91
-#: ../view/movies/search/genre.phtml:12
+#: ../src/Movies/Form/MediumForm.php:104
+#: ../view/movies/imdb/ajax-import.phtml:25
+#: ../view/movies/movies/show.phtml:91 ../view/movies/search/genre.phtml:12
 #: ../view/zf-table/templates/custom-list-detail.phtml:61
 msgid "Genre"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:119 ../view/movies/movies/show.phtml:115
+#: ../src/Movies/Form/MediumForm.php:119
+#: ../view/movies/imdb/ajax-import.phtml:16
+#: ../view/movies/movies/show.phtml:115
 #: ../view/movies/search/publisher.phtml:12
 msgid "Publisher"
 msgstr "Herausgeber"
 
-#: ../src/Movies/Form/MediumForm.php:134 ../view/movies/movies/show.phtml:103
+#: ../src/Movies/Form/MediumForm.php:134
+#: ../view/movies/imdb/ajax-import.phtml:7
+#: ../view/movies/movies/show.phtml:103
 #: ../view/movies/search/director.phtml:12
 msgid "Director"
 msgstr "Regisseur"
 
-#: ../src/Movies/Form/MediumForm.php:148 ../view/movies/movies/show.phtml:127
-#: ../view/movies/search/type.phtml:12
+#: ../src/Movies/Form/MediumForm.php:148
+#: ../view/movies/imdb/ajax-import.phtml:34
+#: ../view/movies/movies/show.phtml:127 ../view/movies/search/type.phtml:12
 #: ../view/zf-table/templates/custom-list-detail.phtml:60
 msgid "Type"
 msgstr "Art"
@@ -162,11 +169,15 @@ msgstr "Anzahl Disks"
 msgid "Medium"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:255 ../view/movies/movies/show.phtml:86
+#: ../src/Movies/Form/MediumForm.php:256
+msgid "IMDb url"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:270 ../view/movies/movies/show.phtml:86
 msgid "Source"
 msgstr "Quelle"
 
-#: ../src/Movies/Form/MediumForm.php:269
+#: ../src/Movies/Form/MediumForm.php:284
 msgid "File"
 msgstr "Datei"
 
@@ -199,6 +210,7 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: ../src/Movies/Form/UserForm.php:109
+#: ../view/movies/admin/add-movie.phtml:250
 msgid "Import"
 msgstr "Importieren"
 
@@ -223,7 +235,7 @@ msgid "Value"
 msgstr "Wert"
 
 #: ../src/Movies/Table/MediaTable.php:86
-#: ../view/movies/admin/add-movie.phtml:22
+#: ../view/movies/admin/add-movie.phtml:24
 #: ../view/movies/admin/edit-movie.phtml:24
 #: ../view/movies/search/advanced.phtml:42
 msgid "Title"
@@ -233,11 +245,20 @@ msgstr "Titel"
 msgid "Actions"
 msgstr "Aktionen"
 
-#: ../view/movies/admin/add-movie.phtml:37
+#: ../view/movies/admin/add-movie.phtml:28
+#: ../view/movies/admin/add-movie.phtml:230
+msgid "IMDb import"
+msgstr "IMDb Import"
+
+#: ../view/movies/admin/add-movie.phtml:46
 #: ../view/movies/admin/edit-movie.phtml:39
 #: ../view/movies/search/advanced.phtml:50
 msgid "Content"
 msgstr "Inhalt"
+
+#: ../view/movies/admin/add-movie.phtml:249
+msgid "Close"
+msgstr "Schließen"
 
 #: ../view/movies/admin/delete-movie.phtml:12
 msgid "delete-movie-callback"
@@ -271,10 +292,22 @@ msgstr ""
 "Einfach auf den zu ändernden Wert klicken, die Änderungen vornehmen und "
 "speichern."
 
+#: ../view/movies/imdb/ajax-import.phtml:43
+msgid "The following values are missing and have to be added manually:"
+msgstr "Die folgenden Werte fehlen und müssen manuell eingetragen werden:"
+
+#: ../view/movies/imdb/ajax-search.phtml:5
+msgid "Results for"
+msgstr "Suchergebnisse für"
+
 #: ../view/movies/movies/show.phtml:141
 #: ../view/zf-table/templates/custom-list-detail.phtml:62
 msgid "Duration"
 msgstr "Laufzeit"
+
+#: ../view/movies/movies/show.phtml:166
+msgid "More infos at "
+msgstr "Mehr Informationen auf"
 
 #: ../view/movies/search/actor.phtml:9 ../view/movies/search/director.phtml:9
 #: ../view/movies/search/fsk.phtml:9 ../view/movies/search/genre.phtml:9
@@ -314,6 +347,21 @@ msgstr ""
 #: ../view/zf-table/templates/custom-pic-only.phtml:11
 msgid "Cover"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Director:"
+#~ msgstr "Regisseur"
+
+#, fuzzy
+#~ msgid "Publisher:"
+#~ msgstr "Herausgeber"
+
+#, fuzzy
+#~ msgid "Type:"
+#~ msgstr "Art"
+
+#~ msgid "import"
+#~ msgstr "importieren"
 
 #~ msgid "Export to CSV"
 #~ msgstr "Als CSV exportieren"

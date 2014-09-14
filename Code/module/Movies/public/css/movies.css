@@ -82,10 +82,34 @@ textarea{
 .movies-search-radio input{
   margin-right: 5px;
 }
+.modal-search{
+  margin-top: 10px;
+}
+
 .hyphenless {
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
   text-align: justify;
+}
+
+.movies-imdb-result input{
+  margin-left: 5px;
+}
+
+.movies-imdb-processing {
+  background: url("../img/ajax-loader.gif") no-repeat scroll 0 0 transparent;
+  background-position:center;
+  border-radius: 5px 5px 5px 5px;
+  color: #FFFFFF;
+  text-align: center;
+  text-transform: uppercase;
+  top: 10%;
+  height: 20px;
+}
+
+.movies-missing-values small{
+  margin-right: 10px;
+  margin-left: 5px;
 }

@@ -1,0 +1,14 @@
+<?php
+/**
+ * @package Movies
+ */
+echo "<h5>".$this->translate('Results for').": ".$searchValue."</h5><br><br>";
+?>
+
+<?php
+foreach ($results as $result) {
+	echo '<div class="form-group movies-imdb-result">';
+	echo '<label>'.$result->title().' ('.$result->year().')<input type="radio" name="id" value="'.$result->imdbid().'"></label><br>';
+	echo '</div>';
+}
+?>

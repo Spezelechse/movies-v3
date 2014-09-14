@@ -3,11 +3,32 @@ namespace Movies\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Sql;
+use Zend\Filter\StringTrim;
 
 class GenreTable extends BaseTable
 {
     protected function checkObjectType($object){
         return (get_class($object)=='Movies\Model\Genre') ? TRUE : FALSE;
+    }
+
+    public function getByName($name){
+        $id = 0;
+        $trim = new StringTrim();
+
+        $name = $trim($name);
+
+        $select = $this->tableGateway->getSql()->select();
+
+        $select ->columns(array('id'))
+                ->where('Genre.name_en = \''.$name.'\'');
+
+        $result = $this->tableGateway->selectWith($select)->current();
+
+        if($result){
+            $id = $result->id;
+        }
+        
+        return $id;
     }
 
     public function fetchForMedium($id)

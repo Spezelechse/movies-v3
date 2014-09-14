@@ -12,6 +12,7 @@ return array(
             'AuthController' => 'Movies\Controller\AuthController',
             'SearchController' => 'Movies\Controller\SearchController',
             'UserController' => 'Movies\Controller\UserController',
+            'ImdbController' => 'Movies\Controller\ImdbController',
         ),
     ),
     'controller_plugins' => array(
@@ -83,6 +84,22 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'AdminController',
+                        'action'     => 'index',
+                        'lang'       => 'en',
+                    ),
+                )
+            ),
+            'imdb' => array(
+                'type'  => 'segment',
+                'options' => array(
+                    'route'    => '/:lang/imdb[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                        'lang'   => '[a-z][a-z]',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'ImdbController',
                         'action'     => 'index',
                         'lang'       => 'en',
                     ),

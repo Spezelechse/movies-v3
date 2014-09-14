@@ -30,7 +30,8 @@ class MediumTable extends BaseTable
 		$select ->from('Medium')
 			    ->columns(array('*','title'=>'title_'.$language,'content'=>'content_'.$language))
                 ->join(array('Genres'=>$select_genre), 'Genres.medium_id = Medium.id', array('genres'), 'left')
-                ->join('Type', 'Type.id = Medium.type_id', array('type'=>'name_'.$language), 'left');
+                ->join('Type', 'Type.id = Medium.type_id', array('type'=>'name_'.$language), 'left')
+                ->order('title ASC');
 
 		return $select;
 	}

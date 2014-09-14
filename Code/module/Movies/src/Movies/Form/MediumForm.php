@@ -245,6 +245,21 @@ class MediumForm extends Form
                 'empty_option' => '-',
             ),
         ));
+
+        $this->add(array(
+            'name' => 'imdb_url',
+            'attributes' => array(
+                'type'  => 'text',
+                'class' => 'form-control',
+            ),
+            'options' => array(
+                'label' => $this->translate('IMDb url'),
+                'label_attributes' => array(
+                    'class' => 'col-sm-4 control-label',
+                ),
+            ),
+        ));
+
         $this->add(array(
             'name' => 'cover_source',
             'attributes' => array(
