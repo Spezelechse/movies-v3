@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movies V3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-11 00:02+0100\n"
-"PO-Revision-Date: 2014-09-11 00:03+0100\n"
+"POT-Creation-Date: 2014-09-15 20:48+0100\n"
+"PO-Revision-Date: 2014-09-15 20:48+0100\n"
 "Last-Translator: Patrick Geißler\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -15,70 +15,78 @@ msgstr ""
 "X-Generator: Poedit 1.6.9\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../src/Movies/Controller/AdminController.php:94
-#: ../src/Movies/Controller/AdminController.php:319
+#: ../src/Movies/Controller/AdminController.php:88
+#: ../src/Movies/Controller/AdminController.php:313
 #: ../src/Movies/Form/UserForm.php:106 ../src/Movies/Form/UserForm.php:124
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: ../src/Movies/Controller/AdminController.php:131
+#: ../src/Movies/Controller/AdminController.php:125
 msgid "Medium added"
 msgstr "Medium hinzugefügt"
 
-#: ../src/Movies/Controller/AdminController.php:160
+#: ../src/Movies/Controller/AdminController.php:154
 msgid "Medium deleted"
 msgstr "Medium gelöscht"
 
-#: ../src/Movies/Controller/AdminController.php:196
-#: ../src/Movies/Controller/AdminController.php:441
-#: ../src/Movies/Controller/UserController.php:80
+#: ../src/Movies/Controller/AdminController.php:190
+#: ../src/Movies/Controller/AdminController.php:435
+#: ../src/Movies/Controller/UserController.php:74
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: ../src/Movies/Controller/AdminController.php:234
+#: ../src/Movies/Controller/AdminController.php:228
 msgid "Medium updated"
 msgstr "Medium aktualisiert"
 
-#: ../src/Movies/Controller/AdminController.php:251
+#: ../src/Movies/Controller/AdminController.php:245
 msgid "Medium id not found"
 msgstr "Medium id nicht gefunden"
 
-#: ../src/Movies/Controller/AdminController.php:342
+#: ../src/Movies/Controller/AdminController.php:336
 msgid "User added"
 msgstr "Benutzer hinzugefügt"
 
-#: ../src/Movies/Controller/AdminController.php:369
+#: ../src/Movies/Controller/AdminController.php:363
 msgid "User deleted"
 msgstr "Benutzter gelöscht"
 
-#: ../src/Movies/Controller/AdminController.php:407
-#: ../src/Movies/Controller/UserController.php:53
+#: ../src/Movies/Controller/AdminController.php:401
+#: ../src/Movies/Controller/UserController.php:47
 msgid "User updated"
 msgstr "Benutzer aktualisiert"
 
-#: ../src/Movies/Controller/AdminController.php:451
-#: ../src/Movies/Controller/UserController.php:90
+#: ../src/Movies/Controller/AdminController.php:445
+#: ../src/Movies/Controller/UserController.php:84
 msgid "User id not found"
 msgstr "Benutzer id nicht gefunden"
 
-#: ../src/Movies/Controller/AuthController.php:63
+#: ../src/Movies/Controller/AuthController.php:70
 msgid "login_success"
 msgstr "Erfolgreich eingeloggt!!"
 
-#: ../src/Movies/Controller/AuthController.php:78
-msgid "login_data_wrong"
-msgstr "Login fehlgeschlagen!!"
-
 #: ../src/Movies/Controller/AuthController.php:86
+msgid "login_data_wrong"
+msgstr "Login fehlgeschlagen!! %s Versuche verbleiben"
+
+#: ../src/Movies/Controller/AuthController.php:89
+msgid "login_blocked_now"
+msgstr "Der Login ist jetzt für  %s min. blockiert."
+
+#: ../src/Movies/Controller/AuthController.php:98
 msgid "login_data_missing"
 msgstr "Benutzername und Passwort werden benötigt!!"
 
-#: ../src/Movies/Controller/AuthController.php:98
+#: ../src/Movies/Controller/AuthController.php:102
+msgid "login_blocked"
+msgstr "Der Login ist noch %s min. blockiert."
+
+#: ../src/Movies/Controller/AuthController.php:152
 msgid "logged_out"
 msgstr "Erfolgreich ausgeloggt!!"
 
 #: ../src/Movies/Controller/SearchController.php:256
-#: ../view/movies/admin/add-movie.phtml:240
+#: ../view/movies/admin/add-movie.phtml:241
 #: ../view/zf-table/templates/container-b3.phtml:18
 #: ../view/zf-table/templates/custom-list-detail.phtml:18
 #: ../view/zf-table/templates/custom-pic-only.phtml:18
@@ -210,7 +218,7 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: ../src/Movies/Form/UserForm.php:109
-#: ../view/movies/admin/add-movie.phtml:250
+#: ../view/movies/admin/add-movie.phtml:252
 msgid "Import"
 msgstr "Importieren"
 
@@ -230,9 +238,13 @@ msgstr "Webseiten Rechte"
 msgid "Set up"
 msgstr "Konfigurieren"
 
-#: ../src/Movies/Table/ConfigTable.php:42
+#: ../src/Movies/Table/ConfigTable.php:43
 msgid "Value"
 msgstr "Wert"
+
+#: ../src/Movies/Table/ConfigTable.php:44
+msgid "Description"
+msgstr "Beschreibung"
 
 #: ../src/Movies/Table/MediaTable.php:86
 #: ../view/movies/admin/add-movie.phtml:24
@@ -246,7 +258,7 @@ msgid "Actions"
 msgstr "Aktionen"
 
 #: ../view/movies/admin/add-movie.phtml:28
-#: ../view/movies/admin/add-movie.phtml:230
+#: ../view/movies/admin/add-movie.phtml:231
 msgid "IMDb import"
 msgstr "IMDb Import"
 
@@ -256,9 +268,33 @@ msgstr "IMDb Import"
 msgid "Content"
 msgstr "Inhalt"
 
-#: ../view/movies/admin/add-movie.phtml:249
+#: ../view/movies/admin/add-movie.phtml:98
+#: ../view/movies/admin/edit-movie.phtml:91
+msgid "Add new genre"
+msgstr "Neues Genre hinzufügen"
+
+#: ../view/movies/admin/add-movie.phtml:111
+#: ../view/movies/admin/edit-movie.phtml:104
+msgid "Add new director"
+msgstr "Neuen Regisseur hinzufügen"
+
+#: ../view/movies/admin/add-movie.phtml:124
+#: ../view/movies/admin/edit-movie.phtml:117
+msgid "Add new publisher"
+msgstr "Neuen Herausgeber hinzufügen"
+
+#: ../view/movies/admin/add-movie.phtml:137
+#: ../view/movies/admin/edit-movie.phtml:130
+msgid "Add new type"
+msgstr "Neuen Typ hinzufügen"
+
+#: ../view/movies/admin/add-movie.phtml:250
 msgid "Close"
 msgstr "Schließen"
+
+#: ../view/movies/admin/add-movie.phtml:251
+msgid "Hide"
+msgstr "Verstecken"
 
 #: ../view/movies/admin/delete-movie.phtml:12
 msgid "delete-movie-callback"
@@ -306,7 +342,7 @@ msgid "Duration"
 msgstr "Laufzeit"
 
 #: ../view/movies/movies/show.phtml:166
-msgid "More infos at "
+msgid "More infos at"
 msgstr "Mehr Informationen auf"
 
 #: ../view/movies/search/actor.phtml:9 ../view/movies/search/director.phtml:9
@@ -384,9 +420,6 @@ msgstr ""
 
 #~ msgid "Update movie"
 #~ msgstr "Film Updaten"
-
-#~ msgid "Add user"
-#~ msgstr "Benutzer hinzufügen"
 
 #~ msgid "A 404 error occurred"
 #~ msgstr "Es trat ein 404 Fehler auf"

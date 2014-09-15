@@ -10,12 +10,12 @@ class ConfigTable extends BaseTable
         return (get_class($object)=='Movies\Model\Config') ? TRUE : FALSE;
     }
     
-    public function fetchAllForList_Select(){
+    public function fetchAllForList_Select($language){
         $sql = new Sql($this->tableGateway->getAdapter());
 
         $select = $sql->select();
         $select ->from('Config')
-                ->columns(array('*'));
+                ->columns(array('*','description'=>'description_'.$language));
 
         return $select;
     }

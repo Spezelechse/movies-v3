@@ -161,9 +161,9 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 			</h5><br>
 			<?php
 			$imdb_url = $medium->getImdbUrl();
-			if(isset($imdb_url)){
+			if(!empty($imdb_url)){
 			?>
-				<h5><?php echo $this->translate('More infos at ');?><a href="<?php echo $escaper->escapeHtml($imdb_url); ?>" target="_blank">IMDb</a></h5>
+				<h5><?php echo $this->translate('More infos at');?><a href="<?php echo $escaper->escapeHtml($imdb_url); ?>" target="_blank"> IMDb</a></h5>
 			<?php
 			}
 			?>

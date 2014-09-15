@@ -16,6 +16,7 @@ abstract class BasisController extends AbstractActionController
     protected $authservice;
     protected $view;
     protected $dbAdapter;
+    protected $translator;
     
     public function init()
     {
@@ -107,6 +108,10 @@ abstract class BasisController extends AbstractActionController
     }
 
     protected function translate($string){
-        return $string;
+      if(!isset($this->translator)){
+        $this->translator=$this->Translator()->getTranslator();
+      }
+
+      return $this->translator->translate($string);
     }
 }

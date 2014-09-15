@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-23 03:09+0100\n"
-"PO-Revision-Date: 2014-08-23 03:16+0100\n"
-"Last-Translator: Evan Coury <me@evancoury.com>\n"
+"POT-Creation-Date: 2014-09-15 20:48+0100\n"
+"PO-Revision-Date: 2014-09-15 20:48+0100\n"
+"Last-Translator: Patrick Geißler\n"
 "Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -12,45 +12,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: translate\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.6.8\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../src/Movies/Controller/AdminController.php:35
-#: ../src/Movies/Controller/AdminController.php:152
+#: ../src/Movies/Controller/AdminController.php:88
+#: ../src/Movies/Controller/AdminController.php:313
 #: ../src/Movies/Form/UserForm.php:106 ../src/Movies/Form/UserForm.php:124
 msgid "Add"
 msgstr ""
 
-#: ../src/Movies/Controller/AdminController.php:88
-#: ../src/Movies/Controller/AdminController.php:197
+#: ../src/Movies/Controller/AdminController.php:125
+msgid "Medium added"
+msgstr ""
+
+#: ../src/Movies/Controller/AdminController.php:154
+msgid "Medium deleted"
+msgstr ""
+
+#: ../src/Movies/Controller/AdminController.php:190
+#: ../src/Movies/Controller/AdminController.php:435
+#: ../src/Movies/Controller/UserController.php:74
 msgid "Update"
 msgstr ""
 
-#: ../src/Movies/Controller/AdminController.php:209
-msgid "Form valid"
+#: ../src/Movies/Controller/AdminController.php:228
+msgid "Medium updated"
 msgstr ""
 
-#: ../src/Movies/Controller/AdminController.php:220
-msgid "Form not valid"
+#: ../src/Movies/Controller/AdminController.php:245
+msgid "Medium id not found"
 msgstr ""
 
-#: ../src/Movies/Controller/AuthController.php:63
+#: ../src/Movies/Controller/AdminController.php:336
+msgid "User added"
+msgstr ""
+
+#: ../src/Movies/Controller/AdminController.php:363
+msgid "User deleted"
+msgstr ""
+
+#: ../src/Movies/Controller/AdminController.php:401
+#: ../src/Movies/Controller/UserController.php:47
+msgid "User updated"
+msgstr ""
+
+#: ../src/Movies/Controller/AdminController.php:445
+#: ../src/Movies/Controller/UserController.php:84
+msgid "User id not found"
+msgstr ""
+
+#: ../src/Movies/Controller/AuthController.php:70
 msgid "login_success"
 msgstr "Successful logged in!!"
 
-#: ../src/Movies/Controller/AuthController.php:76
+#: ../src/Movies/Controller/AuthController.php:86
 msgid "login_data_wrong"
-msgstr "Login failed!!"
+msgstr "Login failed!! Remaining attempts %s."
 
-#: ../src/Movies/Controller/AuthController.php:84
+#: ../src/Movies/Controller/AuthController.php:89
+msgid "login_blocked_now"
+msgstr "The Login is now blocked for %s min."
+
+#: ../src/Movies/Controller/AuthController.php:98
 msgid "login_data_missing"
 msgstr "Username and Password needed!!"
 
-#: ../src/Movies/Controller/AuthController.php:96
+#: ../src/Movies/Controller/AuthController.php:102
+msgid "login_blocked"
+msgstr "The Login is still blocked for %s min."
+
+#: ../src/Movies/Controller/AuthController.php:152
 msgid "logged_out"
 msgstr "Successful logged out!!"
 
+#: ../src/Movies/Controller/SearchController.php:256
+#: ../view/movies/admin/add-movie.phtml:241
+#: ../view/zf-table/templates/container-b3.phtml:18
+#: ../view/zf-table/templates/custom-list-detail.phtml:18
+#: ../view/zf-table/templates/custom-pic-only.phtml:18
+msgid "Search"
+msgstr ""
+
 #: ../src/Movies/Form/LoginForm.php:24 ../src/Movies/Form/UserForm.php:52
+#: ../src/Movies/Table/UserTable.php:55
 msgid "Username"
 msgstr ""
 
@@ -70,59 +114,78 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:81 ../view/movies/movies/show.phtml:43
+#: ../src/Movies/Form/MediumForm.php:81 ../view/movies/movies/show.phtml:56
+#: ../view/movies/search/actor.phtml:12
 msgid "Actor"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:92 ../view/movies/movies/show.phtml:44
+#: ../src/Movies/Form/MediumForm.php:92 ../view/movies/movies/show.phtml:57
 msgid "Role"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:103 ../view/movies/movies/show.phtml:86
+#: ../src/Movies/Form/MediumForm.php:104
+#: ../view/movies/imdb/ajax-import.phtml:25
+#: ../view/movies/movies/show.phtml:91 ../view/movies/search/genre.phtml:12
+#: ../view/zf-table/templates/custom-list-detail.phtml:61
 msgid "Genre"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:117 ../view/movies/movies/show.phtml:110
+#: ../src/Movies/Form/MediumForm.php:119
+#: ../view/movies/imdb/ajax-import.phtml:16
+#: ../view/movies/movies/show.phtml:115
+#: ../view/movies/search/publisher.phtml:12
 msgid "Publisher"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:131 ../view/movies/movies/show.phtml:98
+#: ../src/Movies/Form/MediumForm.php:134
+#: ../view/movies/imdb/ajax-import.phtml:7
+#: ../view/movies/movies/show.phtml:103
+#: ../view/movies/search/director.phtml:12
 msgid "Director"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:144 ../view/movies/movies/show.phtml:122
+#: ../src/Movies/Form/MediumForm.php:148
+#: ../view/movies/imdb/ajax-import.phtml:34
+#: ../view/movies/movies/show.phtml:127 ../view/movies/search/type.phtml:12
+#: ../view/zf-table/templates/custom-list-detail.phtml:60
 msgid "Type"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:157 ../view/movies/movies/show.phtml:129
+#: ../src/Movies/Form/MediumForm.php:162 ../view/movies/movies/show.phtml:134
+#: ../view/movies/search/owner.phtml:12
 msgid "Owner"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:170 ../view/movies/movies/show.phtml:143
+#: ../src/Movies/Form/MediumForm.php:176 ../view/movies/movies/show.phtml:148
+#: ../view/movies/search/fsk.phtml:12
 msgid "FSK"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:191 ../view/movies/movies/show.phtml:150
+#: ../src/Movies/Form/MediumForm.php:198 ../view/movies/movies/show.phtml:155
 msgid "Premiere"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:205 ../view/movies/movies/show.phtml:136
-msgid "Duration"
+#: ../src/Movies/Form/MediumForm.php:211
+msgid "Duration (min.)"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:218
+#: ../src/Movies/Form/MediumForm.php:224
 msgid "Num. disks"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:231
+#: ../src/Movies/Form/MediumForm.php:237 ../view/movies/search/medium.phtml:12
 msgid "Medium"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:248 ../view/movies/movies/show.phtml:81
+#: ../src/Movies/Form/MediumForm.php:256
+msgid "IMDb url"
+msgstr ""
+
+#: ../src/Movies/Form/MediumForm.php:270 ../view/movies/movies/show.phtml:86
 msgid "Source"
 msgstr ""
 
-#: ../src/Movies/Form/MediumForm.php:262
+#: ../src/Movies/Form/MediumForm.php:284
 msgid "File"
 msgstr ""
 
@@ -130,7 +193,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ../src/Movies/Form/UserForm.php:39
+#: ../src/Movies/Form/UserForm.php:39 ../src/Movies/Table/UserTable.php:56
 msgid "Surname"
 msgstr ""
 
@@ -155,6 +218,7 @@ msgid "Delete"
 msgstr ""
 
 #: ../src/Movies/Form/UserForm.php:109
+#: ../view/movies/admin/add-movie.phtml:252
 msgid "Import"
 msgstr ""
 
@@ -174,33 +238,85 @@ msgstr ""
 msgid "Set up"
 msgstr ""
 
-#: ../view/movies/admin/add-movie.phtml:21
-#: ../view/movies/admin/edit-movie.phtml:21
+#: ../src/Movies/Table/ConfigTable.php:43
+msgid "Value"
+msgstr ""
+
+#: ../src/Movies/Table/ConfigTable.php:44
+msgid "Description"
+msgstr ""
+
+#: ../src/Movies/Table/MediaTable.php:86
+#: ../view/movies/admin/add-movie.phtml:24
+#: ../view/movies/admin/edit-movie.phtml:24
+#: ../view/movies/search/advanced.phtml:42
 msgid "Title"
 msgstr ""
 
-#: ../view/movies/admin/add-movie.phtml:36
-#: ../view/movies/admin/edit-movie.phtml:36
+#: ../src/Movies/Table/UserTable.php:57
+msgid "Actions"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:28
+#: ../view/movies/admin/add-movie.phtml:231
+msgid "IMDb import"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:46
+#: ../view/movies/admin/edit-movie.phtml:39
+#: ../view/movies/search/advanced.phtml:50
 msgid "Content"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:98
+#: ../view/movies/admin/edit-movie.phtml:91
+msgid "Add new genre"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:111
+#: ../view/movies/admin/edit-movie.phtml:104
+msgid "Add new director"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:124
+#: ../view/movies/admin/edit-movie.phtml:117
+msgid "Add new publisher"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:137
+#: ../view/movies/admin/edit-movie.phtml:130
+msgid "Add new type"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:250
+msgid "Close"
+msgstr ""
+
+#: ../view/movies/admin/add-movie.phtml:251
+msgid "Hide"
 msgstr ""
 
 #: ../view/movies/admin/delete-movie.phtml:12
 msgid "delete-movie-callback"
 msgstr "Are you sure you want to delete the movie below?"
 
-#: ../view/movies/admin/delete-movie.phtml:27
-#: ../view/movies/admin/delete-user.phtml:28
+#: ../view/movies/admin/delete-movie.phtml:29
+#: ../view/movies/admin/delete-user.phtml:31
 msgid "no"
 msgstr ""
 
-#: ../view/movies/admin/delete-movie.phtml:30
-#: ../view/movies/admin/delete-user.phtml:31
+#: ../view/movies/admin/delete-movie.phtml:32
+#: ../view/movies/admin/delete-user.phtml:34
 msgid "yes"
 msgstr ""
 
-#: ../view/movies/admin/delete-user.phtml:13
+#: ../view/movies/admin/delete-user.phtml:14
 msgid "delete-user-callback"
 msgstr "Are you sure you want to delete the user below?"
+
+#: ../view/movies/admin/list-user.phtml:10
+msgid "Manage users"
+msgstr ""
 
 #: ../view/movies/admin/site-set-up.phtml:10
 msgid "Page set-up"
@@ -209,6 +325,62 @@ msgstr ""
 #: ../view/movies/admin/site-set-up.phtml:13
 msgid "how-to-set-page-up"
 msgstr "Just click on the value to be changed, make the changes and save it."
+
+#: ../view/movies/imdb/ajax-import.phtml:43
+msgid "The following values are missing and have to be added manually:"
+msgstr ""
+
+#: ../view/movies/imdb/ajax-search.phtml:5
+msgid "Results for"
+msgstr ""
+
+#: ../view/movies/movies/show.phtml:141
+#: ../view/zf-table/templates/custom-list-detail.phtml:62
+msgid "Duration"
+msgstr ""
+
+#: ../view/movies/movies/show.phtml:166
+msgid "More infos at"
+msgstr ""
+
+#: ../view/movies/search/actor.phtml:9 ../view/movies/search/director.phtml:9
+#: ../view/movies/search/fsk.phtml:9 ../view/movies/search/genre.phtml:9
+#: ../view/movies/search/medium.phtml:9 ../view/movies/search/owner.phtml:9
+#: ../view/movies/search/publisher.phtml:9 ../view/movies/search/type.phtml:9
+msgid "Search results for:"
+msgstr ""
+
+#: ../view/movies/search/advanced.phtml:13
+msgid "Search results for advanced search:"
+msgstr ""
+
+#: ../view/movies/search/advanced.phtml:38
+msgid "Advanced search:"
+msgstr ""
+
+#: ../view/zf-table/templates/container-b3.phtml:7
+#: ../view/zf-table/templates/custom-list-detail.phtml:7
+#: ../view/zf-table/templates/custom-pic-only.phtml:7
+msgid "Show as"
+msgstr ""
+
+#: ../view/zf-table/templates/container-b3.phtml:9
+#: ../view/zf-table/templates/custom-list-detail.phtml:9
+#: ../view/zf-table/templates/custom-pic-only.phtml:9
+msgid "List"
+msgstr ""
+
+#: ../view/zf-table/templates/container-b3.phtml:10
+#: ../view/zf-table/templates/custom-list-detail.phtml:10
+#: ../view/zf-table/templates/custom-pic-only.phtml:10
+msgid "Details"
+msgstr ""
+
+#: ../view/zf-table/templates/container-b3.phtml:11
+#: ../view/zf-table/templates/custom-list-detail.phtml:11
+#: ../view/zf-table/templates/custom-pic-only.phtml:11
+msgid "Cover"
+msgstr ""
 
 #~ msgid "login_incorrect"
 #~ msgstr "No matching login information found!"

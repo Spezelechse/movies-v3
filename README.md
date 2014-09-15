@@ -59,11 +59,13 @@ Update 14.09.14
 - added new config entries (country and imdb_auto_add)
 - changed add popovers, they are now more reuseable
 
+Update 15.09.14
+- limited login attempts, now max 3 attempts bevor 1 hour login block
+- added config descriptions
+
 ------------------------------------------------------------------------------------------------
 
 Whats planned next?
-- limit login attempts
 - implement import/export functions
 - implement transfer skript v2 -> v3
-- add additional config informations
 - test on live system

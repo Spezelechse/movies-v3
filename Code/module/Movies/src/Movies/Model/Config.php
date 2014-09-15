@@ -7,6 +7,8 @@ class Config extends BaseObject
 	public $name;
 	public $data;
 	public $type;
+	public $description_de;
+	public $description_en;
 
 	public function exchangeArray($data)
 	{
@@ -14,6 +16,8 @@ class Config extends BaseObject
 		$this->name = (isset($data['name'])) ? $data['name'] : null;
 		$this->data = (isset($data['data'])) ? $data['data'] : null;
 		$this->type = (isset($data['type'])) ? $data['type'] : null;
+		$this->description_de = (isset($data['description_de'])) ? $data['description_de'] : null;
+		$this->description_en = (isset($data['description_en'])) ? $data['description_en'] : null;
 	}
 
 	public function getData()

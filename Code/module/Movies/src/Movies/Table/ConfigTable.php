@@ -26,6 +26,7 @@ class ConfigTable extends AbstractTable
         'id' => array('title' => '#' ) ,
         'name' => array('title' => 'Name', 'filters' => 'text'),
         'data' => array('title' => 'Value', 'editable' => true),
+        'description' => array('title' => 'Description' ) ,
     );
 
     public function setUpdateUrl($url){
@@ -40,6 +41,7 @@ class ConfigTable extends AbstractTable
     {
         if(isset($this->translator)){
             $this->getHeader('data')->setTitle($this->translator->translate('Value'));
+            $this->getHeader('description')->setTitle($this->translator->translate('Description'));
         }
 
         $this->getRow()->addDecorator('varattr', array('name' => 'data-row' , 'value' => '%s' , 'vars' => array('id')));

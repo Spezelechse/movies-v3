@@ -481,7 +481,7 @@ class AdminController extends BasisController
     public function siteSetUpAjaxAction()
     {
         if($this->getAuthService()->getIdentity()->hasRight('page','config')){
-            $config_select=$this->Tables()->config()->fetchAllForList_Select();
+            $config_select=$this->Tables()->config()->fetchAllForList_Select($this->language);
 
             $table = new ConfigTable();
             $table->setUpdateUrl($this->url()->fromRoute('admin', array('lang'=>$this->language, 'action'=>'update-config-ajax')));
