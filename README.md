@@ -10,7 +10,7 @@ Some of the new features will be:
 - single page application (the whole page or just parts of it, not sure at the moment :) )
 - improved database design
  
-Live demo of the master-branch can be found [here](http://movies-dev.spezelechse.de/) and the login data is admin | Test?123
+**Live demo** of the master-branch can be found [here](http://movies-dev.spezelechse.de/) and the login data is admin | Test?123
 
 An example for a complete entry is added under the title **Just a test**.
 
