@@ -9,10 +9,13 @@ Some of the new features will be:
 - responsive(ish) design
 - single page application (the whole page or just parts of it, not sure at the moment :) )
 - improved database design
-
-I've never worked with Zend so the inital build will take some time.
+ 
+Live demo of the master-branch can be found [here](http://movies-dev.spezelechse.de/) and the login data is admin | Test?123
 
 ------------------------------------------------------------------------------------------------
+
+###Updates
+I've never worked with Zend so the inital build will take some time.
 
 Update 27.08.14
 The first build is now ready. Not everything is working but the main functionality does.
