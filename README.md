@@ -12,6 +12,8 @@ Some of the new features will be:
  
 Live demo of the master-branch can be found [here](http://movies-dev.spezelechse.de/) and the login data is admin | Test?123
 
+An example for a complete entry is added under the title "Just a test".
+
 ------------------------------------------------------------------------------------------------
 
 ###Updates
