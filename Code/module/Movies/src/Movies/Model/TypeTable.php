@@ -3,6 +3,7 @@ namespace Movies\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
 
 class TypeTable extends BaseTable
 {
@@ -13,8 +14,9 @@ class TypeTable extends BaseTable
     public function getByName($name){
         $id = 0;
         $trim = new StringTrim();
+        $strip = new StripTags();
 
-        $name = $trim($name);
+        $name = $strip($trim($name));
 
         $select = $this->tableGateway->getSql()->select();
 
@@ -27,7 +29,22 @@ class TypeTable extends BaseTable
             $id = $result->id;
         }
 
-        return $id;
+        return (int)$id;
+    }
+
+    public function import($data){
+        $id = $this->getByName($data->en);
+        $trim = new StringTrim();
+        $strip = new StripTags();
+        
+        if($id==0){
+            $new = new Type();
+            $new->name_en = $strip($trim($data->en));
+            $new->name_de = $strip($trim($data->de));;
+            $id = $this->save($new);
+        }
+
+        return (int)$id;
     }
 
     public function fetchAllForSelect($language){

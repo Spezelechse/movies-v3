@@ -5,6 +5,7 @@ return array(
         'AssetManager',
         'Application',
         'ZfTable',
+        'DOMPDFModule',
         'Movies',
     ),
 

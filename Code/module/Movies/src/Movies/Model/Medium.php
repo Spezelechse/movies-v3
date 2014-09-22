@@ -25,7 +25,6 @@ class Medium extends BaseObject
 
 	public $genre;
 	public $actors;
-	public $cover;
 	public $director;
 	public $publisher;
 	public $type;
@@ -55,12 +54,56 @@ class Medium extends BaseObject
 	public function toArray(){
 		$array = parent::toArray();
 
-		for($i=0; $i<8; $i++){
+		for($i=0; $i<7; $i++){
 			array_pop($array);
 		}
 
 		return $array;
 	}
+
+    public function export(){
+        $export = $this->toArray();
+        unset($export['id'],$export['type_id'],$export['owner_id']);
+        $variables_single = array('actors','director','publisher');
+        $variables_multi = array('genre','type');
+
+        foreach ($variables_single as $variable) {
+            $export[$variable]=array();
+
+            if(!empty($this->$variable)){
+                foreach ($this->$variable as $value) {
+                    if($variable=='actors'){
+                        if(!empty($value->name)){
+                            array_push($export[$variable], array('name'=>$value->name, 'year_of_birth'=>$value->year_of_birth, 'role'=>$value->role));
+                        }
+                    }
+                    else{
+                        if(!empty($value->name)){
+                            array_push($export[$variable], $value->name);
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach ($variables_multi as $variable) {
+            $export[$variable]=array();
+
+            if(empty($this->$variable)){
+                $export[$variable]='';
+            }
+            else if(get_class($this->$variable)=='Zend\Db\ResultSet\ResultSet'){
+                foreach ($this->$variable as $value) {
+                    array_push($export[$variable], array('en'=>$value->name_en, 'de'=>$value->name_de));
+                }
+            }
+            else{
+               $export[$variable] = array('en'=>$this->$variable->name_en, 'de'=>$this->$variable->name_de);
+            }
+        }
+
+        return $export;
+    }
 
 	public function setGenre($data){
 		$this->genre=$data;

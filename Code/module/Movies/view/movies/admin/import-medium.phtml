@@ -1,0 +1,73 @@
+<?php
+/**
+ * @package Movies
+ */
+
+echo $this->messageHelper($this->flashMessenger());
+$escaper = new Zend\Escaper\Escaper('utf-8');
+
+?>
+<h3>
+	<?php echo $this->translate('Import medium'); ?>
+	<br>
+</h3>
+<?php
+if(!isset($import_result)){
+?>
+<form class="form-horizontal" method="post" action="<?php $this->url('admin', array('lang' => $language,'action' => 'import-movie'));?>">
+	<div class="col-sm-4 pull-right">
+		<div class="form-group">
+			<label class="col-sm-4 control-label" for="owner_id"><?php echo $this->translate('Owner'); ?></label>				
+			<div class="col-sm-8">
+				<select name="owner_id" class="form-control">
+					<?php
+					foreach ($users as $id => $name) {
+						echo '<option value="'.$id.'">'.$name.'</option>';
+					}
+					?>
+				</select>				
+			</div>		
+		</div>
+	</div>
+	<div class="row">
+		<textarea class="col-xs-12 col-sm-12" name="json_import" rows="20"></textarea>
+	</div>
+	<div class="row text-center" style="margin-top:20px;">
+		<input type="submit" class="btn btn-default" value="<?php echo $this->translate('Import'); ?>">
+	</div>
+</form>
+<?php 
+}
+else{
+?>
+	<h3>
+		<small>
+			<?php echo $this->translate('The following media were imported:').'('.count($import_result['succeed']).')'; ?>
+		</small>
+	</h3>
+	<?php
+	if(count($import_result['succeed'])>0){
+		foreach ($import_result['succeed'] as $result) {
+			echo $escaper->escapeHtml($result).'<br>';
+		}
+	}
+	else{
+		echo '-';
+	}
+	?>
+	<h3>
+		<small>
+			<?php echo $this->translate('and these failed:').'('.count($import_result['failed']).')'; ?>
+		</small>
+	</h3>
+	<?php
+	if(count($import_result['failed'])>0){
+		foreach ($import_result['failed'] as $result) {
+			echo $escaper->escapeHtml($result).'<br>';
+		}
+	}
+	else{
+		echo '-';
+	}
+}
+?>

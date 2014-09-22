@@ -1,8 +1,8 @@
 <?php
 namespace Movies\View\Helper;
-use Zend\View\Helper\FlashMessenger;
+use Zend\View\Helper\AbstractHelper;
  
-class MessageHelper extends FlashMessenger
+class MessageHelper extends AbstractHelper
 {
     public function __invoke($messenger, $size = 500)
     {

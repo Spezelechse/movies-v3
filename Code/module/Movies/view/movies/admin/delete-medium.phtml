@@ -1,0 +1,37 @@
+<?php
+/**
+ * @package Movies
+ */
+$escaper = new Zend\Escaper\Escaper('utf-8');
+// Template
+?>
+<div class="text-center movies-callback">
+	<div class="row">
+		<h3>
+			<?php
+			echo $this->translate('delete-movie-callback');
+			?>
+			<br>
+			<h3>
+				<small>
+						<?php
+						echo $escaper->escapeHtml($medium->getTitle($language)." (".explode('-',$medium->premiere)[0].")");
+						?>
+				</small>
+			</h3>
+		</h3>
+	</div>
+	<div class="row">
+		<form action="<?php echo $this->url('admin', array('lang' => $language, 'action' => 'delete-medium', 'id' => $medium->id)); ?>" method="post" name="user-delete" role="form" class="form-horizontal center-block" id="user-delete">
+				<div class="row">
+					<div class="center-block movies-confirm">
+						<a class="btn" href="<?php echo $this->url('movies', array('lang' => $language, 'action' => 'index')); ?>">
+							<input name="cancel" id="cancelbutton" class="btn btn-default" value="<?php echo $this->translate('no'); ?>" type="button">
+						</a>
+						<span style="margin-right: 40px;"></span>
+						<input name="submit" id="submitbutton" class="btn btn-default" value="<?php echo $this->translate('yes'); ?>" type="submit">			
+					</div>
+				</div>
+		</form>
+	</div>
+</div>

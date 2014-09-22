@@ -1,3 +1,6 @@
+<?php
+$escaper = new Zend\Escaper\Escaper('utf-8');
+?>
 <div class="zf-table-wrap  form-inline">
     <div class="table-header">
     </div>
@@ -29,7 +32,7 @@
                         if($row['cover_file']!=''){ 
                     ?>  
                     <a href="<?php echo explode('"',$row['title'])[1]; ?>">
-                        <img class="img-responsive" src="<?php echo $this->name['basicPath']; ?>img/cover/<?php echo $row['cover_file']; ?>">
+                        <img class="img-responsive" src="<?php echo $this->name['basicPath']; ?>img/cover/<?php echo $escaper->escapeHtml($row['cover_file']); ?>">
                     </a>
                     <?php 
                     }
@@ -57,19 +60,19 @@
                     </small>
                 </h4>
                 <div class="movie-list-detail-info">
-                    <?php echo '<h5>'.$this->name['translator']->translate('Type').': <small>'.$row['type'].'</small></h5>'; ?>
-                    <?php echo '<h5>'.$this->name['translator']->translate('Genre').': <small>'.$row['genres'].'</small></h5>'; ?>
-                    <?php echo '<h5>'.$this->name['translator']->translate('Duration').': <small>'.$row['duration'].'</small></h5>'; ?>
+                    <?php echo '<h5>'.$this->name['translator']->translate('Type').': <small>'.$escaper->escapeHtml($row['type']).'</small></h5>'; ?>
+                    <?php echo '<h5>'.$this->name['translator']->translate('Genre').': <small>'.$escaper->escapeHtml($row['genres']).'</small></h5>'; ?>
+                    <?php echo '<h5>'.$this->name['translator']->translate('Duration').': <small>'.$escaper->escapeHtml($row['duration']).'</small></h5>'; ?>
                 </div>
                 <div class="hyphenless" style="margin-top: 10px;">
                     <h5>
                 <?php
                     if(strlen($row['content'])>500){
-                        echo substr($row['content'], 0, strpos($row['content'], ' ',500));
+                        echo $escaper->escapeHtml(substr($row['content'], 0, strpos($row['content'], ' ',500)));
                         echo ' ...';
                     }
                     else{
-                        echo $row['content'];
+                        echo $escaper->escapeHtml($row['content']);
                     }
                 ?>
                     </h5>

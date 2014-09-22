@@ -4,6 +4,7 @@ namespace Movies\Model;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Sql;
 use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
 
 class PublisherTable extends BaseTable
 {
@@ -14,8 +15,9 @@ class PublisherTable extends BaseTable
     public function getByName($name){
         $id = 0;
         $trim = new StringTrim();
+        $strip = new StripTags();
 
-        $name = $trim($name);
+        $name = $strip($trim($name));
 
         $select = $this->tableGateway->getSql()->select();
 
@@ -28,7 +30,21 @@ class PublisherTable extends BaseTable
             $id = $result->id;
         }
         
-        return $id;
+        return (int)$id;
+    }
+
+    public function import($data){
+        $id = $this->getByName($data);
+        $trim = new StringTrim();
+        $strip = new StripTags();
+        
+        if($id==0){
+            $new = new Publisher();
+            $new->name = $strip($trim($data));
+            $id = $this->save($new);
+        }
+
+        return (int)$id;
     }
 
     public function fetchForMedium($id)

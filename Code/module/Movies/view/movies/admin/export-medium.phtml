@@ -1,0 +1,46 @@
+<?php
+/**
+ * @package Movies
+ */
+
+echo $this->messageHelper($this->flashMessenger());
+
+?>
+<h3>
+	<?php echo $this->translate('Export medium'); ?>
+	<br>
+</h3>
+<?php
+if(isset($json_export)){
+	?>
+<div class="row">
+	<textarea class="col-xs-12 col-sm-12" rows="20"><?php echo $json_export; ?></textarea>
+</div>
+<?php 
+}
+else{
+?>
+<div class="row">
+	<div class="col-xs-12 col-sm-7" id="tableContainer"></div>
+	<div class="col-xs-12 col-sm-5">
+		<h4>
+			<?php echo $this->translate('Media for export:'); ?>
+		</h4>
+		<form class="form-horizontal" method="post" action="<?php $this->url('admin', array('lang' => $language,'action' => 'export-movie'));?>">
+			<div id="nothing-selected" style="margin-top:20px; margin-bottom:20px;"><?php echo $this->translate('Nothing selected!'); ?></div>
+			<div id="selected-media"></div>
+			<div class="form-group checkbox" style="margin-top:20px;">
+				<label class="control-label"><?php echo $this->translate('Export all'); ?><input type="checkbox" value="1" name="export_all"></input></label>
+			</div>
+			<div class="row text-center" style="margin-top:20px; margin-bottom:20px;">
+				<input type="submit" class="btn btn-default" value="<?php echo $this->translate('Export'); ?>">
+			</div>
+		</form>
+	</div>
+</div> 
+<script>
+    $("#tableContainer").zfTable("<?php echo $this->url('admin', array('action'=>'export-medium-ajax','lang'=>$this->language)); ?>");
+</script>
+<?php
+}
+	?>

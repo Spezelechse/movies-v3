@@ -18,20 +18,39 @@ use Movies\Form\UserForm;
 use Movies\Form\MediumForm;
 use Movies\Table\UserTable;
 use Movies\Table\ConfigTable;
+use Movies\Table\ExportTable;
 use Zend\I18n\Filter\Alnum;
 use Zend\Filter\Int;
 use Zend\Validator\File\MimeType;
 use SimpleImage;
+use DOMPDFModule\View\Model\PdfModel;
 
 class AdminController extends BasisController
 {
+    private $medium_form;
+
     public function init()
     {
         parent::init();
 
         if(!$this->getAuthService()->hasIdentity()){
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language, 'action'=>'login')); 
+            return $this->redirect()->toRoute('auth', array('lang'=>$this->language, 'action'=>'login')); 
         }
+    }
+
+    public function getMediumForm(){
+        if(empty($this->medium_form)){
+            $form = new MediumForm();
+            $form->get('submit')->setValue($this->translate('Update'));
+            $form->get('genre')->setValueOptions($this->Tables()->genre()->fetchAllForSelect($this->language));
+            $form->get('director')->setValueOptions($this->Tables()->director()->fetchAllForSelect());
+            $form->get('publisher')->setValueOptions($this->Tables()->publisher()->fetchAllForSelect());
+            $form->get('type_id')->setValueOptions($this->Tables()->type()->fetchAllForSelect($this->language));
+            $form->get('owner_id')->setValueOptions($this->Tables()->user()->fetchAllForSelect());
+            
+            $this->medium_form = $form;
+        }
+        return $this->medium_form;
     }
 
     public function indexAction(){
@@ -62,7 +81,18 @@ class AdminController extends BasisController
                 {
                     $extension='.png';
                 }
-                $filename .= $extension;
+
+                $id = uniqid();
+                while(file_exists('./public/img/cover/'.$filename.'_'.$id.$extension)){
+                    $id = uniqid();
+                }
+
+                $filename .= '_'.$id.$extension;
+
+                if($old_name!=''){
+                    unlink('./public/img/cover/'.$old_name);
+                    unlink('./public/img/thumb/'.$old_name);
+                }
             }
             else{
                 $this->showFormMessages($mime);
@@ -81,16 +111,11 @@ class AdminController extends BasisController
         }
     }
 
-    public function addMovieAction()
+    public function addMediumAction()
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','add')){
-            $form = new MediumForm();
+            $form = $this->getMediumForm();
             $form->get('submit')->setValue($this->translate('Add'));
-            $form->get('genre')->setValueOptions($this->Tables()->genre()->fetchAllForSelect($this->language));
-            $form->get('director')->setValueOptions($this->Tables()->director()->fetchAllForSelect());
-            $form->get('publisher')->setValueOptions($this->Tables()->publisher()->fetchAllForSelect());
-            $form->get('type_id')->setValueOptions($this->Tables()->type()->fetchAllForSelect($this->language));
-            $form->get('owner_id')->setValueOptions($this->Tables()->user()->fetchAllForSelect());
 
             $request = $this->getRequest();
             if ($request->isPost()) {
@@ -141,7 +166,7 @@ class AdminController extends BasisController
         }
     }
 
-    public function deleteMovieAction()
+    public function deleteMediumAction()
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','delete')){
             $id=$this->params()->fromRoute('id',0);
@@ -170,7 +195,7 @@ class AdminController extends BasisController
         }
     }
 
-    public function editMovieAction()
+    public function editMediumAction()
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','edit')){
             $id=(int)$this->params()->fromRoute('id',0);
@@ -186,13 +211,8 @@ class AdminController extends BasisController
                 $medium_data['actors_text']=$actors['names'];
                 $medium_data['roles_text']=$actors['roles'];
 
-                $form = new MediumForm();
+                $form = $this->getMediumForm();
                 $form->get('submit')->setValue($this->translate('Update'));
-                $form->get('genre')->setValueOptions($this->Tables()->genre()->fetchAllForSelect($this->language));
-                $form->get('director')->setValueOptions($this->Tables()->director()->fetchAllForSelect());
-                $form->get('publisher')->setValueOptions($this->Tables()->publisher()->fetchAllForSelect());
-                $form->get('type_id')->setValueOptions($this->Tables()->type()->fetchAllForSelect($this->language));
-                $form->get('owner_id')->setValueOptions($this->Tables()->user()->fetchAllForSelect());
                 $form->setData($medium_data);
 
                 $request = $this->getRequest();
@@ -251,26 +271,198 @@ class AdminController extends BasisController
         }
     }
 
-    public function importMovieAction()
+    public function importMediumAction()
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','import')){
-            return;
+            $request = $this->getRequest();
+            if ($request->isPost()) {
+                $post = $request->getPost()->toArray();
+                $import_data = json_decode($post['json_import']);
+                $owner_id = (int)$post['owner_id'];
+                $result = array('succeed'=>array(), 'failed'=>array());
+
+                foreach ($import_data as $data) {
+                    $import = $this->processSingleImport($data, $owner_id);
+                    if(isset($import['failed'])){
+                        array_push($result['failed'], $import['failed']);
+                    }
+                    else{
+                        array_push($result['succeed'], $import['succeed']);
+                    }
+                }
+
+                $this->view->import_result=$result;
+            }
+            else{
+                $this->view->users = $this->Tables()->user()->fetchAllForSelect();
+            }
+            
+            return $this->view;
         }
         else{
             return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
         }
     }
 
-    public function exportMovieAction()
+    public function processSingleImport($data, $owner_id){
+        $data = $this->prepareImport($data, $owner_id);
+        
+        $cover_file = $data['cover_file'];
+        unset($data['cover_file']);
+
+        $medium = new Medium();
+
+        $form = $this->getMediumForm();
+        $form->setInputFilter($medium->getInputFilter('add'));
+        $form->remove('csrf');
+        $form->setData($data);
+
+        if ($form->isValid()) {
+            $formData = $form->getData();
+            $formData['cover_file'] = $cover_file;
+            $medium->exchangeArray($formData);
+
+            $id = $this->Tables()->medium()->save($medium);
+            
+            $this->Tables()->actor()->connectToMedium($id, $formData['actors_text'], $formData['roles_text']);
+
+            $this->Tables()->genre()->connectToMedium($id, $formData['genre']);
+            $this->Tables()->director()->connectToMedium($id, $formData['director']);
+            $this->Tables()->publisher()->connectToMedium($id, $formData['publisher']);
+
+            return array('succeed'=>$data['title_'.$this->language]);
+        }
+        else{
+            //$this->showFormMessages($form);
+            return array('failed'=>$data['title_'.$this->language]);
+        }
+    }
+
+    public function prepareImport($data, $owner_id){
+        $keys =  array('director','publisher','genre');
+
+        foreach ($keys as $key) {
+            $ids = array();
+            foreach ($data->$key as $value) {
+                $id = $this->Tables()->$key()->import($value);
+                if($id>0){
+                    array_push($ids,$id);
+                }
+            }
+            $data->$key = $ids;
+        }
+
+        $data->type_id = $this->Tables()->type()->import($data->type);
+        
+        unset($data->type);
+        
+        $data->actors_text = '';
+        $data->roles_text = '';
+
+        foreach ($data->actors as $actor) {
+            $data->actors_text .= $actor->name.'#'.$actor->year_of_birth.PHP_EOL;
+            $data->roles_text .= $actor->role.PHP_EOL;
+        }
+
+        $data->actors_text=substr($data->actors_text,0,strlen($data->actors_text)-1);
+        $data->roles_text=substr($data->roles_text,0,strlen($data->roles_text)-1);
+
+        unset($data->actors);
+
+        $data->owner_id = $owner_id;
+
+        return (array)$data;
+    }
+
+    public function exportMediumAction()
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','export')){
-            return;
+            $request = $this->getRequest();
+            if ($request->isPost()) {
+                $post = $request->getPost()->toArray();
+                $export = array();
+                $ids =  array();
+
+                if(isset($post['export_selected'])){
+                    $ids = $post['export_selected'];
+                }
+                
+
+                if(isset($post['export_all'])){
+                    $media = $this->Tables()->medium()->fetchAll();
+
+                    foreach ($media as $medium) {
+                        array_push($export,$this->prepareForExport((int)$medium->id));
+                    }
+                }
+                else{
+                    foreach ($ids as $id) {
+                        array_push($export,$this->prepareForExport((int)$id));
+                    }
+                }                
+                
+                $this->view->json_export=json_encode($export);
+            }
+
+            return $this->view;
         }
         else{
             return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
         }
     }
 
+    public function exportMediumAjaxAction()
+    {
+        if($this->getAuthService()->getIdentity()->hasRight('medium','export')){
+            $media_select=$this->Tables()->medium()->fetchAllForList_Select($this->language);
+
+            $params=array(
+            'translator' =>$this->Translator()->getTranslator(),
+            'basicPath' =>$this->url()->fromRoute('movies'),
+            'path' =>$this->getRequest()->getUri()->getPath(),
+            'disableShowAs'=>true,
+            );
+
+            $table = new ExportTable($params);
+            $table->setLanguage($this->language);
+            $table->setTranslator($this->Translator()->getTranslator());
+
+            $table->setAdapter($this->getDbAdapter())
+                  ->setSource($media_select)
+                  ->setParamAdapter($this->getRequest()->getPost());
+
+            $table = $this->htmlResponse($table->render().'<script type="text/javascript" src="/moviesv3/js/movies/export.js"></script>');
+            return $table;
+        } 
+        else{
+            return $this->htmlResponse('');
+        }
+    }
+
+    private function prepareForExport($id){
+        $medium = $this->Tables()->medium()->get($id);
+        $medium->setGenre($this->Tables()->genre()->fetchForMedium($id));
+        $medium->setActors($this->Tables()->actor()->fetchForMedium($id));
+        $medium->setDirector($this->Tables()->director()->fetchForMedium($id));
+        $medium->setPublisher($this->Tables()->publisher()->fetchForMedium($id));
+        $medium->setType($this->Tables()->type()->get($medium->type_id));
+        return $medium->export();
+    }
+
+    public function createPdfAction()
+    {
+        $model = new PdfModel();
+        $model->setOption('paperSize', 'a4');
+        $model->setOption('paperOrientation', 'portrait');
+        $model->setOption('basePath',__DIR__.'/../../../public/');
+        $model->setVariables(array(
+          'media' => $this->Tables()->medium()->fetchAllForTable($this->language),
+          'language' => $this->language,
+          'title' => $this->MoviesConfig()->get('title'),
+        ));
+ 
+        return $model;
+    }
 
     public function listUserAction()
     {

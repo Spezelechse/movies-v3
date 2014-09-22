@@ -35,4 +35,16 @@ class MediumTable extends BaseTable
 
 		return $select;
 	}
+
+    public function fetchAllForTable($language){
+        $select =  $this->fetchAllForList_Select($language);
+        $select->columns(array('*','title'=>'title_'.$language,'dvd_or_bluray'));
+
+        $sql = new Sql($this->tableGateway->getAdapter());
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $results = $statement->execute();
+
+        return $results;
+    }
 }

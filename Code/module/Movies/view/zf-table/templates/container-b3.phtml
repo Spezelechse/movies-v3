@@ -3,6 +3,7 @@
     </div>
     <div class="row ">
         <div class="col-sm-1 pull-left">
+            <?php if(empty($this->name['disableShowAs'])){ ?>
             <label>
                 <?php echo $this->name['translator']->translate('Show as').': '; ?>
                 <select id="additionalParams" class="form-control">
@@ -11,6 +12,7 @@
                     <option value="pic"><?php echo $this->name['translator']->translate('Cover'); ?></option>
                 </select>
             </label>
+            <?php } ?>
         </div>
         <?php if ($this->showQuickSearch): ?>
             <div class="dataTables_filter pull-right col-sm-3" id="dataTable_filter">

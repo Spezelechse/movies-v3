@@ -17,7 +17,7 @@ class MediaTable extends AbstractTable
         'showPagination' => true,
         'showQuickSearch' => true,
         'showItemPerPage' => true,
-        'itemCountPerPage' => 10,
+        'itemCountPerPage' => 20,
         'showColumnFilters' => false,
         'showExportToCSV ' => false,
         'valuesOfItemPerPage' => array(5, 10, 20, 50 , 100 , 200),
@@ -26,7 +26,6 @@ class MediaTable extends AbstractTable
     
      //Definition of headers
     protected $headers = array(
-        //'id' => array('title' => '#' ) ,
         'title' => array('title' => 'Title', 'filters' => 'text'),
         'genres' => array('title' => 'Genre' ),
         'cover_file' => array(),
@@ -95,7 +94,7 @@ class MediaTable extends AbstractTable
         }
     }
     
-    protected function initFilters(\Zend\Db\Sql\Select $query)
+    protected function initFilters($query)
     {
        if ($value = $this->getParamAdapter()->getQuickSearch()) {
             $lang='en';

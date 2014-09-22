@@ -14,12 +14,12 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 				<?php 
 					if($this->identity()->hasRight('medium','edit')){ 
 				?>
- 				<a href="<?php echo $this->url('admin', array('action'=>'edit-movie','lang'=>$this->language, 'id'=>$medium->id)); ?>"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a>
+ 				<a href="<?php echo $this->url('admin', array('action'=>'edit-medium','lang'=>$this->language, 'id'=>$medium->id)); ?>"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a>
 				<?php 
 					}
 					if($this->identity()->hasRight('medium', 'delete')){
 				?>
-				<a href="<?php echo $this->url('admin', array('action'=>'delete-movie','lang'=>$this->language, 'id'=>$medium->id)); ?>"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button></a>
+				<a href="<?php echo $this->url('admin', array('action'=>'delete-medium','lang'=>$this->language, 'id'=>$medium->id)); ?>"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button></a>
 				<?php
 					}
 				?>
@@ -59,8 +59,9 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 			<?php
 				if($medium->actors->count()>0){
 					foreach ($medium->actors as $actor) {
+						$year_of_birth = ($actor->year_of_birth>0) ? ' ('.$escaper->escapeHtml($actor->year_of_birth).')' : '';
 						echo '<tr>';
-						echo '<td><a href="'.$this->url('search', array('action'=>'actor','lang'=>$this->language, 'value'=>$actor->id)).'">'.$escaper->escapeHtml($actor->name).'</a></td>';
+						echo '<td><a href="'.$this->url('search', array('action'=>'actor','lang'=>$this->language, 'value'=>$actor->id)).'">'.$escaper->escapeHtml($actor->name).$year_of_birth.'</a></td>';
 						echo '<td>'.$escaper->escapeHtml($actor->role).'</td>';
 						echo '</tr>';
 					}

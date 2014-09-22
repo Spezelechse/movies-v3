@@ -73,7 +73,12 @@ class SearchController extends BasisController
 	}
 	
 	public function actorAction(){
-		$actor = $this->Tables()->actor()->get($this->search_value);
+		try{
+			$actor = $this->Tables()->actor()->get($this->search_value);
+      	}
+      	catch(\Exception $e){
+      		return $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
+      	}
 
 		if(isset($actor)){
 			$this->view->search_value_text = $actor->name;
@@ -105,7 +110,12 @@ class SearchController extends BasisController
 	}
 	
 	public function directorAction(){
-		$director = $this->Tables()->director()->get($this->search_value);
+		try{
+			$director = $this->Tables()->director()->get($this->search_value);
+      	}
+      	catch(\Exception $e){
+      		return $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
+      	}
 
 		if(isset($director)){
 			$this->view->search_value_text = $director->name;
@@ -130,7 +140,12 @@ class SearchController extends BasisController
 	}
 
 	public function publisherAction(){
-		$publisher = $this->Tables()->publisher()->get($this->search_value);
+		try{
+			$publisher = $this->Tables()->publisher()->get($this->search_value);
+      	}
+      	catch(\Exception $e){
+      		return $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
+      	}
 
 		if(isset($publisher)){
 			$this->view->search_value_text = $publisher->name;
@@ -155,7 +170,12 @@ class SearchController extends BasisController
 	}
 
 	public function genreAction(){
-		$genre = $this->Tables()->genre()->get($this->search_value);
+		try{
+			$genre = $this->Tables()->genre()->get($this->search_value);
+      	}
+      	catch(\Exception $e){
+      		return $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
+      	}
 
 		if(isset($genre)){
 			$this->view->search_value_text = $genre->getName($this->language);
@@ -180,7 +200,12 @@ class SearchController extends BasisController
 	}
 
 	public function typeAction(){
-		$type = $this->Tables()->type()->get($this->search_value);
+		try{
+			$type = $this->Tables()->type()->get($this->search_value);
+      	}
+      	catch(\Exception $e){
+      		return $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
+      	}
 
 		if(isset($type)){
 			$this->view->search_value_text = $type->getName($this->language);
@@ -214,7 +239,12 @@ class SearchController extends BasisController
 	}
 
 	public function ownerAction(){
-		$owner = $this->Tables()->user()->get($this->search_value);
+		try{
+			$owner = $this->Tables()->user()->get($this->search_value);
+      	}
+      	catch(\Exception $e){
+      		return $this->redirect()->toRoute('movies', array('lang'=>$this->language)); 
+      	}
 
 		if(isset($owner)){
 			$this->view->search_value_text = $owner->username;

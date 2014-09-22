@@ -11,6 +11,7 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.3.*",
         "dudapiotr/zftable": "dev-master",
-        "rwoverdijk/assetmanager": "dev-master"
+        "rwoverdijk/assetmanager": "dev-master",
+        "dino/dompdf-module": "dev-master"
     }
 }

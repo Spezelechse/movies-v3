@@ -4,6 +4,7 @@ namespace Movies\Model;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Sql;
 use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
 
 class ActorTable extends BaseTable
 {
@@ -32,7 +33,12 @@ class ActorTable extends BaseTable
         $roles='';
 
         foreach ($resultSet as $result) {
-            $names.=$result->name.PHP_EOL;
+            if($result->year_of_birth>0){
+                $names.=$result->name.'#'.$result->year_of_birth.PHP_EOL;
+            }
+            else{
+                $names.=$result->name.PHP_EOL;
+            }
             $roles.=$result->role.PHP_EOL;
         }
 
@@ -46,15 +52,22 @@ class ActorTable extends BaseTable
         $actors = explode(PHP_EOL, $text);
         $ids = array();
         $trim = new StringTrim();
+        $strip = new StripTags();
 
         foreach ($actors as $key => $actor) {
-                $actor = $trim($actor);
+                $actor = $strip($trim($actor));
+
+                $actor = explode('#',$actor);
+                $year = (isset($actor[1])) ? (int)$actor[1] : 0;
+                $actor = $actor[0];
+
                 $actor_id = 0;
 
                 $select = $this->tableGateway->getSql()->select();
 
                 $select ->columns(array('id'))
-                        ->where('Actor.name = \''.$actor.'\'');
+                        ->where('Actor.name = \''.$actor.'\'')
+                        ->where('Actor.year_of_birth = \''.$year.'\'');
 
                 $result = $this->tableGateway->selectWith($select)->current();
                 if($result){
@@ -75,32 +88,61 @@ class ActorTable extends BaseTable
                             ->columns(array('medium_id','actor_id','role'));
 
             $trim = new StringTrim();
+            $strip = new StripTags();
 
             $actors = explode(PHP_EOL, $actors_text);
             $roles = explode(PHP_EOL, $roles_text);
 
             foreach ($actors as $key => $actor) {
-                $actor = $trim($actor);
+                $actor = $strip($trim($actor));
+                
+                $actor = explode('#',$actor);
+                $year = (isset($actor[1])) ? (int)$actor[1] : 0;
+                $actor = $actor[0];
+
                 $actor_id = 0;
 
                 $select = $this->tableGateway->getSql()->select();
 
                 $select ->columns(array('*'))
-                        ->where('Actor.name = \''.$actor.'\'');
+                        ->where('Actor.name = \''.$actor.'\'')
+                        ->where('Actor.year_of_birth = \'0\'');
 
-                $result = $this->tableGateway->selectWith($select)->current();
+                $result_zero = $this->tableGateway->selectWith($select)->current();
+
+                $select = $this->tableGateway->getSql()->select();
                 
-                if($result){
-                    $actor_id = $result->id;
+                $select ->columns(array('*'))
+                        ->where('Actor.name = \''.$actor.'\'')
+                        ->where('Actor.year_of_birth = \''.$year.'\'');
+
+                $result_year = $this->tableGateway->selectWith($select)->current();
+                
+                if($result_year){
+                    $actor_id = $result_year->id;
+                    if($result_year->year_of_birth==0&&$year>0){
+                        $result_year->year_of_birth=$year;
+
+                        $this->save($result_year);
+                    }
+                }
+                else if($result_zero){
+                    $actor_id = $result_zero->id;
+                    if($year>0){
+                        $result_zero->year_of_birth=$year;
+
+                        $this->save($result_zero);
+                    }
                 }
                 else{
                     $new_actor = new Actor();
                     $new_actor->name = $actor;
+                    $new_actor->year_of_birth = $year;
 
                     $actor_id=$this->save($new_actor);
                 }
 
-                $insertConnect->values(array('medium_id'=>$medium_id, 'actor_id'=>$actor_id, 'role'=>$trim($roles[$key])));
+                $insertConnect->values(array('medium_id'=>$medium_id, 'actor_id'=>$actor_id, 'role'=>$strip($trim($roles[$key]))));
 
                 $statement = $sql->prepareStatementForSqlObject($insertConnect);
                 $statement->execute();

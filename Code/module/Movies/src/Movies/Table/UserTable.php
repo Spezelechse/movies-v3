@@ -73,7 +73,7 @@ class UserTable extends AbstractTable
         ));
     }
     
-    protected function initFilters(\Zend\Db\Sql\Select $query)
+    protected function initFilters($query)
     {
        if ($value = $this->getParamAdapter()->getQuickSearch()) {
             $query->where("username like '%".$value."%' ");

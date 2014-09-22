@@ -91,6 +91,7 @@ abstract class BasisController extends AbstractActionController
     {
         $response = $this->getResponse();
         $response->setStatusCode(200);
+        $response->getHeaders()->addHeaderLine('Content-Type', ' text/html; charset=utf-8');
         $response->setContent($html);
         return $response;
     }

@@ -4,6 +4,8 @@ namespace Movies\Model;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Predicate\Expression;
 use Zend\Db\Sql\Sql;
+use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
 
 class UserTable extends BaseTable
 {
@@ -12,9 +14,12 @@ class UserTable extends BaseTable
     }
 
     public function getByUsername($username){
+        $trim = new StringTrim();
+        $strip = new StripTags();
+
         $sqlSelect = $this->tableGateway->getSql()->select();
         $sqlSelect->columns(array('*'));
-        $sqlSelect->where(array('username'=>$username));
+        $sqlSelect->where(array('username'=>$strip($trim($username))));
 
         $resultSet = $this->tableGateway->selectWith($sqlSelect);
 

@@ -1,0 +1,62 @@
+<?php
+/**
+ * @package Movies
+ */
+?>
+<html>
+<head>
+<style type="text/css">
+	body{
+		font-family: sans-serif;
+	}
+	h3{
+		font-size: 24px;
+		color: #000;
+	}
+	h3 small{
+		font-size: 16px;
+		color: #666;
+	}
+	.table{
+		width: 100%;
+	}
+	.table th{
+		border-bottom: 1px solid #000;
+	}
+	.table td{
+		border-bottom: 1px solid #ddd;
+	}
+</style>
+</head>
+<body>
+	<h3>
+		<?php echo $title; ?><br>
+		<small>
+			<?php 
+				echo $this->translate('Version of: ');
+				echo date('Y-m-d');
+			?>
+		</small>
+	</h3>
+<table class="table" cellspacing="0">
+<tr>
+	<th><?php echo $this->translate('Title'); ?></th>
+	<th><?php echo $this->translate('Type'); ?></th>
+	<th><?php echo $this->translate('Genre'); ?></th>
+</tr>
+<?php
+	foreach ($media as $medium) {
+		$medium_type = 'DVD';
+		if($medium['dvd_or_bluray']==2){
+			$medium_type = 'Blu-ray';
+		}
+		echo "<tr>";
+		echo "<td>".$medium['title']." (".$medium_type.")"."</td>";
+		echo "<td>".$medium['type']."</td>";
+		echo "<td>".$medium['genres']."</td>";
+		echo "</tr>";
+	}
+?>
+</table>
+</body>
+</html>

@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <?php 
             $escaper = new Zend\Escaper\Escaper('utf-8');
+            header("Content-Type: text/html; charset=utf-8");
         ?>
 
         <?php echo $this->headTitle($escaper->escapeHtml($this->movies_config()->get('title')))->setSeparator(' - ')->setAutoEscape(false) ?>
@@ -95,25 +96,28 @@
                                     if($this->identity()->hasRight('medium','add')){ 
                                 ?>
                                 <li>
-                                    <a href="<?php echo $this->url('admin', array('action'=>'add-movie', 'lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('add') ?></a>
+                                    <a href="<?php echo $this->url('admin', array('action'=>'add-medium', 'lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('add') ?></a>
                                 </li>
                                 <?php
                                     }
                                     if($this->identity()->hasRight('medium','import')){
                                 ?>
                                 <li>
-                                    <a href="<?php echo $this->url('admin', array('action'=>'import-movie', 'lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('import') ?></a>
+                                    <a href="<?php echo $this->url('admin', array('action'=>'import-medium', 'lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('import') ?></a>
                                 </li>
                                 <?php
                                     }
                                     if($this->identity()->hasRight('medium','export')){
                                 ?>
                                 <li>
-                                    <a href="<?php echo $this->url('admin', array('action'=>'export-movie', 'lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('export') ?></a>
+                                    <a href="<?php echo $this->url('admin', array('action'=>'export-medium', 'lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('export') ?></a>
                                 </li>
                                 <?php
                                     }
                                 ?>
+                                <li>
+                                    <a href="<?php echo $this->url('admin', array('action'=>'create-pdf', 'lang' => $this->moviesLanguage)) ?>"><?php echo $this->translate('create PDF') ?></a>
+                                </li>
                                 <li class="divider"></li>
                                 <?php 
                                 }

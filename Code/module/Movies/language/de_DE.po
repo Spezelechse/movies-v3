@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movies V3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-15 20:48+0100\n"
-"PO-Revision-Date: 2014-09-15 20:48+0100\n"
+"POT-Creation-Date: 2014-09-22 01:47+0100\n"
+"PO-Revision-Date: 2014-09-22 01:47+0100\n"
 "Last-Translator: Patrick Geißler\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -15,48 +15,49 @@ msgstr ""
 "X-Generator: Poedit 1.6.9\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../src/Movies/Controller/AdminController.php:88
-#: ../src/Movies/Controller/AdminController.php:313
-#: ../src/Movies/Form/UserForm.php:106 ../src/Movies/Form/UserForm.php:124
-msgid "Add"
-msgstr "Hinzufügen"
-
-#: ../src/Movies/Controller/AdminController.php:125
-msgid "Medium added"
-msgstr "Medium hinzugefügt"
-
-#: ../src/Movies/Controller/AdminController.php:154
-msgid "Medium deleted"
-msgstr "Medium gelöscht"
-
-#: ../src/Movies/Controller/AdminController.php:190
-#: ../src/Movies/Controller/AdminController.php:435
+#: ../src/Movies/Controller/AdminController.php:44
+#: ../src/Movies/Controller/AdminController.php:215
+#: ../src/Movies/Controller/AdminController.php:627
 #: ../src/Movies/Controller/UserController.php:74
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: ../src/Movies/Controller/AdminController.php:228
+#: ../src/Movies/Controller/AdminController.php:118
+#: ../src/Movies/Controller/AdminController.php:505
+#: ../src/Movies/Form/UserForm.php:106 ../src/Movies/Form/UserForm.php:124
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: ../src/Movies/Controller/AdminController.php:150
+msgid "Medium added"
+msgstr "Medium hinzugefügt"
+
+#: ../src/Movies/Controller/AdminController.php:179
+msgid "Medium deleted"
+msgstr "Medium gelöscht"
+
+#: ../src/Movies/Controller/AdminController.php:248
 msgid "Medium updated"
 msgstr "Medium aktualisiert"
 
-#: ../src/Movies/Controller/AdminController.php:245
+#: ../src/Movies/Controller/AdminController.php:265
 msgid "Medium id not found"
 msgstr "Medium id nicht gefunden"
 
-#: ../src/Movies/Controller/AdminController.php:336
+#: ../src/Movies/Controller/AdminController.php:528
 msgid "User added"
 msgstr "Benutzer hinzugefügt"
 
-#: ../src/Movies/Controller/AdminController.php:363
+#: ../src/Movies/Controller/AdminController.php:555
 msgid "User deleted"
 msgstr "Benutzter gelöscht"
 
-#: ../src/Movies/Controller/AdminController.php:401
+#: ../src/Movies/Controller/AdminController.php:593
 #: ../src/Movies/Controller/UserController.php:47
 msgid "User updated"
 msgstr "Benutzer aktualisiert"
 
-#: ../src/Movies/Controller/AdminController.php:445
+#: ../src/Movies/Controller/AdminController.php:637
 #: ../src/Movies/Controller/UserController.php:84
 msgid "User id not found"
 msgstr "Benutzer id nicht gefunden"
@@ -73,21 +74,21 @@ msgstr "Login fehlgeschlagen!! %s Versuche verbleiben"
 msgid "login_blocked_now"
 msgstr "Der Login ist jetzt für  %s min. blockiert."
 
-#: ../src/Movies/Controller/AuthController.php:98
+#: ../src/Movies/Controller/AuthController.php:94
 msgid "login_data_missing"
 msgstr "Benutzername und Passwort werden benötigt!!"
 
-#: ../src/Movies/Controller/AuthController.php:102
+#: ../src/Movies/Controller/AuthController.php:98
 msgid "login_blocked"
 msgstr "Der Login ist noch %s min. blockiert."
 
-#: ../src/Movies/Controller/AuthController.php:152
+#: ../src/Movies/Controller/AuthController.php:148
 msgid "logged_out"
 msgstr "Erfolgreich ausgeloggt!!"
 
-#: ../src/Movies/Controller/SearchController.php:256
-#: ../view/movies/admin/add-movie.phtml:241
-#: ../view/zf-table/templates/container-b3.phtml:18
+#: ../src/Movies/Controller/SearchController.php:286
+#: ../view/movies/admin/add-medium.phtml:241
+#: ../view/zf-table/templates/container-b3.phtml:20
 #: ../view/zf-table/templates/custom-list-detail.phtml:18
 #: ../view/zf-table/templates/custom-pic-only.phtml:18
 msgid "Search"
@@ -124,6 +125,7 @@ msgid "Role"
 msgstr "Rolle"
 
 #: ../src/Movies/Form/MediumForm.php:104
+#: ../view/movies/admin/export-pdf.phtml:45
 #: ../view/movies/imdb/ajax-import.phtml:25
 #: ../view/movies/movies/show.phtml:91 ../view/movies/search/genre.phtml:12
 #: ../view/zf-table/templates/custom-list-detail.phtml:61
@@ -151,8 +153,9 @@ msgstr "Regisseur"
 msgid "Type"
 msgstr "Art"
 
-#: ../src/Movies/Form/MediumForm.php:162 ../view/movies/movies/show.phtml:134
-#: ../view/movies/search/owner.phtml:12
+#: ../src/Movies/Form/MediumForm.php:162
+#: ../view/movies/admin/import-medium.phtml:20
+#: ../view/movies/movies/show.phtml:134 ../view/movies/search/owner.phtml:12
 msgid "Owner"
 msgstr "Besitzer"
 
@@ -218,11 +221,13 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: ../src/Movies/Form/UserForm.php:109
-#: ../view/movies/admin/add-movie.phtml:252
+#: ../view/movies/admin/add-medium.phtml:252
+#: ../view/movies/admin/import-medium.phtml:36
 msgid "Import"
 msgstr "Importieren"
 
 #: ../src/Movies/Form/UserForm.php:110
+#: ../view/movies/admin/export-medium.phtml:36
 msgid "Export"
 msgstr "Exportieren"
 
@@ -246,9 +251,11 @@ msgstr "Wert"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: ../src/Movies/Table/MediaTable.php:86
-#: ../view/movies/admin/add-movie.phtml:24
-#: ../view/movies/admin/edit-movie.phtml:24
+#: ../src/Movies/Table/ExportTable.php:52
+#: ../src/Movies/Table/MediaTable.php:85
+#: ../view/movies/admin/add-medium.phtml:24
+#: ../view/movies/admin/edit-medium.phtml:24
+#: ../view/movies/admin/export-pdf.phtml:44
 #: ../view/movies/search/advanced.phtml:42
 msgid "Title"
 msgstr "Titel"
@@ -257,55 +264,55 @@ msgstr "Titel"
 msgid "Actions"
 msgstr "Aktionen"
 
-#: ../view/movies/admin/add-movie.phtml:28
-#: ../view/movies/admin/add-movie.phtml:231
+#: ../view/movies/admin/add-medium.phtml:28
+#: ../view/movies/admin/add-medium.phtml:231
 msgid "IMDb import"
 msgstr "IMDb Import"
 
-#: ../view/movies/admin/add-movie.phtml:46
-#: ../view/movies/admin/edit-movie.phtml:39
+#: ../view/movies/admin/add-medium.phtml:46
+#: ../view/movies/admin/edit-medium.phtml:39
 #: ../view/movies/search/advanced.phtml:50
 msgid "Content"
 msgstr "Inhalt"
 
-#: ../view/movies/admin/add-movie.phtml:98
-#: ../view/movies/admin/edit-movie.phtml:91
+#: ../view/movies/admin/add-medium.phtml:98
+#: ../view/movies/admin/edit-medium.phtml:91
 msgid "Add new genre"
 msgstr "Neues Genre hinzufügen"
 
-#: ../view/movies/admin/add-movie.phtml:111
-#: ../view/movies/admin/edit-movie.phtml:104
+#: ../view/movies/admin/add-medium.phtml:111
+#: ../view/movies/admin/edit-medium.phtml:104
 msgid "Add new director"
 msgstr "Neuen Regisseur hinzufügen"
 
-#: ../view/movies/admin/add-movie.phtml:124
-#: ../view/movies/admin/edit-movie.phtml:117
+#: ../view/movies/admin/add-medium.phtml:124
+#: ../view/movies/admin/edit-medium.phtml:117
 msgid "Add new publisher"
 msgstr "Neuen Herausgeber hinzufügen"
 
-#: ../view/movies/admin/add-movie.phtml:137
-#: ../view/movies/admin/edit-movie.phtml:130
+#: ../view/movies/admin/add-medium.phtml:137
+#: ../view/movies/admin/edit-medium.phtml:130
 msgid "Add new type"
 msgstr "Neuen Typ hinzufügen"
 
-#: ../view/movies/admin/add-movie.phtml:250
+#: ../view/movies/admin/add-medium.phtml:250
 msgid "Close"
 msgstr "Schließen"
 
-#: ../view/movies/admin/add-movie.phtml:251
+#: ../view/movies/admin/add-medium.phtml:251
 msgid "Hide"
 msgstr "Verstecken"
 
-#: ../view/movies/admin/delete-movie.phtml:12
+#: ../view/movies/admin/delete-medium.phtml:12
 msgid "delete-movie-callback"
 msgstr "Soll der folgende Film wirklich gelöscht werden?"
 
-#: ../view/movies/admin/delete-movie.phtml:29
+#: ../view/movies/admin/delete-medium.phtml:29
 #: ../view/movies/admin/delete-user.phtml:31
 msgid "no"
 msgstr "nein"
 
-#: ../view/movies/admin/delete-movie.phtml:32
+#: ../view/movies/admin/delete-medium.phtml:32
 #: ../view/movies/admin/delete-user.phtml:34
 msgid "yes"
 msgstr "ja"
@@ -313,6 +320,38 @@ msgstr "ja"
 #: ../view/movies/admin/delete-user.phtml:14
 msgid "delete-user-callback"
 msgstr "Soll der folgende Benutzer wirklich gelöscht werden?"
+
+#: ../view/movies/admin/export-medium.phtml:10
+msgid "Export medium"
+msgstr "Medium exportieren"
+
+#: ../view/movies/admin/export-medium.phtml:27
+msgid "Media for export:"
+msgstr "Medien für den Export"
+
+#: ../view/movies/admin/export-medium.phtml:30
+msgid "Nothing selected!"
+msgstr "Nichts ausgewählt!"
+
+#: ../view/movies/admin/export-medium.phtml:33
+msgid "Export all"
+msgstr "Alle exportieren"
+
+#: ../view/movies/admin/export-pdf.phtml:37
+msgid "Version of: "
+msgstr "Version vom: "
+
+#: ../view/movies/admin/import-medium.phtml:11
+msgid "Import medium"
+msgstr "Medium importieren"
+
+#: ../view/movies/admin/import-medium.phtml:45
+msgid "The following media were imported:"
+msgstr "Die folgenden Medien wurden importiert:"
+
+#: ../view/movies/admin/import-medium.phtml:60
+msgid "and these failed:"
+msgstr "und diese sind fehlgeschlagen:"
 
 #: ../view/movies/admin/list-user.phtml:10
 msgid "Manage users"
@@ -325,8 +364,8 @@ msgstr "Webseiten konfiguration"
 #: ../view/movies/admin/site-set-up.phtml:13
 msgid "how-to-set-page-up"
 msgstr ""
-"Einfach auf den zu ändernden Wert klicken, die Änderungen vornehmen und "
-"speichern."
+"Einfach auf den zu ändernden Wert klicken (Doppelklick), die Änderungen "
+"vornehmen und speichern."
 
 #: ../view/movies/imdb/ajax-import.phtml:43
 msgid "The following values are missing and have to be added manually:"
@@ -360,25 +399,25 @@ msgstr "Suchergebnisse für die erweiterte Suche:"
 msgid "Advanced search:"
 msgstr "Erweiterte Suche:"
 
-#: ../view/zf-table/templates/container-b3.phtml:7
+#: ../view/zf-table/templates/container-b3.phtml:8
 #: ../view/zf-table/templates/custom-list-detail.phtml:7
 #: ../view/zf-table/templates/custom-pic-only.phtml:7
 msgid "Show as"
 msgstr "Anzeigen als"
 
-#: ../view/zf-table/templates/container-b3.phtml:9
+#: ../view/zf-table/templates/container-b3.phtml:10
 #: ../view/zf-table/templates/custom-list-detail.phtml:9
 #: ../view/zf-table/templates/custom-pic-only.phtml:9
 msgid "List"
 msgstr "Liste"
 
-#: ../view/zf-table/templates/container-b3.phtml:10
+#: ../view/zf-table/templates/container-b3.phtml:11
 #: ../view/zf-table/templates/custom-list-detail.phtml:10
 #: ../view/zf-table/templates/custom-pic-only.phtml:10
 msgid "Details"
 msgstr ""
 
-#: ../view/zf-table/templates/container-b3.phtml:11
+#: ../view/zf-table/templates/container-b3.phtml:12
 #: ../view/zf-table/templates/custom-list-detail.phtml:11
 #: ../view/zf-table/templates/custom-pic-only.phtml:11
 msgid "Cover"

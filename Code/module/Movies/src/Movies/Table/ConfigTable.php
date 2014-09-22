@@ -25,8 +25,8 @@ class ConfigTable extends AbstractTable
     protected $headers = array(
         'id' => array('title' => '#' ) ,
         'name' => array('title' => 'Name', 'filters' => 'text'),
-        'data' => array('title' => 'Value', 'editable' => true),
-        'description' => array('title' => 'Description' ) ,
+        'data' => array('title' => 'Value', 'editable' => true, 'sortable'=>false),
+        'description' => array('title' => 'Description' , 'sortable'=>false) ,
     );
 
     public function setUpdateUrl($url){
@@ -47,7 +47,7 @@ class ConfigTable extends AbstractTable
         $this->getRow()->addDecorator('varattr', array('name' => 'data-row' , 'value' => '%s' , 'vars' => array('id')));
     }
     
-    protected function initFilters(\Zend\Db\Sql\Select $query)
+    protected function initFilters($query)
     {
        if ($value = $this->getParamAdapter()->getQuickSearch()) {
             $query->where("name like '%".$value."%' ");

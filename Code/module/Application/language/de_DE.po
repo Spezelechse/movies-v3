@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-02 20:53+0100\n"
-"PO-Revision-Date: 2014-09-02 20:53+0100\n"
+"POT-Creation-Date: 2014-09-22 17:28+0100\n"
+"PO-Revision-Date: 2014-09-22 17:28+0100\n"
 "Last-Translator: Patrick Geißler\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -85,71 +85,75 @@ msgstr "Es ist keine Ausnahme verfügbar"
 msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
-#: ../view/layout/layout.phtml:52
+#: ../view/layout/layout.phtml:53
 msgid "Home"
 msgstr "Startseite"
 
-#: ../view/layout/layout.phtml:53
+#: ../view/layout/layout.phtml:54
 msgid "Advanced search"
 msgstr "Erweiterte Suche"
 
-#: ../view/layout/layout.phtml:61
+#: ../view/layout/layout.phtml:62
 msgid "Login"
 msgstr ""
 
-#: ../view/layout/layout.phtml:72
+#: ../view/layout/layout.phtml:73
 msgid "Logout"
 msgstr ""
 
-#: ../view/layout/layout.phtml:76
+#: ../view/layout/layout.phtml:77
 msgid "Change user data"
 msgstr "Benutzerdaten ändern"
 
-#: ../view/layout/layout.phtml:88
+#: ../view/layout/layout.phtml:89
 msgid "Admin"
 msgstr ""
 
-#: ../view/layout/layout.phtml:93
+#: ../view/layout/layout.phtml:94
 msgid "Medium"
 msgstr ""
 
-#: ../view/layout/layout.phtml:98 ../view/layout/layout.phtml:127
+#: ../view/layout/layout.phtml:99 ../view/layout/layout.phtml:131
 msgid "add"
 msgstr "hinzufügen"
 
-#: ../view/layout/layout.phtml:105
+#: ../view/layout/layout.phtml:106
 msgid "import"
 msgstr "importieren"
 
-#: ../view/layout/layout.phtml:112
+#: ../view/layout/layout.phtml:113
 msgid "export"
 msgstr "exportieren"
 
-#: ../view/layout/layout.phtml:122
+#: ../view/layout/layout.phtml:119
+msgid "create PDF"
+msgstr "PDF erzeugen"
+
+#: ../view/layout/layout.phtml:126
 msgid "User"
 msgstr "Benutzer"
 
-#: ../view/layout/layout.phtml:134
+#: ../view/layout/layout.phtml:138
 msgid "manage"
 msgstr "verwalten"
 
-#: ../view/layout/layout.phtml:144
+#: ../view/layout/layout.phtml:148
 msgid "Page"
 msgstr "Seite"
 
-#: ../view/layout/layout.phtml:149
+#: ../view/layout/layout.phtml:153
 msgid "set up"
 msgstr "konfigurieren"
 
-#: ../view/layout/layout.phtml:161
+#: ../view/layout/layout.phtml:165
 msgid "Language"
 msgstr "Sprache"
 
-#: ../view/layout/layout.phtml:164
+#: ../view/layout/layout.phtml:168
 msgid "German"
 msgstr "Deutsch"
 
-#: ../view/layout/layout.phtml:167
+#: ../view/layout/layout.phtml:171
 msgid "English"
 msgstr "Englisch"
 
