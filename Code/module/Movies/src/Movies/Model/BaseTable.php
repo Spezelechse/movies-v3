@@ -13,9 +13,14 @@ abstract class BaseTable
         $this->tableGateway = $tableGateway;
     }
 
-    public function fetchAll()
+    public function fetchAll($closure = null)
     {
-        $resultSet = $this->tableGateway->select();
+        if($closure==null){
+            $resultSet = $this->tableGateway->select();
+        }
+        else{
+            $resultSet = $this->tableGateway->select($closure);
+        }
         return $resultSet;
     }
 

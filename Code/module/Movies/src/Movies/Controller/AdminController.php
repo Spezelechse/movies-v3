@@ -20,6 +20,9 @@ use Movies\Table\UserTable;
 use Movies\Table\ConfigTable;
 use Movies\Table\ExportTable;
 use Zend\I18n\Filter\Alnum;
+use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
+use Zend\Filter\HtmlEntities;
 use Zend\Filter\Int;
 use Zend\Validator\File\MimeType;
 use SimpleImage;
@@ -174,6 +177,13 @@ class AdminController extends BasisController
             if($id>0){
                 $request = $this->getRequest();
                 if ($request->isPost()) {
+                    $medium=$this->Tables()->medium()->get($id);
+
+                    if(isset($medium->cover_file)){
+                        unlink('./public/img/cover/'.$medium->cover_file);
+                        unlink('./public/img/thumb/'.$medium->cover_file);
+                    }
+
                     $user=$this->Tables()->medium()->delete($id);
 
                     $this->flashMessenger()->addSuccessMessage($this->translate('Medium deleted'));
@@ -431,7 +441,7 @@ class AdminController extends BasisController
                   ->setSource($media_select)
                   ->setParamAdapter($this->getRequest()->getPost());
 
-            $table = $this->htmlResponse($table->render().'<script type="text/javascript" src="/moviesv3/js/movies/export.js"></script>');
+            $table = $this->htmlResponse($table->render().'<script type="text/javascript" src="'.$this->url()->fromRoute('movies').'js/movies/export.js"></script>');
             return $table;
         } 
         else{
@@ -695,9 +705,12 @@ class AdminController extends BasisController
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','edit')||$this->getAuthService()->getIdentity()->hasRight('medium','add')){
             $post = $this->getRequest()->getPost()->toArray();
-            $alnum = new Alnum();
-            $name_de = $alnum->filter($post['name_de']);
-            $name_en = $alnum->filter($post['name_en']);
+            $trim = new StringTrim();
+            $strip = new StripTags();
+            $entities = new HtmlEntities();
+
+            $name_de = $entities->filter($strip->filter($trim->filter($post['name_de'])));
+            $name_en = $entities->filter($strip->filter($trim->filter($post['name_en'])));
 
             $genre = new Genre();
             $genre->name_de = $name_de;
@@ -716,8 +729,11 @@ class AdminController extends BasisController
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','edit')||$this->getAuthService()->getIdentity()->hasRight('medium','add')){
             $post = $this->getRequest()->getPost()->toArray();
-            $alnum = new Alnum();
-            $name = $alnum->filter($post['name']);
+            $trim = new StringTrim();
+            $strip = new StripTags();
+            $entities = new HtmlEntities();
+
+            $name = $entities->filter($strip->filter($trim->filter($post['name'])));
 
             $publisher = new Publisher();
             $publisher->name = $name;
@@ -735,8 +751,11 @@ class AdminController extends BasisController
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','edit')||$this->getAuthService()->getIdentity()->hasRight('medium','add')){
             $post = $this->getRequest()->getPost()->toArray();
-            $alnum = new Alnum();
-            $name = $alnum->filter($post['name']);
+            $trim = new StringTrim();
+            $strip = new StripTags();
+            $entities = new HtmlEntities();
+
+            $name = $entities->filter($strip->filter($trim->filter($post['name'])));
 
             $director = new Director();
             $director->name = $name;
@@ -754,9 +773,12 @@ class AdminController extends BasisController
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','edit')||$this->getAuthService()->getIdentity()->hasRight('medium','add')){
             $post = $this->getRequest()->getPost()->toArray();
-            $alnum = new Alnum();
-            $name_de = $alnum->filter($post['name_de']);
-            $name_en = $alnum->filter($post['name_en']);
+            $trim = new StringTrim();
+            $strip = new StripTags();
+            $entities = new HtmlEntities();
+
+            $name_de = $entities->filter($strip->filter($trim->filter($post['name_de'])));
+            $name_en = $entities->filter($strip->filter($trim->filter($post['name_en'])));
 
             $type = new Type();
             $type->name_de = $name_de;

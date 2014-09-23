@@ -63,7 +63,7 @@ class Medium extends BaseObject
 
     public function export(){
         $export = $this->toArray();
-        unset($export['id'],$export['type_id'],$export['owner_id']);
+        unset($export['id'],$export['type_id'],$export['owner_id'], $export['cover_file'], $export['cover_source']);
         $variables_single = array('actors','director','publisher');
         $variables_multi = array('genre','type');
 

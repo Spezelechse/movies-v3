@@ -290,7 +290,12 @@ class MediumForm extends Form
 
         $this->add(array( 
             'name' => 'csrf', 
-            'type' => 'Zend\Form\Element\Csrf', 
+            'type' => 'Zend\Form\Element\Csrf',
+            'options' => array(
+                 'csrf_options' => array(
+                         'timeout' => 1800
+                 )
+            ),
         ));
 
         $this->add(array(

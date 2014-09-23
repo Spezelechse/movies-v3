@@ -47,8 +47,10 @@ class TypeTable extends BaseTable
         return (int)$id;
     }
 
-    public function fetchAllForSelect($language){
-        $result_set = $this->fetchAll();
+    public function fetchAllForSelect($language='en'){
+        $result_set = $this->fetchAll(function ($select) use ($language) {
+             $select->order('name_'.$language.' ASC');
+        });
         $values=array();
 
         foreach($result_set as $result){                

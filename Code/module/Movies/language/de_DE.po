@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movies V3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-22 01:47+0100\n"
-"PO-Revision-Date: 2014-09-22 01:47+0100\n"
+"POT-Creation-Date: 2014-09-22 17:27+0100\n"
+"PO-Revision-Date: 2014-09-22 17:27+0100\n"
 "Last-Translator: Patrick Geißler\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -125,7 +125,7 @@ msgid "Role"
 msgstr "Rolle"
 
 #: ../src/Movies/Form/MediumForm.php:104
-#: ../view/movies/admin/export-pdf.phtml:45
+#: ../view/movies/admin/create-pdf.phtml:45
 #: ../view/movies/imdb/ajax-import.phtml:25
 #: ../view/movies/movies/show.phtml:91 ../view/movies/search/genre.phtml:12
 #: ../view/zf-table/templates/custom-list-detail.phtml:61
@@ -147,6 +147,7 @@ msgid "Director"
 msgstr "Regisseur"
 
 #: ../src/Movies/Form/MediumForm.php:148
+#: ../view/movies/admin/create-pdf.phtml:44
 #: ../view/movies/imdb/ajax-import.phtml:34
 #: ../view/movies/movies/show.phtml:127 ../view/movies/search/type.phtml:12
 #: ../view/zf-table/templates/custom-list-detail.phtml:60
@@ -254,8 +255,8 @@ msgstr "Beschreibung"
 #: ../src/Movies/Table/ExportTable.php:52
 #: ../src/Movies/Table/MediaTable.php:85
 #: ../view/movies/admin/add-medium.phtml:24
+#: ../view/movies/admin/create-pdf.phtml:43
 #: ../view/movies/admin/edit-medium.phtml:24
-#: ../view/movies/admin/export-pdf.phtml:44
 #: ../view/movies/search/advanced.phtml:42
 msgid "Title"
 msgstr "Titel"
@@ -303,6 +304,10 @@ msgstr "Schließen"
 msgid "Hide"
 msgstr "Verstecken"
 
+#: ../view/movies/admin/create-pdf.phtml:36
+msgid "Version of: "
+msgstr "Version vom: "
+
 #: ../view/movies/admin/delete-medium.phtml:12
 msgid "delete-movie-callback"
 msgstr "Soll der folgende Film wirklich gelöscht werden?"
@@ -336,10 +341,6 @@ msgstr "Nichts ausgewählt!"
 #: ../view/movies/admin/export-medium.phtml:33
 msgid "Export all"
 msgstr "Alle exportieren"
-
-#: ../view/movies/admin/export-pdf.phtml:37
-msgid "Version of: "
-msgstr "Version vom: "
 
 #: ../view/movies/admin/import-medium.phtml:11
 msgid "Import medium"

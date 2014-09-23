@@ -60,7 +60,9 @@ class DirectorTable extends BaseTable
     }
 
     public function fetchAllForSelect(){
-        $result_set = $this->fetchAll();
+        $result_set = $this->fetchAll(function ($select) {
+             $select->order('name ASC');
+        });
         $values=array();
 
         foreach($result_set as $result){                

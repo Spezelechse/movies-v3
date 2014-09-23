@@ -184,10 +184,10 @@ class ImdbController extends BasisController
         foreach ($releases as $release) {
             if($release['country']==$country){
                 if((int)$release['mon']<10){
-                    $release['mon']='0'.$release['mon'];
+                    $release['mon']='0'.(int)$release['mon'];
                 }
                 if((int)$release['day']<10){
-                    $release['day']='0'.$release['day'];
+                    $release['day']='0'.(int)$release['day'];
                 }
                 $processed=$release['year'].'-'.$release['mon'].'-'.$release['day'];
                 return $processed;

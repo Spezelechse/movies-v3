@@ -7,17 +7,13 @@ Some of the new features will be:
 - multilingual (V2 was just german)
 - import data from imdb with help of [imdbphp](http://projects.izzysoft.de/trac/imdbphp/wiki/WikiStart)
 - responsive(ish) design
-- single page application (the whole page or just parts of it, not sure at the moment :) )
 - improved database design
  
-**Live demo** of the master-branch can be found [here](http://movies-dev.spezelechse.de/) and the login data is admin | Test?123
-
-An example for a complete entry is added under the title **Just a test**.
+**Live demo** of the master-branch can be found [here](http://movies-demo.spezelechse.de/) and the login data is admin | Test?123
 
 ------------------------------------------------------------------------------------------------
 
 ###Updates
-I've never worked with Zend so the inital build will take some time.
 
 Update 27.08.14
 The first build is now ready. Not everything is working but the main functionality does.
@@ -68,9 +64,21 @@ Update 15.09.14
 - limited login attempts, now max 3 attempts bevor 1 hour login block
 - added config descriptions
 
+Update 22.09.14
+- implemented import and export of medium entries
+- added year of birth informations for actors
+- updated dependencies
+- tested on live system + fixed first bugs
+
+Update 23.09.14
+- fixed several bugs
+- added a big picture overlay to the show view
+- added a create PDF function based on [dompdf](https://github.com/dompdf/dompdf) and Raymond Kolbes [zend2 wrapper modul](https://github.com/raykolbe/DOMPDFModule)
+- added order by name to selects
+- dependencies are now completely on github (had an error while installing on my webspace, no terminal and composer available)
+
 ------------------------------------------------------------------------------------------------
 
 ###Whats planned next?
-- implement import/export functions
+- continue testing
 - implement transfer skript v2 -> v3
-- test on live system

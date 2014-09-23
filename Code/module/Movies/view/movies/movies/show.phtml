@@ -62,7 +62,7 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 						$year_of_birth = ($actor->year_of_birth>0) ? ' ('.$escaper->escapeHtml($actor->year_of_birth).')' : '';
 						echo '<tr>';
 						echo '<td><a href="'.$this->url('search', array('action'=>'actor','lang'=>$this->language, 'value'=>$actor->id)).'">'.$escaper->escapeHtml($actor->name).$year_of_birth.'</a></td>';
-						echo '<td>'.$escaper->escapeHtml($actor->role).'</td>';
+						echo '<td>'.str_replace('/','<br>',$escaper->escapeHtml($actor->role)).'</td>';
 						echo '</tr>';
 					}
 				}
@@ -81,7 +81,7 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 	</div>
 	<div class="col-xs-12 col-sm-3 movies-data-right">
 		<div class="movies-data-cover">
-			<img class="img-responsive" src="<?php echo $this->url('movies'); ?>img/cover/<?php echo $medium->getCover(); ?>">
+			<img class="img-responsive" data-toggle="modal" data-target="#moviesOverlay" src="<?php echo $this->url('movies'); ?>img/cover/<?php echo $medium->getCover(); ?>">
 			<?php if(isset($medium->cover_source)){ ?>
 			<div class="col-sm-12 text-center">
 				<?php echo $this->translate('Source') ?>: <a href="<?php echo $escaper->escapeHtml($medium->getCoverSource()); ?>" target="_blank"><?php echo $escaper->escapeHtml($medium->getCoverSourceDomain()); ?></a>
@@ -171,3 +171,17 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 		</div>
 	</div>
 </div>
+<div id="content">
+	<img src="<?php echo $this->url('movies'); ?>img/cover/<?php echo $medium->getCover(); ?>">
+</div>
+<div id="overlay">
+</div>
+
+<div class="modal fade" id="moviesOverlay" tabindex="-1" role="dialog" aria-labelledby="moviesOverlayLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    	<img data-dismiss="modal" src="<?php echo $this->url('movies'); ?>img/cover/<?php echo $medium->getCover(); ?>">
+    </div>  
+  </div>
+</div>
+<script type="text/javascript" src="<?php echo $this->basePath()?>/js/movies/overlay.js"></script>

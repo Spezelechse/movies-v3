@@ -12,7 +12,7 @@ class Actor extends BaseObject
 	{
 		$this->id = (isset($data['id'])) ? $data['id'] : null;
 		$this->name = (isset($data['name'])) ? $data['name'] : null;
-		$this->role = (isset($data['role'])) ? $data['role'] : null;
+		$this->role = (isset($data['role'])) ? $data['role'] : ' ';
 		$this->year_of_birth = (isset($data['year_of_birth'])) ? $data['year_of_birth'] : null;
 	}
 
