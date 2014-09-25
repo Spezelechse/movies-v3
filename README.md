@@ -1,6 +1,8 @@
 Movies V3
 =========
 
+Since this is my first Zend project, please tell me if I did something wrong or it could be done better/easier. :)
+
 This project will contain all features from [V2](https://github.com/Spezelechse/movies-v2) and add some new ones. The biggest difference to V2 will be that the backend is based on [Zend Framework 2](http://framework.zend.com/) and the fronted on [jquery](http://jquery.com/) and [Bootstrap 3](http://getbootstrap.com/).
 
 Some of the new features will be:
