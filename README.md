@@ -10,6 +10,7 @@ Some of the new features will be:
 - improved database design
  
 **Live demo** of the master-branch can be found [here](http://movies-demo.spezelechse.de/) and the login data is admin | Test?123
+Please keep it clean ;)
 
 ------------------------------------------------------------------------------------------------
 
