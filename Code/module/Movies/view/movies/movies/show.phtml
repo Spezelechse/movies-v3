@@ -59,9 +59,8 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 			<?php
 				if($medium->actors->count()>0){
 					foreach ($medium->actors as $actor) {
-						$year_of_birth = ($actor->year_of_birth>0) ? ' ('.$escaper->escapeHtml($actor->year_of_birth).')' : '';
 						echo '<tr>';
-						echo '<td><a href="'.$this->url('search', array('action'=>'actor','lang'=>$this->language, 'value'=>$actor->id)).'">'.$escaper->escapeHtml($actor->name).$year_of_birth.'</a></td>';
+						echo '<td><a href="'.$this->url('search', array('action'=>'actor','lang'=>$this->language, 'value'=>$actor->id)).'">'.$escaper->escapeHtml($actor->name).'</a></td>';
 						echo '<td>'.str_replace('/','<br>',$escaper->escapeHtml($actor->role)).'</td>';
 						echo '</tr>';
 					}
@@ -171,16 +170,10 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
 		</div>
 	</div>
 </div>
-<div id="content">
-	<img src="<?php echo $this->url('movies'); ?>img/cover/<?php echo $medium->getCover(); ?>">
-</div>
-<div id="overlay">
-</div>
-
 <div class="modal fade" id="moviesOverlay" tabindex="-1" role="dialog" aria-labelledby="moviesOverlayLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
-    	<img data-dismiss="modal" src="<?php echo $this->url('movies'); ?>img/cover/<?php echo $medium->getCover(); ?>">
+    	<img data-dismiss="modal" src="<?php echo $this->url('movies'); ?>img/cover/<?php echo $escaper->escapeHtml($medium->getCover()); ?>">
     </div>  
   </div>
 </div>

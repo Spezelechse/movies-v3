@@ -77,8 +77,17 @@ Update 23.09.14
 - added order by name to selects
 - dependencies are now completely on github (had an error while installing on my webspace, no terminal and composer available)
 
+Update 25.09.14
+- fixed more bugs (thanks to Buzzard for finding them :) )
+- cleaned the code
+- added feedback for missing userrights
+
 ------------------------------------------------------------------------------------------------
 
 ###Whats planned next?
 - continue testing
+- build the first release
 - implement transfer skript v2 -> v3
+- add an alternative pdf view with details
+- maybe change the imdb search listing for easier identifying of the searched
+- add a detecting for changed userdata (especially userrights)

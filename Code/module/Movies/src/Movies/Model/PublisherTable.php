@@ -17,12 +17,12 @@ class PublisherTable extends BaseTable
         $trim = new StringTrim();
         $strip = new StripTags();
 
-        $name = $strip($trim($name));
+        $name = $strip->filter($trim->filter($name));
 
         $select = $this->tableGateway->getSql()->select();
 
         $select ->columns(array('id'))
-                ->where('Publisher.name = \''.$name.'\'');
+                ->where(array('Publisher.name'=>$name));
 
         $result = $this->tableGateway->selectWith($select)->current();
         
@@ -40,7 +40,7 @@ class PublisherTable extends BaseTable
         
         if($id==0){
             $new = new Publisher();
-            $new->name = $strip($trim($data));
+            $new->name = $strip->filter($trim->filter($data));
             $id = $this->save($new);
         }
 
@@ -52,7 +52,7 @@ class PublisherTable extends BaseTable
     	$sqlSelect = $this->tableGateway->getSql()->select();
 		$sqlSelect->columns(array('*'));
 		$sqlSelect->join('Medium_has_Publisher', 'Medium_has_Publisher.publisher_id = Publisher.id', array(), 'left');
-		$sqlSelect->where('Medium_has_Publisher.medium_id = '.$id);
+		$sqlSelect->where(array('Medium_has_Publisher.medium_id'=>$id));
 
 		$resultSet = $this->tableGateway->selectWith($sqlSelect);
 

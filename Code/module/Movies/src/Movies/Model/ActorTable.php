@@ -5,7 +5,6 @@ use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Sql;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
-use Zend\Filter\HtmlEntities;
 
 class ActorTable extends BaseTable
 {
@@ -18,7 +17,7 @@ class ActorTable extends BaseTable
     	$sqlSelect = $this->tableGateway->getSql()->select();
 		$sqlSelect->columns(array('*'));
 		$sqlSelect->join('Medium_has_Actor', 'Medium_has_Actor.actor_id = Actor.id', array('role'), 'left');
-		$sqlSelect->where('Medium_has_Actor.medium_id = '.$id);
+		$sqlSelect->where(array('Medium_has_Actor.medium_id'=>$id));
         $sqlSelect->order('name ASC');
 
 		$resultSet = $this->tableGateway->selectWith($sqlSelect);
@@ -54,10 +53,9 @@ class ActorTable extends BaseTable
         $ids = array();
         $trim = new StringTrim();
         $strip = new StripTags();
-        $entities = new HtmlEntities();
 
         foreach ($actors as $key => $actor) {
-                $actor = $entities->filter($strip->filter($trim->filter($actor)));
+                $actor = $strip->filter($trim->filter($actor));
 
                 $actor = explode('#',$actor);
                 $year = (isset($actor[1])) ? (int)$actor[1] : 0;
@@ -68,8 +66,8 @@ class ActorTable extends BaseTable
                 $select = $this->tableGateway->getSql()->select();
 
                 $select ->columns(array('id'))
-                        ->where('Actor.name = \''.$actor.'\'')
-                        ->where('Actor.year_of_birth = \''.$year.'\'');
+                        ->where(array('Actor.name'=>$actor))
+                        ->where(array('Actor.year_of_birth'=>$year));
 
                 $result = $this->tableGateway->selectWith($select)->current();
                 if($result){
@@ -91,13 +89,12 @@ class ActorTable extends BaseTable
 
             $trim = new StringTrim();
             $strip = new StripTags();
-            $entities = new HtmlEntities();
 
             $actors = explode(PHP_EOL, $actors_text);
             $roles = explode(PHP_EOL, $roles_text);
 
             foreach ($actors as $key => $actor) {
-                $actor = $entities->filter($strip->filter($trim->filter($actor)));
+                $actor = $strip->filter($trim->filter($actor));
                 
                 $actor = explode('#',$actor);
                 $year = (isset($actor[1])) ? (int)$actor[1] : 0;
@@ -108,7 +105,7 @@ class ActorTable extends BaseTable
                 $select = $this->tableGateway->getSql()->select();
 
                 $select ->columns(array('*'))
-                        ->where('Actor.name = \''.$actor.'\'')
+                        ->where(array('Actor.name'=>$actor))
                         ->where('Actor.year_of_birth = \'0\'');
 
                 $result_zero = $this->tableGateway->selectWith($select)->current();
@@ -116,8 +113,8 @@ class ActorTable extends BaseTable
                 $select = $this->tableGateway->getSql()->select();
                 
                 $select ->columns(array('*'))
-                        ->where('Actor.name = \''.$actor.'\'')
-                        ->where('Actor.year_of_birth = \''.$year.'\'');
+                        ->where(array('Actor.name'=>$actor))
+                        ->where(array('Actor.year_of_birth'=>$year));
 
                 $result_year = $this->tableGateway->selectWith($select)->current();
                 
@@ -145,7 +142,7 @@ class ActorTable extends BaseTable
                     $actor_id=$this->save($new_actor);
                 }
 
-                $insertConnect->values(array('medium_id'=>$medium_id, 'actor_id'=>$actor_id, 'role'=>$entities->filter($strip->filter($trim->filter($roles[$key])))));
+                $insertConnect->values(array('medium_id'=>$medium_id, 'actor_id'=>$actor_id, 'role'=>$strip->filter($trim->filter($roles[$key]))));
 
                 $statement = $sql->prepareStatementForSqlObject($insertConnect);
                 $statement->execute();

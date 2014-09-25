@@ -1,13 +1,17 @@
+<meta charset="utf-8">
 <?php
 /**
  * @package Movies
- */
+ */         
+header("Content-Type: text/html; charset=utf-8");
+$escaper = new Zend\Escaper\Escaper('utf-8');
+
 $missing='';
 if(!empty($director_missing)){
 	$missing.="<h5>".$this->translate('Director').":";
 	foreach ($director_missing as $value) {
 		$missing.="<small>";
-		$missing.=$value;
+		$missing.=$escaper->escapeHtml($value);
 		$missing.="</small>";
 	}
 	$missing.="<h5>";
@@ -16,7 +20,7 @@ if(!empty($publisher_missing)){
 	$missing.="<h5>".$this->translate('Publisher').":";
 	foreach ($publisher_missing as $value) {
 		$missing.="<small>";
-		$missing.=$value;
+		$missing.=$escaper->escapeHtml($value);
 		$missing.="</small>";
 	}
 	$missing.="<h5>";
@@ -25,7 +29,7 @@ if(!empty($genre_missing)){
 	$missing.="<h5>".$this->translate('Genre').":";
 	foreach ($genre_missing as $value) {
 		$missing.="<small>";
-		$missing.=$value;
+		$missing.=$escaper->escapeHtml($value);
 		$missing.="</small>";
 	}
 	$missing.="<h5>";
@@ -33,7 +37,7 @@ if(!empty($genre_missing)){
 if(!empty($type_id_missing)){
 	$missing.="<h5>".$this->translate('Type').":";
 	$missing.="<small>";
-	$missing.=$value;
+	$missing.=$escaper->escapeHtml($value);
 	$missing.="</small>";
 	$missing.="<h5>";
 }

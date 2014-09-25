@@ -16,12 +16,12 @@ class TypeTable extends BaseTable
         $trim = new StringTrim();
         $strip = new StripTags();
 
-        $name = $strip($trim($name));
+        $name = $strip->filter($trim->filter($name));
 
         $select = $this->tableGateway->getSql()->select();
 
         $select ->columns(array('id'))
-                ->where('Type.name_en = \''.$name.'\'');
+                ->where(array('Type.name_en'=>$name));
 
         $result = $this->tableGateway->selectWith($select)->current();
         
@@ -39,8 +39,8 @@ class TypeTable extends BaseTable
         
         if($id==0){
             $new = new Type();
-            $new->name_en = $strip($trim($data->en));
-            $new->name_de = $strip($trim($data->de));;
+            $new->name_en = $strip->filter($trim->filter($data->en));
+            $new->name_de = $strip->filter($trim->filter($data->de));
             $id = $this->save($new);
         }
 

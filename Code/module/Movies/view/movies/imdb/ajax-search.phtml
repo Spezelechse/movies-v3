@@ -1,14 +1,18 @@
+<meta charset="utf-8">
 <?php
 /**
  * @package Movies
- */
-echo "<h5>".$this->translate('Results for').": ".$searchValue."</h5><br><br>";
+ */         
+header("Content-Type: text/html; charset=utf-8");
+$escaper = new Zend\Escaper\Escaper('utf-8');
+
+echo "<h5>".$this->translate('Results for').": ".$escaper->escapeHtml($searchValue)."</h5><br><br>";
 ?>
 
 <?php
 foreach ($results as $result) {
 	echo '<div class="form-group movies-imdb-result">';
-	echo '<label>'.$result->title().' ('.$result->year().')<input type="radio" name="id" value="'.$result->imdbid().'"></label><br>';
+	echo '<label>'.$escaper->escapeHtml($result->title()).' ('.$escaper->escapeHtml($result->year()).')<input type="radio" name="id" value="'.$escaper->escapeHtml($result->imdbid()).'"></label><br>';
 	echo '</div>';
 }
 ?>

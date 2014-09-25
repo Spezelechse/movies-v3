@@ -17,12 +17,12 @@ class DirectorTable extends BaseTable
         $trim = new StringTrim();
         $strip = new StripTags();
 
-        $name = $strip($trim($name));
+        $name = $strip->filter($trim->filter($name));
 
         $select = $this->tableGateway->getSql()->select();
 
         $select ->columns(array('id'))
-                ->where('Director.name = \''.$name.'\'');
+                ->where(array('Director.name'=>$name));
 
         $result = $this->tableGateway->selectWith($select)->current();
         
@@ -40,7 +40,7 @@ class DirectorTable extends BaseTable
         
         if($id==0){
             $new = new Director();
-            $new->name = $strip($trim($data));
+            $new->name = $strip->filter($trim->filter($data));
             $id = $this->save($new);
         }
 
@@ -52,7 +52,7 @@ class DirectorTable extends BaseTable
     	$sqlSelect = $this->tableGateway->getSql()->select();
 		$sqlSelect->columns(array('*'));
 		$sqlSelect->join('Medium_has_Director', 'Medium_has_Director.director_id = Director.id', array(), 'left');
-		$sqlSelect->where('Medium_has_Director.medium_id = '.$id);
+		$sqlSelect->where(array('Medium_has_Director.medium_id'=>$id));
 
 		$resultSet = $this->tableGateway->selectWith($sqlSelect);
 

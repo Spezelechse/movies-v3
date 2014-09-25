@@ -22,7 +22,6 @@ use Movies\Table\ExportTable;
 use Zend\I18n\Filter\Alnum;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
-use Zend\Filter\HtmlEntities;
 use Zend\Filter\Int;
 use Zend\Validator\File\MimeType;
 use SimpleImage;
@@ -41,7 +40,7 @@ class AdminController extends BasisController
         }
     }
 
-    public function getMediumForm(){
+    private function getMediumForm(){
         if(empty($this->medium_form)){
             $form = new MediumForm();
             $form->get('submit')->setValue($this->translate('Update'));
@@ -145,7 +144,6 @@ class AdminController extends BasisController
                         $id = $this->Tables()->medium()->save($medium);
                         
                         $this->Tables()->actor()->connectToMedium($id, $formData['actors_text'], $formData['roles_text']);
-
                         $this->Tables()->genre()->connectToMedium($id, $formData['genre']);
                         $this->Tables()->director()->connectToMedium($id, $formData['director']);
                         $this->Tables()->publisher()->connectToMedium($id, $formData['publisher']);
@@ -165,7 +163,7 @@ class AdminController extends BasisController
             return $this->view;
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
@@ -201,7 +199,7 @@ class AdminController extends BasisController
             }
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
@@ -277,7 +275,7 @@ class AdminController extends BasisController
             }
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
@@ -293,6 +291,7 @@ class AdminController extends BasisController
 
                 foreach ($import_data as $data) {
                     $import = $this->processSingleImport($data, $owner_id);
+
                     if(isset($import['failed'])){
                         array_push($result['failed'], $import['failed']);
                     }
@@ -310,11 +309,11 @@ class AdminController extends BasisController
             return $this->view;
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
-    public function processSingleImport($data, $owner_id){
+    private function processSingleImport($data, $owner_id){
         $data = $this->prepareImport($data, $owner_id);
         
         $cover_file = $data['cover_file'];
@@ -348,7 +347,7 @@ class AdminController extends BasisController
         }
     }
 
-    public function prepareImport($data, $owner_id){
+    private function prepareImport($data, $owner_id){
         $keys =  array('director','publisher','genre');
 
         foreach ($keys as $key) {
@@ -397,7 +396,6 @@ class AdminController extends BasisController
                     $ids = $post['export_selected'];
                 }
                 
-
                 if(isset($post['export_all'])){
                     $media = $this->Tables()->medium()->fetchAll();
 
@@ -417,7 +415,7 @@ class AdminController extends BasisController
             return $this->view;
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
@@ -427,10 +425,10 @@ class AdminController extends BasisController
             $media_select=$this->Tables()->medium()->fetchAllForList_Select($this->language);
 
             $params=array(
-            'translator' =>$this->Translator()->getTranslator(),
-            'basicPath' =>$this->url()->fromRoute('movies'),
-            'path' =>$this->getRequest()->getUri()->getPath(),
-            'disableShowAs'=>true,
+                'translator' =>$this->Translator()->getTranslator(),
+                'basicPath' =>$this->url()->fromRoute('movies'),
+                'path' =>$this->getRequest()->getUri()->getPath(),
+                'disableShowAs'=>true,
             );
 
             $table = new ExportTable($params);
@@ -480,20 +478,23 @@ class AdminController extends BasisController
             return $this->view;
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
     public function listUserAjaxAction()
     {
         if($this->getAuthService()->getIdentity()->hasRight('user','edit')||$this->getAuthService()->getIdentity()->hasRight('user','delete')){
-            $user_select=$this->Tables()->user()->fetchAllForList_Select($this->MoviesConfig()->get('superadmin_id'));
+            $user_select=$this->Tables()->user()->fetchAllForList_Select($this->MoviesConfig()->get('superadmin_id'),$this->getAuthService()->getIdentity()->id);
 
             $table = new UserTable();
-            $table->setEditUrl($this->url()->fromRoute('admin', array('lang'=>$this->language, 'action'=>'edit-user')));
-            $table->setDeleteUrl($this->url()->fromRoute('admin', array('lang'=>$this->language, 'action'=>'delete-user')));
+            if($this->getAuthService()->getIdentity()->hasRight('user','edit')){
+                $table->setEditUrl($this->url()->fromRoute('admin', array('lang'=>$this->language, 'action'=>'edit-user')));
+            }
+            if($this->getAuthService()->getIdentity()->hasRight('user','delete')){
+                $table->setDeleteUrl($this->url()->fromRoute('admin', array('lang'=>$this->language, 'action'=>'delete-user')));
+            }
             $table->setTranslator($this->Translator()->getTranslator());
-            $table->setIdentity($this->getAuthService()->getIdentity());
             $table->setAdapter($this->getDbAdapter())
                   ->setSource($user_select)
                   ->setParamAdapter($this->getRequest()->getPost());
@@ -548,7 +549,7 @@ class AdminController extends BasisController
             return $this->view;
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
@@ -576,7 +577,7 @@ class AdminController extends BasisController
             }
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
@@ -650,7 +651,7 @@ class AdminController extends BasisController
             }
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
@@ -660,7 +661,7 @@ class AdminController extends BasisController
             return $this->view;
         }
         else{
-            return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
+            return $this->rightMissing();
         }
     }
 
@@ -668,9 +669,11 @@ class AdminController extends BasisController
     {
         if($this->getAuthService()->getIdentity()->hasRight('page','config')){
             $param = $this->getRequest()->getPost();
+            $trim = new StringTrim();
+            $strip = new StripTags();
 
-            $config = $this->Tables()->config()->get($param['row']);
-            $config->data = $param['value'];
+            $config = $this->Tables()->config()->get((int)$param['row']);
+            $config->data = $strip->filter($trim->filter($param['value']));
 
             $this->Tables()->config()->save($config);
             return $this->jsonResponse(array('succes' => 1));
@@ -707,10 +710,9 @@ class AdminController extends BasisController
             $post = $this->getRequest()->getPost()->toArray();
             $trim = new StringTrim();
             $strip = new StripTags();
-            $entities = new HtmlEntities();
-
-            $name_de = $entities->filter($strip->filter($trim->filter($post['name_de'])));
-            $name_en = $entities->filter($strip->filter($trim->filter($post['name_en'])));
+          
+            $name_de = $strip->filter($trim->filter($post['name_de']));
+            $name_en = $strip->filter($trim->filter($post['name_en']));
 
             $genre = new Genre();
             $genre->name_de = $name_de;
@@ -731,9 +733,8 @@ class AdminController extends BasisController
             $post = $this->getRequest()->getPost()->toArray();
             $trim = new StringTrim();
             $strip = new StripTags();
-            $entities = new HtmlEntities();
 
-            $name = $entities->filter($strip->filter($trim->filter($post['name'])));
+            $name = $strip->filter($trim->filter($post['name']));
 
             $publisher = new Publisher();
             $publisher->name = $name;
@@ -753,9 +754,8 @@ class AdminController extends BasisController
             $post = $this->getRequest()->getPost()->toArray();
             $trim = new StringTrim();
             $strip = new StripTags();
-            $entities = new HtmlEntities();
 
-            $name = $entities->filter($strip->filter($trim->filter($post['name'])));
+            $name = $strip->filter($trim->filter($post['name']));
 
             $director = new Director();
             $director->name = $name;
@@ -775,10 +775,9 @@ class AdminController extends BasisController
             $post = $this->getRequest()->getPost()->toArray();
             $trim = new StringTrim();
             $strip = new StripTags();
-            $entities = new HtmlEntities();
 
-            $name_de = $entities->filter($strip->filter($trim->filter($post['name_de'])));
-            $name_en = $entities->filter($strip->filter($trim->filter($post['name_en'])));
+            $name_de = $strip->filter($trim->filter($post['name_de']));
+            $name_en = $strip->filter($trim->filter($post['name_en']));
 
             $type = new Type();
             $type->name_de = $name_de;
@@ -791,5 +790,10 @@ class AdminController extends BasisController
         else{
             return $this->jsonResponse(array('succes' => 0));
         }
+    }
+
+    private function rightMissing(){
+        $this->flashMessenger()->addErrorMessage($this->translate('You don\'t have the right for this action!!'));
+        return $this->redirect()->toRoute('movies', array('lang'=>$this->language));
     }
 }

@@ -54,10 +54,11 @@ class AuthController extends BasisController
         $this->Tables()->blacklist()->cleanUp();
 
         if ($request->isPost()){
-            $blacklist_entry = $this->checkBlacklist($ip_adress, $request->getPost('username'));
+            $blacklist_entry = $this->Tables()->blacklist()->checkBlacklist($ip_adress, $request->getPost('username'));
 
             if($blacklist_entry->attempts<3&&$blacklist_entry->getTimeLeft()<=0){
                 $form->setData($request->getPost());
+
                 if($form->isValid()){
                     $this->getAuthService()->getAdapter()
                                            ->setIdentity($request->getPost('username'))
@@ -66,7 +67,7 @@ class AuthController extends BasisController
                     $result = $this->getAuthService()->authenticate();
 
                     if ($result->isValid()) {
-                        $this->deleteFromBlacklist($ip_adress, $request->getPost('username'));    
+                        $this->Tables()->blacklist()->deleteFromBlacklist($ip_adress, $request->getPost('username'));    
                         $this->flashMessenger()->addSuccessMessage($this->translate('login_success'));
                     
                         if ($request->getPost('remember') == 1 ) {
@@ -82,7 +83,7 @@ class AuthController extends BasisController
                         return $this->redirect()->toRoute('movies', array('action' => 'index', 'lang' => $this->language));
                     }
                     else{
-                        $attempts = $this->updateBlacklist($ip_adress, $request->getPost('username'));
+                        $attempts = $this->Tables()->blacklist()->updateBlacklist($ip_adress, $request->getPost('username'));
                         $this->flashMessenger()->addErrorMessage(sprintf($this->translate('login_data_wrong'), ''.(3-$attempts)));
 
                         if($attempts>=3){
@@ -100,44 +101,6 @@ class AuthController extends BasisController
         }
 
         return $this->redirect()->toRoute('auth', array('action' => 'login', 'lang' => $this->language));
-    }
-
-    private function updateBlacklist($ip,$try){
-        $entry = $this->Tables()->blacklist()->getByAttempt($ip, $try);
-
-        if($entry){
-            $entry->attempts++;
-        }
-        else{
-            $entry = new Blacklist();
-            $entry->try = $try;
-            $entry->ip = $ip;
-            $entry->attempts = 1;
-        }
-
-        $this->Tables()->blacklist()->save($entry);
-
-        return $entry->attempts;
-    }
-
-    private function deleteFromBlacklist($ip, $try){
-        $entry = $this->Tables()->blacklist()->getByAttempt($ip, $try);
-
-        if($entry){
-            $this->Tables()->blacklist()->delete($entry->id);
-        }
-    }
-
-    private function checkBlacklist($ip, $try){
-        $entry = $this->Tables()->blacklist()->getByAttempt($ip, $try);
-
-        if(!$entry){
-            $entry = new Blacklist();
-            $entry->time = time();
-            $entry->attempts = 0;
-        }
-
-        return $entry;
     }
 
     public function logoutAction()

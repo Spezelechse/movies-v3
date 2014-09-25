@@ -2,14 +2,14 @@
 /**
  * @package Movies
  */
-
+$escaper = new Zend\Escaper\Escaper('utf-8');
 // Template
 ?>
 <h3>
 	<?php echo $this->translate('Search results for:'); ?>
 	<br>
 	<small>
-		<?php echo $this->translate('Genre').' = '.$search_value_text; ?>
+		<?php echo $this->translate('Genre').' = '.$escaper->escapeHtml($search_value_text); ?>
 	</small>
 </h3>
 

@@ -81,7 +81,9 @@ class SearchController extends BasisController
       	}
 
 		if(isset($actor)){
-			$this->view->search_value_text = $actor->name;
+			$year_of_birth = ($actor->year_of_birth>0) ? ' ('.$actor->year_of_birth.')' : '';
+
+			$this->view->search_value_text = $actor->name.$year_of_birth;
 		}
 		else{
 			$this->view->search_value_text = '';
@@ -98,7 +100,7 @@ class SearchController extends BasisController
         $select_for_in = $this->sql->select();
         $select_for_in  ->from('Medium_has_Actor')
                         ->columns(array('medium_id'))
-                        ->where('Medium_has_Actor.actor_id = '.$id);
+                        ->where(array('Medium_has_Actor.actor_id'=>$id));
         return $select_for_in;
 	}
 	public function searchRole($text){
@@ -135,7 +137,7 @@ class SearchController extends BasisController
         $select_for_in = $this->sql->select();
         $select_for_in  ->from('Medium_has_Director')
                         ->columns(array('medium_id'))
-                        ->where('Medium_has_Director.director_id = '.$id);
+                        ->where(array('Medium_has_Director.director_id'=>$id));
         return $select_for_in;
 	}
 
@@ -165,7 +167,7 @@ class SearchController extends BasisController
         $select_for_in = $this->sql->select();
         $select_for_in  ->from('Medium_has_Publisher')
                         ->columns(array('medium_id'))
-                        ->where('Medium_has_Publisher.publisher_id = '.$id);
+                        ->where(array('Medium_has_Publisher.publisher_id'=>$id));
         return $select_for_in;
 	}
 
@@ -195,7 +197,7 @@ class SearchController extends BasisController
         $select_for_in = $this->sql->select();
         $select_for_in  ->from('Medium_has_Genre')
                         ->columns(array('medium_id'))
-                        ->where('Medium_has_Genre.genre_id = '.$id);
+                        ->where(array('Medium_has_Genre.genre_id'=>$id));
         return $select_for_in;
 	}
 
@@ -217,7 +219,7 @@ class SearchController extends BasisController
       	return $this->view;
 	}
 	public function ajaxTypeAction(){
-        $this->basic_select ->where('type_id = '.$this->search_value);
+        $this->basic_select ->where(array('type_id'=>$this->search_value));
 
       	return $this->createTable($this->basic_select);
 	}
@@ -233,7 +235,7 @@ class SearchController extends BasisController
       	return $this->view;
 	}
 	public function ajaxMediumAction(){
-        $this->basic_select ->where('dvd_or_bluray = '.$this->search_value);
+        $this->basic_select ->where(array('dvd_or_bluray'=>$this->search_value));
 
       	return $this->createTable($this->basic_select);
 	}
@@ -256,7 +258,7 @@ class SearchController extends BasisController
       	return $this->view;
 	}
 	public function ajaxOwnerAction(){
-        $this->basic_select ->where('owner_id = '.$this->search_value);
+        $this->basic_select ->where(array('owner_id'=>$this->search_value));
 
       	return $this->createTable($this->basic_select);
 	}
@@ -273,7 +275,7 @@ class SearchController extends BasisController
       	return $this->view;
 	}
 	public function ajaxFskAction(){
-        $this->basic_select ->where('fsk = '.$this->search_value);
+        $this->basic_select ->where(array('fsk'=>$this->search_value));
 
       	return $this->createTable($this->basic_select);
 	}
@@ -303,40 +305,41 @@ class SearchController extends BasisController
         			$this->basic_select ->where->like('Medium.content_en','%'.$data["content_en"].'%')->or->like('Medium.content_de','%'.$data["content_en"].'%');
 				}
 				if(!empty($data["type_id"])){
-        			$this->basic_select ->where('Medium.type_id='.$data["type_id"]);
+        			$this->basic_select ->where(array('Medium.type_id'=>$data["type_id"]));
 				}
 				if(!empty($data["owner_id"])){
-        			$this->basic_select ->where('Medium.owner_id='.$data["owner_id"]);
+        			$this->basic_select ->where(array('Medium.owner_id'=>$data["owner_id"]));
 				}
 				if(!empty($data["duration"])){
-					$comparator ='=';
 					if($data["duration_comparator"]=='>'){
-						$comparator ='>';
+						$this->basic_select ->where->greaterThan('Medium.duration',$data["duration"]);
 					}
 					else if($data["duration_comparator"]=='<'){
-						$comparator ='<';
+						$this->basic_select ->where->lessThan('Medium.duration',$data["duration"]);
 					}
-
-        			$this->basic_select ->where('Medium.duration '.$comparator.$data["duration"]);
+					else{
+        				$this->basic_select ->where(array('Medium.duration'=>$data["duration"]));
+        			}
         		}
 				if(!empty($data["fsk"])){
-        			$this->basic_select ->where('Medium.fsk='.$data["fsk"]);
+        			$this->basic_select ->where(array('Medium.fsk'=>$data["fsk"]));
         		}
 				if(!empty($data["premiere"])){
-					$comparator ='=';
 					if($data["premiere_comparator"]=='>'){
-						$comparator ='>';
+						$this->basic_select ->where->greaterThan('Medium.premiere',$data["premiere"]);
 					}
 					else if($data["premiere_comparator"]=='<'){
-						$comparator ='<';
+						$this->basic_select ->where->lessThan('Medium.premiere',$data["premiere"]);
 					}
-        			$this->basic_select ->where('Medium.premiere '.$comparator.'\''.$data["premiere"].'\'');
+					else{
+        				$this->basic_select ->where(array('Medium.premiere'=>$data["premiere"]));
+        			}
         		}
 				if(!empty($data["num_disks"])){
-        			$this->basic_select ->where('Medium.num_disks='.$data["num_disks"]);
+        			$this->basic_select ->where(array('Medium.num_disks'=>$data["num_disks"]));
         		}
 				if(!empty($data["dvd_or_bluray"])){
-        			$this->basic_select ->where('Medium.dvd_or_bluray='.$data["dvd_or_bluray"]);
+        			$this->basic_select ->where(array('Medium.dvd_or_bluray'=>$data["dvd_or_bluray"]));
         		}
 				if(!empty($data["genre"])){
 					foreach ($data["genre"] as $genre_id) {

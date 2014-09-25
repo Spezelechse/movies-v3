@@ -54,7 +54,6 @@ return array(
                     'defaults' => array(
                         'controller' => 'AuthController',
                         'action'     => 'index',
-                        'lang'       => 'en',
                     ),
                 ),
             ),
@@ -69,7 +68,6 @@ return array(
                     'defaults' => array(
                         'controller' => 'UserController',
                         'action'     => 'index',
-                        'lang'       => 'en',
                     ),
                 ),
             ),
@@ -85,7 +83,6 @@ return array(
                     'defaults' => array(
                         'controller' => 'AdminController',
                         'action'     => 'index',
-                        'lang'       => 'en',
                     ),
                 )
             ),
@@ -101,7 +98,6 @@ return array(
                     'defaults' => array(
                         'controller' => 'ImdbController',
                         'action'     => 'index',
-                        'lang'       => 'en',
                     ),
                 )
             ),
@@ -118,7 +114,6 @@ return array(
                         'controller' => 'SearchController',
                         'action'     => 'index',
                         'value'      => '0',
-                        'lang'       => 'en',
                     ),
                 )
             ),

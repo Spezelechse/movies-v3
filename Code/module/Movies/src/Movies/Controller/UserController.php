@@ -44,7 +44,7 @@ class UserController extends BasisController
                 $form->setData($post);
 
                 if ($form->isValid()) {
-                    $this->flashMessenger()->addSuccessMessage($this->translate('User updated'));
+                    $this->flashMessenger()->addSuccessMessage($this->translate('Data updated'));
                     $user->exchangeArray($form->getData());
 
                     if($post->toArray()['password']!=''){

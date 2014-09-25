@@ -19,7 +19,7 @@ class UserTable extends BaseTable
 
         $sqlSelect = $this->tableGateway->getSql()->select();
         $sqlSelect->columns(array('*'));
-        $sqlSelect->where(array('username'=>$strip($trim($username))));
+        $sqlSelect->where(array('username'=>$strip->filter($trim->filter($username))));
 
         $resultSet = $this->tableGateway->selectWith($sqlSelect);
 
@@ -39,13 +39,14 @@ class UserTable extends BaseTable
         return $values;
     }
 
-    public function fetchAllForList_Select($admin_id){
+    public function fetchAllForList_Select($admin_id, $user_id){
         $sql = new Sql($this->tableGateway->getAdapter());
 
         $select = $sql->select();
         $select ->from('User')
                 ->columns(array('*'))
-                ->where('id!='.$admin_id);
+                ->where->notEqualTo('id',$admin_id)
+                ->where->notEqualTo('id',$user_id);
 
         return $select;
     }

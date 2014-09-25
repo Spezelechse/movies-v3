@@ -45,10 +45,6 @@ class UserTable extends AbstractTable
         $this->translator=$trans;
     }
 
-    public function setIdentity($ident){
-        $this->identity=$ident;
-    }
-
     public function init()
     {
         if(isset($this->translator)){
@@ -60,10 +56,10 @@ class UserTable extends AbstractTable
         $edit='';
         $delete='';
 
-        if($this->editUrl&&$this->identity->hasRight('user','edit')){
+        if($this->editUrl){
             $edit = '<a class="movies-table-link" href="'.$this->editUrl.'/%s"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a>';
         }
-        if($this->deleteUrl&&$this->identity->hasRight('user','delete')){
+        if($this->deleteUrl){
             $delete = '<a id="user-1" href="'.$this->deleteUrl.'/%s"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button></a>';
         }
 

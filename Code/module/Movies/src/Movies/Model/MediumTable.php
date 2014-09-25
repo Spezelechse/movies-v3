@@ -11,13 +11,6 @@ class MediumTable extends BaseTable
         return (get_class($object)=='Movies\Model\Medium') ? TRUE : FALSE;
     }
 
-    public function fetchAll()
-    {
-    	$resultSet = $this->tableGateway->select();
-
-        return $resultSet;
-    }
-
     public function fetchAllForList_Select($language){
 		$sql = new Sql($this->tableGateway->getAdapter());
         $select_genre = $sql->select();

@@ -10,7 +10,17 @@ jQuery(document).ready(function($) {
 
 	$('#imdb-import').click(function(){
 	    $('#imdb-search-action').off('click').on('click',function(){
-	    	$(".modal-body").html('');
+	    	imdbSearch();
+	    });
+
+	    $('#imdb-search').keyup(function(e) {
+	    	if(e.keyCode == 13) {
+				imdbSearch();
+			}
+		});
+
+		function imdbSearch(){
+			$(".modal-body").html('');
 	    	$(".modal-body").addClass('movies-imdb-processing');
 
 	    	$.post(baseUrl+'/ajax-search',	
@@ -21,7 +31,7 @@ jQuery(document).ready(function($) {
 					$('#imdb-import-action').show();
 				}
 			);
-	    });
+		}
 
 		$('.imdb-close-action').off('click').on('click',function(){
 			$('#imdb-search').val('')

@@ -150,7 +150,7 @@ class Medium extends BaseObject
     public function getCover(){
         $cover='';
 
-        if($this->cover_file){
+        if($this->cover_file&&file_exists('./public/img/cover/'.$this->cover_file)&&file_exists('./public/img/thumb/'.$this->cover_file)){
             $cover=$this->cover_file;
         }
         else{

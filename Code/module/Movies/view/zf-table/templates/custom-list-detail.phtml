@@ -29,17 +29,17 @@ $escaper = new Zend\Escaper\Escaper('utf-8');
         <div class="row" style="margin-bottom: 10px;">
             <div class="col-xs-12 col-sm-2">
                     <?php 
-                        if($row['cover_file']!=''){ 
+                        if($row['cover_file']!=''&&file_exists('./public/img/thumb/'.$escaper->escapeHtml($row['cover_file']))){ 
                     ?>  
                     <a href="<?php echo explode('"',$row['title'])[1]; ?>">
-                        <img class="img-responsive" src="<?php echo $this->name['basicPath']; ?>img/cover/<?php echo $escaper->escapeHtml($row['cover_file']); ?>">
+                        <img class="img-responsive" src="<?php echo $this->name['basicPath']; ?>img/thumb/<?php echo $escaper->escapeHtml($row['cover_file']); ?>">
                     </a>
                     <?php 
                     }
                     else{
                     ?>
                     <a href="<?php echo explode('"',$row['title'])[1]; ?>">
-                        <img class="img-responsive" src="<?php echo $this->name['basicPath']; ?>img/cover/placeholder.png">
+                        <img class="img-responsive" src="<?php echo $this->name['basicPath']; ?>img/thumb/placeholder.png">
                     </a>
                     <?php
                     }

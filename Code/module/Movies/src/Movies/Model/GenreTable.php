@@ -17,12 +17,12 @@ class GenreTable extends BaseTable
         $trim = new StringTrim();
         $strip = new StripTags();
 
-        $name = $strip($trim($name));
+        $name = $strip->filter($trim->filter($name));
 
         $select = $this->tableGateway->getSql()->select();
 
         $select ->columns(array('id'))
-                ->where('Genre.name_en = \''.$name.'\'');
+                ->where(array('Genre.name_en'=>$name));
 
         $result = $this->tableGateway->selectWith($select)->current();
 
@@ -40,8 +40,8 @@ class GenreTable extends BaseTable
         
         if($id==0){
             $new = new Genre();
-            $new->name_en = $strip($trim($data->en));
-            $new->name_de = $strip($trim($data->de));;
+            $new->name_en = $strip->filter($trim->filter($data->en));
+            $new->name_de = $strip->filter($trim->filter($data->de));
             $id = $this->save($new);
         }
 
@@ -53,7 +53,7 @@ class GenreTable extends BaseTable
     	$sqlSelect = $this->tableGateway->getSql()->select();
 		$sqlSelect->columns(array('*'));
 		$sqlSelect->join('Medium_has_Genre', 'Medium_has_Genre.genre_id = Genre.id', array(), 'left');
-		$sqlSelect->where('Medium_has_Genre.medium_id = '.$id);
+		$sqlSelect->where(array('Medium_has_Genre.medium_id'=>$id));
 
 		$resultSet = $this->tableGateway->selectWith($sqlSelect);
 
