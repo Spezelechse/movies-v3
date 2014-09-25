@@ -9,9 +9,7 @@ Some of the new features will be:
 - responsive(ish) design
 - improved database design
  
-**Live demo** of the master-branch can be found [here](http://movies-demo.spezelechse.de/) and the login data is admin | Test?123
-
-Please keep it clean ;)
+**Live demo** of the master-branch can be found [here](http://movies-demo.spezelechse.de/) and the login data is admin | Test?123 ( Please keep it clean ;) )
 
 ------------------------------------------------------------------------------------------------
 
