@@ -88,8 +88,9 @@ Update 25.09.14
 
 ###Whats planned next?
 - continue testing
-- build the first release
+- build the first release + install instructions
 - implement transfer skript v2 -> v3
 - add an alternative pdf view with details
-- maybe change the imdb search listing for easier identifying of the searched
 - add a detecting for changed userdata (especially userrights)
+- maybe change the imdb search listing for easier identifying of the searched
+- maybe change the actor editing from textareas to an editable table
