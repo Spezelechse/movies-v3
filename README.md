@@ -91,6 +91,6 @@ Update 25.09.14
 - build the first release + install instructions
 - implement transfer skript v2 -> v3
 - add an alternative pdf view with details
-- add a detecting for changed userdata (especially userrights)
-- maybe change the imdb search listing for easier identifying of the searched
+- add a detection of changed userdata (especially userrights)
+- maybe change the imdb search listing  (similar to the detail view for media) for easier identifying of the searched item
 - maybe change the actor editing from textareas to an editable table
