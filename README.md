@@ -113,12 +113,11 @@ Update 25.09.14
 Update 29.09.14
 - Added required marks to create and edit forms
 - Wrote install instructions
+- Built the first release
 
 ------------------------------------------------------------------------------------------------
 
 ###Whats planned next?
-- continue testing
-- build the first release
 - implement transfer skript v2 -> v3
 - add an alternative pdf view with details
 - add a detection of changed userdata (especially userrights)
