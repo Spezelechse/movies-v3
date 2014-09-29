@@ -30,13 +30,21 @@ echo $this->formHidden($form->get('csrf'));
 					</div>
 				</div>
 				<div class="form-group">
-					<?php echo $this->formLabel($form->get('title_de')); ?>
+					<?php 
+						$title_de = $form->get('title_de');
+						$title_de->setLabel($this->translate($title_de->getOption('label')).'*'); 
+					?>
+					<?php echo $this->formLabel($title_de); ?>
 					<div class="col-sm-10">
 						<?php echo $this->formElement($form->get('title_de')); ?>
 					</div>
 				</div>
 				<div class="form-group">
-					<?php echo $this->formLabel($form->get('title_en')); ?>
+					<?php 
+						$title_en = $form->get('title_en');
+						$title_en->setLabel($this->translate($title_en->getOption('label')).'*'); 
+					?>
+					<?php echo $this->formLabel($title_en); ?>
 					<div class="col-sm-10">
 						<?php echo $this->formElement($form->get('title_en')); ?>
 					</div>
@@ -132,7 +140,11 @@ echo $this->formHidden($form->get('csrf'));
 			</div>
 			<div class="form-group">
 				<div class="col-sm-4" style="padding:0;">
-					<?php echo $this->formLabel($form->get('type_id')); ?>
+					<?php 
+						$type_id = $form->get('type_id');
+						$type_id->setLabel($this->translate($type_id->getOption('label')).' *'); 
+					?>
+					<?php echo $this->formLabel($type_id); ?>
 					<div class="col-sm-12 control-label add-container">
 						<button type="button" class="btn btn-xs add-popover-multilingual" id="add-type" data-selectid="type-select" data-title="<?php echo $this->translate('Add new type'); ?>" data-ajaxurl="<?php echo $this->url('admin', array('lang' => $language,'action' => 'add-type-ajax'));?>">
 						+
@@ -144,7 +156,11 @@ echo $this->formHidden($form->get('csrf'));
 				</div>
 			</div>
 			<div class="form-group">
-				<?php echo $this->formLabel($form->get('owner_id')); ?>
+				<?php 
+					$owner_id = $form->get('owner_id');
+					$owner_id->setLabel($this->translate($owner_id->getOption('label')).' *'); 
+				?>
+				<?php echo $this->formLabel($owner_id); ?>
 				<div class="col-sm-8">
 					<?php echo $this->formElement($form->get('owner_id')); ?>
 				</div>
@@ -162,7 +178,11 @@ echo $this->formHidden($form->get('csrf'));
 				</div>
 			</div>
 			<div class="form-group">
-				<?php echo $this->formLabel($form->get('premiere')); ?>
+				<?php 
+					$premiere = $form->get('premiere');
+					$premiere->setLabel($this->translate($premiere->getOption('label')).' *'); 
+				?>
+				<?php echo $this->formLabel($premiere); ?>
 				<div class="col-sm-8">
 					<?php echo $this->formElement($form->get('premiere')); ?>
 				</div>
@@ -194,6 +214,7 @@ echo $this->formHidden($form->get('csrf'));
 	</div>
 </div>
 <?php echo $this->form()->closeTag(); ?>
+<h5><small><?php echo $this->translate('*: These fields are required!'); ?></small></h5>
 
 <script type="text/javascript">
 $(function() {

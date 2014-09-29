@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movies V3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-24 18:15+0100\n"
-"PO-Revision-Date: 2014-09-24 18:16+0100\n"
+"POT-Creation-Date: 2014-09-29 20:38+0100\n"
+"PO-Revision-Date: 2014-09-29 20:39+0100\n"
 "Last-Translator: Patrick Geißler\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -85,12 +85,12 @@ msgstr "Benutzername und Passwort werden benötigt!!"
 msgid "login_blocked"
 msgstr "Der Login ist noch %s min. blockiert."
 
-#: ../src/Movies/Controller/AuthController.php:149
+#: ../src/Movies/Controller/AuthController.php:111
 msgid "logged_out"
 msgstr "Erfolgreich ausgeloggt!!"
 
 #: ../src/Movies/Controller/SearchController.php:288
-#: ../view/movies/admin/add-medium.phtml:241
+#: ../view/movies/admin/add-medium.phtml:262
 #: ../view/zf-table/templates/container-b3.phtml:20
 #: ../view/zf-table/templates/custom-list-detail.phtml:21
 #: ../view/zf-table/templates/custom-pic-only.phtml:18
@@ -229,7 +229,7 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: ../src/Movies/Form/UserForm.php:109
-#: ../view/movies/admin/add-medium.phtml:252
+#: ../view/movies/admin/add-medium.phtml:273
 #: ../view/movies/admin/import-medium.phtml:36
 msgid "Import"
 msgstr "Importieren"
@@ -273,43 +273,52 @@ msgid "Actions"
 msgstr "Aktionen"
 
 #: ../view/movies/admin/add-medium.phtml:28
-#: ../view/movies/admin/add-medium.phtml:231
+#: ../view/movies/admin/add-medium.phtml:252
 msgid "IMDb import"
 msgstr "IMDb Import"
 
-#: ../view/movies/admin/add-medium.phtml:46
-#: ../view/movies/admin/edit-medium.phtml:39
+#: ../view/movies/admin/add-medium.phtml:54
+#: ../view/movies/admin/edit-medium.phtml:47
 #: ../view/movies/search/advanced.phtml:50
 msgid "Content"
 msgstr "Inhalt"
 
-#: ../view/movies/admin/add-medium.phtml:98
-#: ../view/movies/admin/edit-medium.phtml:91
+#: ../view/movies/admin/add-medium.phtml:106
+#: ../view/movies/admin/edit-medium.phtml:99
 msgid "Add new genre"
 msgstr "Neues Genre hinzufügen"
 
-#: ../view/movies/admin/add-medium.phtml:111
-#: ../view/movies/admin/edit-medium.phtml:104
+#: ../view/movies/admin/add-medium.phtml:119
+#: ../view/movies/admin/edit-medium.phtml:112
 msgid "Add new director"
 msgstr "Neuen Regisseur hinzufügen"
 
-#: ../view/movies/admin/add-medium.phtml:124
-#: ../view/movies/admin/edit-medium.phtml:117
+#: ../view/movies/admin/add-medium.phtml:132
+#: ../view/movies/admin/edit-medium.phtml:125
 msgid "Add new publisher"
 msgstr "Neuen Herausgeber hinzufügen"
 
-#: ../view/movies/admin/add-medium.phtml:137
-#: ../view/movies/admin/edit-medium.phtml:130
+#: ../view/movies/admin/add-medium.phtml:149
+#: ../view/movies/admin/edit-medium.phtml:142
 msgid "Add new type"
 msgstr "Neuen Typ hinzufügen"
 
-#: ../view/movies/admin/add-medium.phtml:250
+#: ../view/movies/admin/add-medium.phtml:217
+#: ../view/movies/admin/edit-medium.phtml:210
+msgid "*: These fields are required!"
+msgstr "*: Diese Felder werden benötigt"
+
+#: ../view/movies/admin/add-medium.phtml:271
 msgid "Close"
 msgstr "Schließen"
 
-#: ../view/movies/admin/add-medium.phtml:251
+#: ../view/movies/admin/add-medium.phtml:272
 msgid "Hide"
 msgstr "Verstecken"
+
+#: ../view/movies/admin/add-user.phtml:92
+msgid "All fields are required!"
+msgstr "Alle Felder werden benötigt!"
 
 #: ../view/movies/admin/create-pdf.phtml:36
 msgid "Version of: "
