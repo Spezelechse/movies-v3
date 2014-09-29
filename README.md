@@ -15,6 +15,32 @@ Some of the new features will be:
 
 ------------------------------------------------------------------------------------------------
 
+###Install
+
+1. Upload the files, contained in the Code folder, to your webserver
+2. Import the 'movies_v3_db.sql' file into your database (this will create all needed tables and inital entries)
+3. Create a file named 'local.php' under config/autoload/ and add the following code (just replace 'user' and 'pword' with the data needed for your database access):
+
+ ```php
+<?php
+return array(
+  	'db' => array(
+          'username' => 'user',
+          'password' => 'pword',
+      ),
+);
+ ```
+ 
+4. Edit the 'global.php' file in the same folder and set the right database name in line 17 (replace 'movies_v3' with your database name).
+ 
+ ```php
+'dsn' => 'mysql:dbname=movies_v3;host=localhost',
+  ```
+
+5. Thats it. Now you can login with the username: admin and password: Test?123
+
+------------------------------------------------------------------------------------------------
+
 ###Updates
 
 Update 27.08.14
@@ -84,11 +110,15 @@ Update 25.09.14
 - cleaned the code
 - added feedback for missing userrights
 
+Update 29.09.14
+- Added required marks to create and edit forms
+- Wrote install instructions
+
 ------------------------------------------------------------------------------------------------
 
 ###Whats planned next?
 - continue testing
-- build the first release + install instructions
+- build the first release
 - implement transfer skript v2 -> v3
 - add an alternative pdf view with details
 - add a detection of changed userdata (especially userrights)
