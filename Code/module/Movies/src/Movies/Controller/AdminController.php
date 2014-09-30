@@ -283,20 +283,25 @@ class AdminController extends BasisController
     {
         if($this->getAuthService()->getIdentity()->hasRight('medium','import')){
             $request = $this->getRequest();
-            if ($request->isPost()) {
+            $files = $request->getFiles()->toArray();
+
+            if ($request->isPost()&&!empty($files['import_file']['tmp_name'])) {
                 $post = $request->getPost()->toArray();
-                $import_data = json_decode($post['json_import']);
+
+                $import_data = json_decode(file_get_contents($files['import_file']['tmp_name']));
                 $owner_id = (int)$post['owner_id'];
                 $result = array('succeed'=>array(), 'failed'=>array());
 
-                foreach ($import_data as $data) {
-                    $import = $this->processSingleImport($data, $owner_id);
+                if(is_array($import_data)){
+                    foreach ($import_data as $data) {
+                        $import = $this->processSingleImport($data, $owner_id);
 
-                    if(isset($import['failed'])){
-                        array_push($result['failed'], $import['failed']);
-                    }
-                    else{
-                        array_push($result['succeed'], $import['succeed']);
+                        if(isset($import['failed'])){
+                            array_push($result['failed'], $import['failed']);
+                        }
+                        else{
+                            array_push($result['succeed'], $import['succeed']);
+                        }
                     }
                 }
 
@@ -315,9 +320,6 @@ class AdminController extends BasisController
 
     private function processSingleImport($data, $owner_id){
         $data = $this->prepareImport($data, $owner_id);
-        
-        $cover_file = $data['cover_file'];
-        unset($data['cover_file']);
 
         $medium = new Medium();
 
@@ -328,7 +330,6 @@ class AdminController extends BasisController
 
         if ($form->isValid()) {
             $formData = $form->getData();
-            $formData['cover_file'] = $cover_file;
             $medium->exchangeArray($formData);
 
             $id = $this->Tables()->medium()->save($medium);
@@ -409,7 +410,21 @@ class AdminController extends BasisController
                     }
                 }                
                 
-                $this->view->json_export=json_encode($export);
+                $content = json_encode($export);
+
+                $response = new \Zend\Http\PhpEnvironment\Response();
+                $response->setContent($content);
+                $response->setStatusCode(200);
+
+                $headers = new \Zend\Http\Headers();
+                $headers->addHeaderLine('Content-Type', 'application/json; charset=UTF-8')
+                        ->addHeaderLine('Content-Disposition', 'attachment; filename="export_' . date('y-m-d__H-i-s') . '.json"')
+                        ->addHeaderLine('Content-Length', strlen($content));
+
+                $response->setHeaders($headers);
+
+                return $response;
+                //$this->view->json_export=json_encode($export);
             }
 
             return $this->view;

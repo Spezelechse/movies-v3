@@ -1,3 +1,6 @@
+<?php
+$escaper = new Zend\Escaper\Escaper('utf-8');
+?>
 <div class="zf-table-wrap  form-inline">
     <div class="table-header">
     </div>
@@ -27,10 +30,10 @@
             <div class="hidden-xs col-sm-3 col-md-2" style="padding:0; margin:0; margin-bottom: 5px;">
                 <div style="padding: 4px;">
                     <?php 
-                        if($row['cover_file']!=''){
+                        if($row['cover_file']!=''&&file_exists('./public/img/thumb/'.$escaper->escapeHtml($row['cover_file']))){
                     ?>  
                     <a href="<?php echo explode('"',$row['title'])[1]; ?>">
-                        <div class="col-sm-12 movies-list-cover" style="background-image:url('<?php echo $this->name['basicPath']; ?>img/thumb/<?php echo $row['cover_file']; ?>');"></div>
+                        <div class="col-sm-12 movies-list-cover" style="background-image:url('<?php echo $this->name['basicPath']; ?>img/thumb/<?php echo $escaper->escapeHtml($row['cover_file']); ?>');"></div>
                     </a>
                     <?php 
                     }
