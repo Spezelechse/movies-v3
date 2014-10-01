@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movies V3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-29 20:38+0100\n"
-"PO-Revision-Date: 2014-09-29 20:39+0100\n"
+"POT-Creation-Date: 2014-10-02 00:45+0100\n"
+"PO-Revision-Date: 2014-10-02 00:47+0100\n"
 "Last-Translator: Patrick Geißler\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -17,13 +17,13 @@ msgstr ""
 
 #: ../src/Movies/Controller/AdminController.php:46
 #: ../src/Movies/Controller/AdminController.php:223
-#: ../src/Movies/Controller/AdminController.php:638
-#: ../src/Movies/Controller/UserController.php:74
+#: ../src/Movies/Controller/AdminController.php:653
+#: ../src/Movies/Controller/UserController.php:78
 msgid "Update"
 msgstr "Aktualisieren"
 
 #: ../src/Movies/Controller/AdminController.php:120
-#: ../src/Movies/Controller/AdminController.php:516
+#: ../src/Movies/Controller/AdminController.php:531
 #: ../src/Movies/Form/UserForm.php:106 ../src/Movies/Form/UserForm.php:124
 msgid "Add"
 msgstr "Hinzufügen"
@@ -44,62 +44,67 @@ msgstr "Medium aktualisiert"
 msgid "Medium id not found"
 msgstr "Medium id nicht gefunden"
 
-#: ../src/Movies/Controller/AdminController.php:539
+#: ../src/Movies/Controller/AdminController.php:554
 msgid "User added"
 msgstr "Benutzer hinzugefügt"
 
-#: ../src/Movies/Controller/AdminController.php:566
+#: ../src/Movies/Controller/AdminController.php:581
 msgid "User deleted"
 msgstr "Benutzter gelöscht"
 
-#: ../src/Movies/Controller/AdminController.php:604
+#: ../src/Movies/Controller/AdminController.php:619
 msgid "User updated"
 msgstr "Benutzer aktualisiert"
 
-#: ../src/Movies/Controller/AdminController.php:648
-#: ../src/Movies/Controller/UserController.php:84
+#: ../src/Movies/Controller/AdminController.php:663
+#: ../src/Movies/Controller/UserController.php:88
 msgid "User id not found"
 msgstr "Benutzer id nicht gefunden"
 
-#: ../src/Movies/Controller/AdminController.php:796
+#: ../src/Movies/Controller/AdminController.php:811
 msgid "You don't have the right for this action!!"
 msgstr "Du besitzt nicht die Rechte für diese Aktion!!"
 
-#: ../src/Movies/Controller/AuthController.php:71
+#: ../src/Movies/Controller/AuthController.php:61
 msgid "login_success"
 msgstr "Erfolgreich eingeloggt!!"
 
-#: ../src/Movies/Controller/AuthController.php:87
+#: ../src/Movies/Controller/AuthController.php:77
 msgid "login_data_wrong"
 msgstr "Login fehlgeschlagen!! %s Versuche verbleiben"
 
-#: ../src/Movies/Controller/AuthController.php:90
+#: ../src/Movies/Controller/AuthController.php:80
 msgid "login_blocked_now"
 msgstr "Der Login ist jetzt für  %s min. blockiert."
 
-#: ../src/Movies/Controller/AuthController.php:95
+#: ../src/Movies/Controller/AuthController.php:85
 msgid "login_data_missing"
 msgstr "Benutzername und Passwort werden benötigt!!"
 
-#: ../src/Movies/Controller/AuthController.php:99
+#: ../src/Movies/Controller/AuthController.php:89
 msgid "login_blocked"
 msgstr "Der Login ist noch %s min. blockiert."
 
-#: ../src/Movies/Controller/AuthController.php:111
+#: ../src/Movies/Controller/AuthController.php:101
 msgid "logged_out"
 msgstr "Erfolgreich ausgeloggt!!"
+
+#: ../src/Movies/Controller/BasisController.php:58
+msgid "Your user data has changed! Please login again"
+msgstr ""
+"Ihre Benutzerdaten haben sich verändert! Loggen sie sich bitte erneut ein"
 
 #: ../src/Movies/Controller/SearchController.php:288
 #: ../view/movies/admin/add-medium.phtml:262
 #: ../view/zf-table/templates/container-b3.phtml:20
 #: ../view/zf-table/templates/custom-list-detail.phtml:21
-#: ../view/zf-table/templates/custom-pic-only.phtml:18
+#: ../view/zf-table/templates/custom-pic-only.phtml:21
 msgid "Search"
 msgstr "Suchen"
 
 #: ../src/Movies/Controller/UserController.php:47
-msgid "Data updated"
-msgstr "Daten aktualisiert"
+msgid "Data updated! Please Login with the new data"
+msgstr "Daten wurden geändert! Loggen sie sich bitte mit den neuen Daten ein"
 
 #: ../src/Movies/Form/LoginForm.php:24 ../src/Movies/Form/UserForm.php:52
 #: ../src/Movies/Table/UserTable.php:51
@@ -162,7 +167,7 @@ msgid "Type"
 msgstr "Art"
 
 #: ../src/Movies/Form/MediumForm.php:162
-#: ../view/movies/admin/import-medium.phtml:20
+#: ../view/movies/admin/import-medium.phtml:21
 #: ../view/movies/movies/show.phtml:134 ../view/movies/search/owner.phtml:12
 msgid "Owner"
 msgstr "Besitzer"
@@ -230,7 +235,7 @@ msgstr "Löschen"
 
 #: ../src/Movies/Form/UserForm.php:109
 #: ../view/movies/admin/add-medium.phtml:273
-#: ../view/movies/admin/import-medium.phtml:36
+#: ../view/movies/admin/import-medium.phtml:41
 msgid "Import"
 msgstr "Importieren"
 
@@ -362,11 +367,15 @@ msgstr "Alle exportieren"
 msgid "Import medium"
 msgstr "Medium importieren"
 
-#: ../view/movies/admin/import-medium.phtml:45
+#: ../view/movies/admin/import-medium.phtml:33
+msgid "Import file"
+msgstr "Import Datei"
+
+#: ../view/movies/admin/import-medium.phtml:50
 msgid "The following media were imported:"
 msgstr "Die folgenden Medien wurden importiert:"
 
-#: ../view/movies/admin/import-medium.phtml:60
+#: ../view/movies/admin/import-medium.phtml:65
 msgid "and these failed:"
 msgstr "und diese sind fehlgeschlagen:"
 
@@ -418,27 +427,30 @@ msgstr "Erweiterte Suche:"
 
 #: ../view/zf-table/templates/container-b3.phtml:8
 #: ../view/zf-table/templates/custom-list-detail.phtml:10
-#: ../view/zf-table/templates/custom-pic-only.phtml:7
+#: ../view/zf-table/templates/custom-pic-only.phtml:10
 msgid "Show as"
 msgstr "Anzeigen als"
 
 #: ../view/zf-table/templates/container-b3.phtml:10
 #: ../view/zf-table/templates/custom-list-detail.phtml:12
-#: ../view/zf-table/templates/custom-pic-only.phtml:9
+#: ../view/zf-table/templates/custom-pic-only.phtml:12
 msgid "List"
 msgstr "Liste"
 
 #: ../view/zf-table/templates/container-b3.phtml:11
 #: ../view/zf-table/templates/custom-list-detail.phtml:13
-#: ../view/zf-table/templates/custom-pic-only.phtml:10
+#: ../view/zf-table/templates/custom-pic-only.phtml:13
 msgid "Details"
 msgstr ""
 
 #: ../view/zf-table/templates/container-b3.phtml:12
 #: ../view/zf-table/templates/custom-list-detail.phtml:14
-#: ../view/zf-table/templates/custom-pic-only.phtml:11
+#: ../view/zf-table/templates/custom-pic-only.phtml:14
 msgid "Cover"
 msgstr ""
+
+#~ msgid "Data updated"
+#~ msgstr "Daten aktualisiert"
 
 #, fuzzy
 #~ msgid "Director:"

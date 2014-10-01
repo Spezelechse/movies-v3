@@ -14,16 +14,6 @@ class AuthController extends BasisController
 {
     protected $form;
     protected $storage;
-     
-    public function getSessionStorage()
-    {
-        if (! $this->storage) {
-            $this->storage = $this->getServiceLocator()
-                                  ->get('Movies\Model\MoviesAuthStorage');
-        }
-         
-        return $this->storage;
-    }
 
     /**
      * Index - Admin

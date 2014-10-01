@@ -17,6 +17,7 @@ class User extends BaseObject
     public $email;
 	public $password;
 	public $rights;
+    public $updated_at;
 
     private $rights_array;
 	private $inputFilter;
@@ -30,6 +31,7 @@ class User extends BaseObject
         $this->email = (isset($data['email'])) ? $data['email'] : null;
 		$this->password = (isset($data['password'])) ? $data['password'] : null;
 		$this->rights = (isset($data['rights'])) ? $data['rights'] : null;
+        $this->updated_at = (isset($data['updated_at'])) ? $data['updated_at'] : null;
 	}
 
     public function toArray(){

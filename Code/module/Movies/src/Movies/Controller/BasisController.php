@@ -47,6 +47,19 @@ abstract class BasisController extends AbstractActionController
 
       $res = $this->init();
 
+      if($this->getAuthService()->hasIdentity()){
+        $identity = $this->getAuthService()->getIdentity();
+        $last_update = $this->Tables()->user()->getLastUpdate($identity->id);
+
+        if($identity->updated_at!=$last_update){
+          $this->getSessionStorage()->forgetMe();
+          $this->getAuthService()->clearIdentity();
+
+          $this->flashmessenger()->addMessage($this->translate('Your user data has changed! Please login again'));
+          return $this->redirect()->toRoute('auth', array('lang'=>$this->language, 'action'=>'login'));
+        }
+      }
+
       if(isset($res)){
         return $res;
       }
@@ -63,6 +76,16 @@ abstract class BasisController extends AbstractActionController
         }
          
         return $this->authservice;
+    }
+
+    public function getSessionStorage()
+    {
+        if (! $this->storage) {
+            $this->storage = $this->getServiceLocator()
+                                  ->get('Movies\Model\MoviesAuthStorage');
+        }
+         
+        return $this->storage;
     }
 
     public function getDbAdapter()

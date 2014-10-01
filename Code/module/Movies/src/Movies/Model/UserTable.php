@@ -26,6 +26,12 @@ class UserTable extends BaseTable
         return $resultSet->current();
     }
 
+    public function getLastUpdate($id){
+        $user = $this->get($id);
+        
+        return $user->updated_at;
+    }
+
     public function fetchAllForSelect(){
         $result_set = $this->fetchAll(function ($select) {
              $select->order('username ASC');

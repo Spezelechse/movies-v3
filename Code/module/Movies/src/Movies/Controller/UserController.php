@@ -44,7 +44,7 @@ class UserController extends BasisController
                 $form->setData($post);
 
                 if ($form->isValid()) {
-                    $this->flashMessenger()->addSuccessMessage($this->translate('Data updated'));
+                    $this->flashMessenger()->addSuccessMessage($this->translate('Data updated! Please Login with the new data'));
                     $user->exchangeArray($form->getData());
 
                     if($post->toArray()['password']!=''){
@@ -56,8 +56,12 @@ class UserController extends BasisController
                 	$user->rights=$oldData->rights;
 
                     $this->Tables()->user()->save($user);
-                    
-                    //return $this->redirect()->toRoute('movies', array('lang'=>$this->language, 'action'=>'index'));
+
+
+                    $this->getSessionStorage()->forgetMe();
+                    $this->getAuthService()->clearIdentity();
+
+                    return $this->redirect()->toRoute('auth', array('lang'=>$this->language, 'action'=>'login'));
                 }
                 else{
                     $this->showFormMessages($form);
