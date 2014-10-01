@@ -121,11 +121,13 @@ Update 30.09.14
 - Changed the import/export type from json string to file
 - Fixed issue: not displaying the placeholder (@ list view 'Cover') when cover file is missing
 
+Update 02.10.14
+- Added a detection of changed user data with the target to react on changed userrights. If the user data changed the user while be informed and logged out.
+
 ------------------------------------------------------------------------------------------------
 
 ###Whats planned next?
 - implement transfer skript v2 -> v3
 - add an alternative pdf view with details
-- add a detection of changed userdata (especially userrights)
 - maybe change the imdb search listing  (similar to the detail view for media) for easier identifying of the searched item
 - maybe change the actor editing from textareas to an editable table
