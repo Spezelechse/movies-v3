@@ -17,7 +17,7 @@ Some of the new features will be:
 
 ###Install
 
-1. Upload the files, contained in the Code folder, to your webserver
+1. Upload the files, contained in the Code directory, to your webserver
 2. Import the 'movies_v3_db.sql' file into your database (this will create all needed tables and inital entries)
 3. Create a file named 'local.php' under config/autoload/ and add the following code (just replace 'user' and 'pword' with the data needed for your database access):
 
@@ -31,13 +31,15 @@ return array(
 );
  ```
  
-4. Edit the 'global.php' file in the same folder and set the right database name in line 17 (replace 'movies_v3' with your database name).
+4. Edit the 'global.php' file in the same directory and set the right database name in line 17 (replace 'movies_v3' with your database name).
  
  ```php
 'dsn' => 'mysql:dbname=movies_v3;host=localhost',
   ```
 
 5. Thats it. Now you can login with the username: admin and password: Test?123
+
+**Info**: The main file (index.php) is contained in the public directory and not the root. Take care of this while setting up your domain or vhost.
 
 ------------------------------------------------------------------------------------------------
 
